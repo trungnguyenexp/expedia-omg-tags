@@ -1,0 +1,151 @@
+b['destination'] = '';
+if (utag.isLXCO() && b['entity.checkout.activity.activityDetail.destination'])
+{
+    b['destination'] = b['entity.checkout.activity.activityDetail.destination'];
+}
+if (utag.isLXCO() && b.entity.checkout.activity.activityDetail.destination)
+{
+    b['destination'] = b.entity.checkout.activity.activityDetail.destination;
+}
+else if (utag.isCruiseCO() && b['entity.checkout.cruise.destination'])
+{
+    b['destination'] = b['entity.checkout.cruise.destination'];
+}
+else if ((utag.isPSR_FH_Responsive() || utag.isPIS_FH()) && b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'])
+{
+    b['destination'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'].split(',')[0].split('(')[0].trim();
+}
+else if ((utag.isPSR() || utag.isPSR_FHC()) && b['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName'])
+{
+    b['destination'] = b['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName'].split('(')[0].trim();
+}
+else if ((utag.isPSR_FC() || utag.isPSR_Mobile()) && b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'])
+{
+    b['destination'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'].split(',')[0].split('(')[0].trim();
+}
+else if (utag.isPSR_F_Responsive() && b['entity.flightSearch.searchParameters.arrivalAirportCityState'])
+{
+    b['destination'] = b['entity.flightSearch.searchParameters.arrivalAirportCityState'].split(',')[0];
+}
+else if (utag.isPRateDetails() && b['entity.tripDetails.flightOffer.destinationAirportCityState'])
+{
+    b['destination'] = b['entity.tripDetails.flightOffer.destinationAirportCityState'].split('(')[0].trim();
+}
+else if (utag.isPCO() && b['entity.checkout.flightOffer.destinationAirportCityState'])
+{
+    b['destination'] = b['entity.checkout.flightOffer.destinationAirportCityState'].split(',')[0];
+}
+else if (utag.isFCO() && b['entity.checkout.flightOffer.destinationAirportCityState']) {
+    b['destination'] = b['entity.checkout.flightOffer.destinationAirportCityState'].split(',')[0].trim();
+}
+else if (utag.isHCO()) {
+    b['destination'] = b['entity.checkout.hotel.hotelCityName'];
+}
+else if (utag.isCarCO()) {
+    b['destination'] = b['entity.checkout.car.pickUpLocation.address.city'];
+}
+else if (utag.isHSR() && b['entity.hotels.search.city'])
+{
+    b['destination'] = b['entity.hotels.search.city'].split(',')[0].split('(')[0].trim();
+}
+else if (utag.isCruiseSR() && b['entity.cruiseSearch.destination'])
+{
+    b['destination'] = b['entity.cruiseSearch.destination']
+}
+else if (utag.isFSR() && b['entity.flightSearch.searchParameters.arrivalAirportCityState'])
+{
+    b['destination'] = b['entity.flightSearch.searchParameters.arrivalAirportCityState']
+}
+else if (utag.isCarSR() && b['entity.carSearch.searchCriteria.dropOffLocation.locationCode'])
+{
+    b['destination'] = b['entity.carSearch.searchCriteria.dropOffLocation.locationCode'];
+}
+else if (utag.isMCO()) {
+    if (b["entity.checkout.cars.0.dropOffLocation.address.city"] != undefined) {
+        b["destination"] = b["entity.checkout.cars.0.dropOffLocation.address.city"];
+    }
+    else if (b["entity.checkout.flightOffers.0.destinationAirportCityState"] != undefined) {
+        b["destination"] = b["entity.checkout.flightOffers.0.destinationAirportCityState"].split(",")[0].trim();
+    }
+    else if (b["entity.checkout.hotels.0.hotelCityName"] != undefined) {
+        b["destination"] = b["entity.checkout.hotels.0.hotelCityName"];
+    }
+}
+
+
+
+/** old
+ utag_data['destination'] = '';
+ if (utag.isLXCO() && utag_data['entity.checkout.activity.activityDetail.destination'])
+ {
+     utag_data['destination'] = utag_data['entity.checkout.activity.activityDetail.destination'];
+ }
+ if (utag.isLXCO() && utag_data.entity.checkout.activity.activityDetail.destination)
+ {
+     utag_data['destination'] = utag_data.entity.checkout.activity.activityDetail.destination;
+ }
+ else if (utag.isCruiseCO() && utag_data['entity.checkout.cruise.destination'])
+ {
+     utag_data['destination'] = utag_data['entity.checkout.cruise.destination'];
+ }
+ else if ((utag.isPSR_FH_Responsive() || utag.isPIS_FH()) && utag_data['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'])
+ {
+     utag_data['destination'] = utag_data['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'].split(',')[0].split('(')[0].trim();
+ }
+ else if ((utag.isPSR() || utag.isPSR_FHC()) && utag_data['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName'])
+ {
+     utag_data['destination'] = utag_data['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName'].split('(')[0].trim();
+ }
+ else if ((utag.isPSR_FC() || utag.isPSR_Mobile()) && utag_data['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'])
+ {
+     utag_data['destination'] = utag_data['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'].split(',')[0].split('(')[0].trim();
+ }
+ else if (utag.isPSR_F_Responsive() && utag_data['entity.flightSearch.searchParameters.arrivalAirportCityState'])
+ {
+     utag_data['destination'] = utag_data['entity.flightSearch.searchParameters.arrivalAirportCityState'].split(',')[0];
+ }
+ else if (utag.isPRateDetails() && utag_data['entity.tripDetails.flightOffer.destinationAirportCityState'])
+ {
+     utag_data['destination'] = utag_data['entity.tripDetails.flightOffer.destinationAirportCityState'].split('(')[0].trim();
+ }
+ else if (utag.isPCO() && utag_data['entity.checkout.flightOffer.destinationAirportCityState'])
+ {
+     utag_data['destination'] = utag_data['entity.checkout.flightOffer.destinationAirportCityState'].split(',')[0];
+ }
+ else if (utag.isFCO() && utag_data['entity.checkout.flightOffer.destinationAirportCityState']) {
+    utag_data['destination'] = utag_data['entity.checkout.flightOffer.destinationAirportCityState'].split(',')[0].trim();
+}
+ else if (utag.isHCO()) {
+    utag_data['destination'] = utag_data['entity.checkout.hotel.hotelCityName'];
+}
+ else if (utag.isCarCO()) {
+    utag_data['destination'] = utag_data['entity.checkout.car.pickUpLocation.address.city'];
+}
+ else if (utag.isHSR() && utag_data['entity.hotels.search.city'])
+ {
+     utag_data['destination'] = utag_data['entity.hotels.search.city'].split(',')[0].split('(')[0].trim();
+ }
+ else if (utag.isCruiseSR() && utag_data['entity.cruiseSearch.destination'])
+ {
+     utag_data['destination'] = utag_data['entity.cruiseSearch.destination']
+ }
+ else if (utag.isFSR() && utag_data['entity.flightSearch.searchParameters.arrivalAirportCityState'])
+ {
+     utag_data['destination'] = utag_data['entity.flightSearch.searchParameters.arrivalAirportCityState']
+ }
+ else if (utag.isCarSR() && utag_data['entity.carSearch.searchCriteria.dropOffLocation.locationCode'])
+ {
+     utag_data['destination'] = utag_data['entity.carSearch.searchCriteria.dropOffLocation.locationCode'];
+ }
+ else if (utag.isMCO()) {
+  if (utag_data["entity.checkout.cars.0.dropOffLocation.address.city"] != undefined) {
+    utag_data["destination"] = utag_data["entity.checkout.cars.0.dropOffLocation.address.city"];
+  }
+  else if (utag_data["entity.checkout.flightOffers.0.destinationAirportCityState"] != undefined) {
+    utag_data["destination"] = utag_data["entity.checkout.flightOffers.0.destinationAirportCityState"].split(",")[0].trim();
+  }
+  else if (utag_data["entity.checkout.hotels.0.hotelCityName"] != undefined) {
+    utag_data["destination"] = utag_data["entity.checkout.hotels.0.hotelCityName"];
+  }    
+}
+ **/

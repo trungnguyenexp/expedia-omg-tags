@@ -1,0 +1,43 @@
+if(document.URL.indexOf('wwwmrjetse.trunk') > -1){
+    if ('/flights-search' == document.location.pathname.toLowerCase() && navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+        //do nothing
+    }
+    else{
+        var flattenObj = function (h, n) {
+            var max_arr_len = 10;
+            for (var x in h) {
+                if (typeof h[x] == "string" || typeof h[x] == "number" || (typeof h[x] == "boolean" && x.indexOf("set") != 0)) {
+                    utag_data[n + "." + x] = h[x];
+                }
+                else if (h[x] instanceof Array) {
+                    if (h[x].length > max_arr_len) {
+                        //console.log("old array length: "+h[x].length)
+                        h[x] = h[x].slice(0, max_arr_len)
+                        //console.log("new array length: "+h[x].length)
+                    }
+                    for (var idx = 0; idx < h[x].length; idx++) {
+                        utag_data[n + "." + x + "." + idx] = h[x][idx];
+                        for (e in h[x][idx]) {
+                            if (typeof h[x][idx] == "object") {
+                                flattenObj(h[x][idx], n + "." + x + "." + idx);
+                            }
+                        }
+                    }
+                }
+                else if (typeof h[x] == "object") {
+                    //for (e in h[x]){
+                    flattenObj(h[x], n + "." + x);
+                    //}
+                }
+            }
+        }
+
+        utag_data = JSON.parse(JSON.stringify(utag_data)); //hotfix 9/2/2016 (meng.lim@tealium.com)
+        for (var item in utag_data) {
+            if (typeof utag_data[item] == "object" && !(utag_data[item] instanceof Array)) {
+                flattenObj(utag_data[item], item);
+            }
+        }
+        utag_data.preload_flag = 1;
+    }
+}
