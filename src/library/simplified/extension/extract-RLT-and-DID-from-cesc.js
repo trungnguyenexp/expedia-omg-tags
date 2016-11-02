@@ -10,7 +10,7 @@ if (typeof b['cp.cesc'] != "undefined" && (b['cp.cesc'].toLowerCase().indexOf('r
 
 
         // keep the marketing code the same as the existing cookie and set the log_attribution to false
-        if(utag.checkIfEmailInString(b['cp.rlt_marketing_code_cookie'])){
+        if(checkIfEmailInString(b['cp.rlt_marketing_code_cookie'])){
             b.rlt_marketing_code = "";
         }else{
             b.rlt_marketing_code = b['cp.rlt_marketing_code_cookie'];
