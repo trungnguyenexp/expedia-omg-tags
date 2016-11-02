@@ -10,10 +10,11 @@ if (typeof b['cp.cesc'] != "undefined" && (b['cp.cesc'].toLowerCase().indexOf('r
 
 
         // keep the marketing code the same as the existing cookie and set the log_attribution to false
-        if(utag.checkIfEmailInString(b.rlt_marketing_code)){
+        if(utag.checkIfEmailInString(b['cp.rlt_marketing_code_cookie'])){
             b.rlt_marketing_code = "";
+        }else{
+            b.rlt_marketing_code = b['cp.rlt_marketing_code_cookie'];
         }
-        b.rlt_marketing_code = b['cp.rlt_marketing_code_cookie'];
         b.log_attribution = "false";
 
     } else if (b['dom.referrer'].indexOf(b['dom.domain']) < 0 || (b['dom.referrer'].indexOf(b['dom.domain']) > -1 && tempMC == "{}")) {
@@ -35,4 +36,9 @@ if (typeof b['cp.cesc'] != "undefined" && (b['cp.cesc'].toLowerCase().indexOf('r
 // this is for a different tag (cruise critic - travelocity) - extract DID value from cesc cookie
 if (typeof b['cp.cesc'] != "undefined" && b['cp.cesc'].indexOf('DID') > -1) {
     b.did_code = "DID" + b['cp.cesc'].split(",")[0].split("DID")[1].replace(/\"/g, "");;
+}
+
+function  checkIfEmailInString (text) {
+    var re = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
+    return re.test(text);
 }
