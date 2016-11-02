@@ -12,6 +12,9 @@ if (typeof b['cp.cesc'] != "undefined" && (b['cp.cesc'].toLowerCase().indexOf('r
         // keep the marketing code the same as the existing cookie and set the log_attribution to false
         if(checkIfEmailInString(b['cp.rlt_marketing_code_cookie'])){
             b.rlt_marketing_code = "";
+            b['cp.rlt_marketing_code_cookie'] = '';
+            //expire cookie
+            document.cookie = 'rlt_marketing_code_cookie=; expires=Thu, 01 Jan 2015 00:00:01 GMT;';
         }else{
             b.rlt_marketing_code = b['cp.rlt_marketing_code_cookie'];
         }
@@ -25,7 +28,11 @@ if (typeof b['cp.cesc'] != "undefined" && (b['cp.cesc'].toLowerCase().indexOf('r
     } else {
         // if none of the above is true, set the log_attribution value to false as a safety measure
         // rlt_marketing_code will be set to the cesc cookie, which is what we want for the following extensions
-        b.rlt_marketing_code = tempMC
+        if(!checkIfEmailInString(b['cp.rlt_marketing_code_cookie'])) {
+            b.rlt_marketing_code = tempMC;
+        }else{
+            b.rlt_marketing_code = '';
+        }
         b.log_attribution = "false";
     }
 } else if (typeof b['cp.cesc'] == "undefined" && b['dom.referrer'].indexOf(b['dom.domain'] < 0)) {
