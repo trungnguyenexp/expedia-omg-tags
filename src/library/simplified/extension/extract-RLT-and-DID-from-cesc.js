@@ -11,10 +11,8 @@ if (typeof b['cp.cesc'] != "undefined" && (b['cp.cesc'].toLowerCase().indexOf('r
 
         // keep the marketing code the same as the existing cookie and set the log_attribution to false
         if(checkIfEmailInString(b['cp.rlt_marketing_code_cookie'])){
-            b.rlt_marketing_code = "";
-            b['cp.rlt_marketing_code_cookie'] = '';
-            //expire cookie
-            document.cookie = 'rlt_marketing_code_cookie=; expires=Thu, 01 Jan 2015 00:00:01 GMT;';
+            b.rlt_marketing_code = "{}";
+            b['cp.rlt_marketing_code_cookie'] = '{}';
         }else{
             b.rlt_marketing_code = b['cp.rlt_marketing_code_cookie'];
         }
@@ -23,15 +21,19 @@ if (typeof b['cp.cesc'] != "undefined" && (b['cp.cesc'].toLowerCase().indexOf('r
     } else if (b['dom.referrer'].indexOf(b['dom.domain']) < 0 || (b['dom.referrer'].indexOf(b['dom.domain']) > -1 && tempMC == "{}")) {
         // here, the cesc is different than the existing cookie and this is the first landing page after the marketing click,
         //  so update the rlt value and set log_attribution to true
-        b.rlt_marketing_code = tempMC;
+        if(!checkIfEmailInString(tempMC)) {
+            b.rlt_marketing_code = tempMC;
+        }else{
+            b.rlt_marketing_code = '{}';
+        }
         b.log_attribution = "true";
     } else {
         // if none of the above is true, set the log_attribution value to false as a safety measure
         // rlt_marketing_code will be set to the cesc cookie, which is what we want for the following extensions
-        if(!checkIfEmailInString(b['cp.rlt_marketing_code_cookie'])) {
+        if(!checkIfEmailInString(tempMC)) {
             b.rlt_marketing_code = tempMC;
         }else{
-            b.rlt_marketing_code = '';
+            b.rlt_marketing_code = '{}';
         }
         b.log_attribution = "false";
     }
