@@ -143,7 +143,14 @@ else if (utag.isLXS() && b["entity.activities.activitySearchParameters.isoFormat
 }
 else if (utag.isMCO()) {
     if (b['entity.checkout.hotels.0.isoCheckOutDate'] != undefined) {
-        b['checkOutDate'] = b['entity.checkout.hotels.0.isoCheckOutDate'];
+         var numberOfHotel = b.entity.checkout.hotels.length ;
+        var checkout = 'entity.checkout.hotels.' + numberOfHotel - 1 + '.isoCheckOutDate';
+        if(numberOfHotel > 1) {
+            b['checkOutDate'] = b[checkout];
+        }
+        else {
+            b['checkOutDate'] = b['entity.checkout.hotels.0.isoCheckOutDate'];
+        }
     }
     else if (b['entity.checkout.flightOffers.0.flight.legs.0'] != undefined )
     {
