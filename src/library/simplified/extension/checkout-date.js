@@ -143,9 +143,11 @@ else if (utag.isLXS() && b["entity.activities.activitySearchParameters.isoFormat
 }
 else if (utag.isMCO()) {
     if (b['entity.checkout.hotels.0.isoCheckOutDate'] != undefined) {
-         var numberOfHotel = b.entity.checkout.hotels.length ;
-        var checkout = 'entity.checkout.hotels.' + numberOfHotel - 1 + '.isoCheckOutDate';
+        var numberOfHotel = b.entity.checkout.hotels.length ;
+        var hotelIndex = numberOfHotel - 1;
+
         if(numberOfHotel > 1) {
+            var checkout = 'entity.checkout.hotels.' + hotelIndex + '.isoCheckOutDate';
             b['checkOutDate'] = b[checkout];
         }
         else {
