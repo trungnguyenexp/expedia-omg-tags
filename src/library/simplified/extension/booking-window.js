@@ -1,6 +1,11 @@
 b['bookingWindow'] = '';
 
 function bw_daydiff(first, second) {
+    //This condition is to handle the same day booking
+    if (Math.round((second-first)/(1000*60*60*24)) == -1)
+    {
+        return 0;
+    }
     return Math.round((second-first)/(1000*60*60*24));
 };
 
