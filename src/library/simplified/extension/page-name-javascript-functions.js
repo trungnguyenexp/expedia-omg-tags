@@ -313,7 +313,7 @@ window.utag.isPSR_FC = function(){
 }
 
 window.utag.isPSR_FHC = function(){
-    if( pageName.indexOf("page.FHC.Package-Search") > -1){
+    if(pageName.indexOf("page.Package.FHC.Hotel-Search") > -1){
         return true ;
     }
     return false;
