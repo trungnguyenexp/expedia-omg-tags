@@ -314,6 +314,7 @@ window.utag.isPSR_FC = function(){
 
 window.utag.isPSR_FHC = function(){
     if(pageName.indexOf("page.FHC.Package-Search") > -1 || pageName.indexOf("page.Package.FHC.Hotel-Search") > -1){
+        b["isPackageFlightHotelCarSearchResult"] = true;
         return true ;
     }
     return false;
