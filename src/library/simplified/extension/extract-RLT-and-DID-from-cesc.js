@@ -49,5 +49,5 @@ if (typeof b['cp.cesc'] != "undefined" && b['cp.cesc'].indexOf('DID') > -1) {
 
 function  checkIfEmailInString (text) {
     var re = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
-    return re.test(text);
+    return re.test(decodeURIComponent(decodeURIComponent(text)));
 }
