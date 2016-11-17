@@ -6,63 +6,68 @@
  4. main_margin - insurance_margin + main_margin
  */
 
-// This is to test the product margin pushed into the Google Adwords MCC tag
+/*
+ This is to test the product margin pushed into the Google Adwords MCC tag
+ */
 
 var margin_rate_uk = new Array();
-	margin_rate_uk['HOTEL'] 	= .155;
-	margin_rate_uk['AIR']		= .012;
-	margin_rate_uk['PACKAGE'] 	= .072;
-	margin_rate_uk['LX'] 		= .163;
-	margin_rate_uk['CAR'] 		= .124;
-	margin_rate_uk['3PP'] 	    = 0.0;
+margin_rate_uk['HOTEL'] 	= .155;
+margin_rate_uk['AIR']		= .012;
+margin_rate_uk['PACKAGE'] 	= .072;
+margin_rate_uk['LX'] 		= .163;
+margin_rate_uk['CAR'] 		= .124;
+margin_rate_uk['3PP'] 	= 0;
 
 var margin_rate_ie = new Array();
-	margin_rate_ie['HOTEL'] 	= .162;
-	margin_rate_ie['AIR']		= .020;
-	margin_rate_ie['PACKAGE'] 	= .062;
-	margin_rate_ie['LX'] 		= .154;
-	margin_rate_ie['CAR'] 		= .174;
-	margin_rate_ie['3PP'] 	    = 0.0;
+margin_rate_ie['HOTEL'] 	= .162;
+margin_rate_ie['AIR']		= .020;
+margin_rate_ie['PACKAGE'] 	= .062;
+margin_rate_ie['LX'] 		= .154;
+margin_rate_ie['CAR'] 		= .174;
+margin_rate_ie['3PP'] 	= 0;
 
 var margin_rate_fr = new Array();
-	margin_rate_fr['HOTEL'] 	= .160;
-	margin_rate_fr['AIR']		= .008;
-	margin_rate_fr['PACKAGE'] 	= .090;
-	margin_rate_fr['LX'] 		= .204;
-	margin_rate_fr['CAR'] 		= .197;
-	margin_rate_fr['3PP'] 	    = 0.0;
+margin_rate_fr['HOTEL'] 	= .160;
+margin_rate_fr['AIR']		= .008;
+margin_rate_fr['PACKAGE'] 	= .090;
+margin_rate_fr['LX'] 		= .204;
+margin_rate_fr['CAR'] 		= .197;
+margin_rate_fr['3PP'] 	= 0;
 
 var margin_rate_de = new Array();
-	margin_rate_de['HOTEL'] 	= .156;
-	margin_rate_de['AIR']		= .021;
-	margin_rate_de['PACKAGE'] 	= .086;
-	margin_rate_de['LX'] 		= .181;
-	margin_rate_de['CAR'] 		= .186;
-	margin_rate_de['3PP'] 	    = .10;
+margin_rate_de['HOTEL'] 	= .156;
+margin_rate_de['AIR']		= .021;
+margin_rate_de['PACKAGE'] 	= .086;
+margin_rate_de['LX'] 		= .181;
+margin_rate_de['CAR'] 		= .186;
+margin_rate_de['3PP'] 	= .10;
 
 var margin_rate_ch = new Array();
-	margin_rate_ch['HOTEL'] 	= .158;
-	margin_rate_ch['AIR']		= .049;
-	margin_rate_ch['PACKAGE'] 	= .096;
-	margin_rate_ch['LX'] 		= .174;
-	margin_rate_ch['CAR'] 		= .198;
-	margin_rate_ch['3PP'] 	    = .10;
+margin_rate_ch['HOTEL'] 	= .158;
+margin_rate_ch['AIR']		= .049;
+margin_rate_ch['PACKAGE'] 	= .096;
+margin_rate_ch['LX'] 		= .174;
+margin_rate_ch['CAR'] 		= .198;
+margin_rate_ch['3PP'] 	= .10;
 
 var margin_rate_fi = new Array();
-	margin_rate_fi['HOTEL'] 	= .158;
-	margin_rate_fi['AIR']		= .047;
-	margin_rate_fi['PACKAGE'] 	= .071;
-	margin_rate_fi['LX'] 		= .209;
-	margin_rate_fi['CAR'] 		= .185;
-	margin_rate_fi['3PP'] 	    = 0.0;
+margin_rate_fi['HOTEL'] 	= .158;
+margin_rate_fi['AIR']		= .047;
+margin_rate_fi['PACKAGE'] 	= .071;
+margin_rate_fi['LX'] 		= .209;
+margin_rate_fi['CAR'] 		= .185;
+margin_rate_fi['3PP'] 	= 0;
 
 var margin_rate_se = new Array();
-	margin_rate_se['HOTEL'] 	= .149;
-	margin_rate_se['AIR']		= .004;
-	margin_rate_se['PACKAGE'] 	= .060;
-	margin_rate_se['LX'] 		= .193;
-	margin_rate_se['CAR'] 		= .168;
-	margin_rate_se['3PP'] 	    = 0.0;
+margin_rate_se['HOTEL'] 	= .149;
+margin_rate_se['AIR']		= .004;
+margin_rate_se['PACKAGE'] 	= .060;
+margin_rate_se['LX'] 		= .193;
+margin_rate_se['CAR'] 		= .168;
+margin_rate_se['3PP'] 	= 0;
+
+
+
 
 if (b["pageInfo.pageName"].indexOf("Checkout.Confirmation") > -1 || b["pageInfo.pageName"].indexOf('page.Itin.Details.Booked') > -1  ) {
 
@@ -88,50 +93,170 @@ if (b["pageInfo.pageName"].indexOf("Checkout.Confirmation") > -1 || b["pageInfo.
     var main_margin = 0;
     var margin_rate = 1;
     var lob = b["domain"] //Domain contains realm info about the product type
-	var pos = b["sitename"];
+    var pos = b["sitename"];
 
-	var pos_array =['www.ebookers.com','www.ebookers.ie','www.ebookers.fr','www.ebookers.de','www.ebookers.ch','www.ebookers.fi','www.mrjet.se'];
-	var prefix_array =['uk','ie','fr','de','ch','fi','se'];
-	var pos_flag = false;
+    if(pos == 'uk')
+    {
+        switch(lob) {
+            case "HOTEL":
+                margin_rate = margin_rate_uk[lob];
+                break;
+            case "AIR":
+                margin_rate = margin_rate_uk[lob];
+                break;
+            case "PACKAGE":
+                margin_rate = margin_rate_uk[lob];
+                break;
+            case "LX":
+                margin_rate = margin_rate_uk[lob];
+                break;
+            case "CAR":
+                margin_rate = margin_rate_uk[lob];
+                break;
+            case "CRUISE":
+                margin_rate = margin_rate_uk[lob];
+                break;
+        }
+    }
+    else if(pos == 'ie')
+    {
+        switch(lob) {
+            case "HOTEL":
+                margin_rate = margin_rate_ie[lob];
+                break;
+            case "AIR":
+                margin_rate = margin_rate_ie[lob];
+                break;
+            case "PACKAGE":
+                margin_rate = margin_rate_ie[lob];
+                break;
+            case "LX":
+                margin_rate = margin_rate_ie[lob];
+                break;
+            case "CAR":
+                margin_rate = margin_rate_ie[lob];
+                break;
+            case "CRUISE":
+                margin_rate = margin_rate_ie[lob];
+                break;
+        }
+    }
+    else if(pos == 'fr')
+    {
+        switch(lob) {
+            case "HOTEL":
+                margin_rate = margin_rate_fr[lob];
+                break;
+            case "AIR":
+                margin_rate = margin_rate_fr[lob];
+                break;
+            case "PACKAGE":
+                margin_rate = margin_rate_fr[lob];
+                break;
+            case "LX":
+                margin_rate = margin_rate_fr[lob];
+                break;
+            case "CAR":
+                margin_rate = margin_rate_fr[lob];
+                break;
+            case "CRUISE":
+                margin_rate = margin_rate_fr[lob];
+                break;
+        }
+    }
+    else if(pos == 'de')
+    {
+        switch(lob) {
+            case "HOTEL":
+                margin_rate = margin_rate_de[lob];
+                break;
+            case "AIR":
+                margin_rate = margin_rate_de[lob];
+                break;
+            case "PACKAGE":
+                margin_rate = margin_rate_de[lob];
+                break;
+            case "LX":
+                margin_rate = margin_rate_de[lob];
+                break;
+            case "CAR":
+                margin_rate = margin_rate_de[lob];
+                break;
+            case "CRUISE":
+                margin_rate = margin_rate_de[lob];
+                break;
+        }
+    }
+    else if(pos == 'ch')
+    {
+        switch(lob) {
+            case "HOTEL":
+                margin_rate = margin_rate_ch[lob];
+                break;
+            case "AIR":
+                margin_rate = margin_rate_ch[lob];
+                break;
+            case "PACKAGE":
+                margin_rate = margin_rate_ch[lob];
+                break;
+            case "LX":
+                margin_rate = margin_rate_ch[lob];
+                break;
+            case "CAR":
+                margin_rate = margin_rate_ch[lob];
+                break;
+            case "CRUISE":
+                margin_rate = margin_rate_ch[lob];
+                break;
+        }
+    }
+    else if(pos == 'fi')
+    {
+        switch(lob) {
+            case "HOTEL":
+                margin_rate = margin_rate_fi[lob];
+                break;
+            case "AIR":
+                margin_rate = margin_rate_fi[lob];
+                break;
+            case "PACKAGE":
+                margin_rate = margin_rate_fi[lob];
+                break;
+            case "LX":
+                margin_rate = margin_rate_fi[lob];
+                break;
+            case "CAR":
+                margin_rate = margin_rate_fi[lob];
+                break;
+            case "CRUISE":
+                margin_rate = margin_rate_fi[lob];
+                break;
+        }
+    }
+    else if(pos == 'se')
+    {
+        switch(lob) {
+            case "HOTEL":
+                margin_rate = margin_rate_se[lob];
+                break;
+            case "AIR":
+                margin_rate = margin_rate_se[lob];
+                break;
+            case "PACKAGE":
+                margin_rate = margin_rate_se[lob];
+                break;
+            case "LX":
+                margin_rate = margin_rate_se[lob];
+                break;
+            case "CAR":
+                margin_rate = margin_rate_se[lob];
+                break;
+            case "CRUISE":
+                margin_rate = margin_rate_se[lob];
+                break;
+        }
+    }
 
-	for(var i = 0 ; i < pos_array.length ; i++)
-	{
-		if(pos == pos_array[i])
-		{
-            switch (lob) {
-                case "HOTEL":
-                    margin_rate = eval('margin_rate_' + prefix_array[i] + '[lob]');
-                    pos_flag = true;
-                    break;
-                case "AIR":
-                    margin_rate = eval('margin_rate_' + prefix_array[i] + '[lob]');
-                    pos_flag = true;
-                    break;
-                case "PACKAGE":
-                    margin_rate = eval('margin_rate_' + prefix_array[i] + '[lob]');
-                    pos_flag = true;
-                    break;
-                case "LX":
-                    margin_rate = eval('margin_rate_' + prefix_array[i] + '[lob]');
-                    pos_flag = true;
-                    break;
-                case "CAR":
-                    margin_rate = eval('margin_rate_' + prefix_array[i] + '[lob]');
-                    pos_flag = true;
-                    break;
-                //case "tshop":
-                //    margin_rate = eval('margin_rate_' + prefix_array[i] + '[lob]');
-                //	  pos_flag = true;
-                //    break;
-                case "CRUISE":
-                    margin_rate = eval('margin_rate_' + prefix_array[i] + '[lob]');
-                    pos_flag = true;
-                    break;
-            }
-
-				if(pos_flag) break;
-		}
-	}
 
     //CALC INSURANCE MARGIN
     if (insurance) {
