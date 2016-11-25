@@ -1,4 +1,3 @@
-b["city"] = "";
 if(utag.isHSR() && typeof b["entity.hotels.search.city"] != "undefined"){
     b["city"] = b["entity.hotels.search.city"].split(",")[0];
 }
