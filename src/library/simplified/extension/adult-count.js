@@ -62,7 +62,7 @@ else if(utag.isFPymt() || utag.isFCO() || utag.isPPymt() || utag.isPCO()){
 }
 
 //Package path
-else if(utag.isPSR() && !utag.isPSR_HC() && !utag.isPSR_FC() && !utag.isPSR_FH_Responsive() && !utag.isPSR_Mobile()){
+else if(utag.isPSR() && !utag.isPSR_FHC() && !utag.isPSR_HC() && !utag.isPSR_FC() && !utag.isPSR_FH_Responsive() && !utag.isPSR_Mobile() && b.entity.packageFHSearch.packageFHSearchParameters.packageTravelersPerRooms != undefined){
     var roomsCount = b.entity.packageFHSearch.packageFHSearchParameters.packageTravelersPerRooms.length;
     var adults = 0;
     for(var i = 0; i < roomsCount; i++){
@@ -73,7 +73,7 @@ else if(utag.isPSR() && !utag.isPSR_HC() && !utag.isPSR_FC() && !utag.isPSR_FH_R
     b["adults"] = adults;
     utag.DB('Package Search page: Adult count =' + b["adults"]);
 }
-else if(utag.isPSR() || utag.isPSR_HC() || utag.isPSR_FC() || utag.isPIS_HC() || utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_Mobile()){
+else if((utag.isPSR() || utag.isPSR_FHC() || utag.isPSR_HC() || utag.isPSR_FC() || utag.isPIS_HC() || utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_Mobile()) && b.entity.packageSearch.packageSearchParameters.travelers != undefined){
     var roomsCount = b.entity.packageSearch.packageSearchParameters.travelers.length;
     var adults = 0;
     for(var i = 0; i < roomsCount; i++){
