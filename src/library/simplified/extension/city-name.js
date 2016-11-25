@@ -22,7 +22,7 @@ else if(utag.isPSR() && b['entity.packageFHSearch.packageFHSearchParameters.arri
 else if(utag.isPSR_Mobile() && b['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName']){
     b["city"] = b['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName'].split("(")[0].trim();
 }
-else if((utag.isPSR_HC() || utag.isPIS_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || utag.isPIS_FH()) && b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"]){
+else if((utag.isPSR_FHC() || utag.isPSR_HC() || utag.isPIS_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || utag.isPIS_FH()) && b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"]){
     b["city"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"].split(",")[0];
 }
 else if(utag.isPRateDetails() && typeof b["entity.tripDetails.flightOffer.destinationAirportCityState"]) {
