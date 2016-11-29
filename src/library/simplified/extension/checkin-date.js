@@ -126,6 +126,9 @@ else if(utag.is3pp() && b['entity.checkout.hotel.checkInDate']){
 else if (utag.isLXS() && b["entity.activities.activitySearchParameters.isoFormatStartDate"] != undefined){
     b['checkInDate'] = b["entity.activities.activitySearchParameters.isoFormatStartDate"];
 }
+else if (utag.isLXI() && b["entity.activities.activityInfo.activityDetail.isoFormatStartDate"] != undefined){
+    b['checkInDate'] = b["entity.activities.activityInfo.activityDetail.isoFormatStartDate"];
+}
 else if (utag.isMCO()) {
     if (b['entity.checkout.hotels.0.isoCheckInDate'] != undefined) {
         b['checkInDate'] = b['entity.checkout.hotels.0.isoCheckInDate'];
