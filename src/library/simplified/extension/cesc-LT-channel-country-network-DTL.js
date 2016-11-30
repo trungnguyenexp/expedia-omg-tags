@@ -44,7 +44,7 @@ var patrialMarketingCode = b["context.marketingAttribution.campaignId"];
 if(fullMarketingCode != undefined && patrialMarketingCode != undefined && fullMarketingCode.indexOf(patrialMarketingCode) > -1 ){
     var marketingCodeAndDTL = fullMarketingCode.split(patrialMarketingCode + ".");
     if( marketingCodeAndDTL.length >= 2 ){
-        b["cescLastTouchMarketingCode"] = marketingCodeAndDTL[0].split(".")[0];  //Take out the DTL if exists.
         b["cescDTL"]  = marketingCodeAndDTL[1];
+        b["cescLastTouchMarketingCode"] = patrialMarketingCode;     //This is to handle the case where there is DTL in the lastTouchMarketingCode.
     }
 }
