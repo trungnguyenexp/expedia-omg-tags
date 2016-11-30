@@ -18,6 +18,7 @@ for(var i=0; i < length; i++){
 }
 
 b["cescLastTouchTimeStamp"] = lastTouchTimeStamp;
+b["cescLastTouchMarketingCode"] = lastTouchMarketingCode;
 b["cescPriorTouchTimeStamp"] = priorTimeStamp;
 b["cescPriorTouchMarketingCode"] = priorMarketingCode;
 
@@ -43,7 +44,7 @@ var patrialMarketingCode = b["context.marketingAttribution.campaignId"];
 if(fullMarketingCode != undefined && patrialMarketingCode != undefined && fullMarketingCode.indexOf(patrialMarketingCode) > -1 ){
     var marketingCodeAndDTL = fullMarketingCode.split(patrialMarketingCode + ".");
     if( marketingCodeAndDTL.length >= 2 ){
-        b["cescLastTouchMarketingCode"] = marketingCodeAndDTL[0];
+        b["cescLastTouchMarketingCode"] = marketingCodeAndDTL[0].split(".")[0];  //Take out the DTL if exists.
         b["cescDTL"]  = marketingCodeAndDTL[1];
     }
 }
