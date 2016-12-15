@@ -140,6 +140,16 @@ else if (utag.isMCO()) {
         b['checkInDate'] = b['entity.checkout.cars.0.isoFormatPickUpDate'];
     }
 }
+else if (utag.isPPymt()){
+    //FH, HC, FHC
+    if (b["entity.checkout.hotels.0.isoCheckInDate"] != undefined) {
+        b['checkInDate'] = b["entity.checkout.hotels.0.isoCheckInDate"];
+    }
+    //FC
+    if (b["entity.checkout.cars.0.isoFormatPickUpDate"] != undefined) {
+        b['checkInDate'] = b["entity.checkout.cars.0.isoFormatPickUpDate"].split("T")[0];
+    }
+}
 
 if(b["checkInDate"] != '')
 {

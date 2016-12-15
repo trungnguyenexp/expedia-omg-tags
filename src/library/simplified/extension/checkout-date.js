@@ -171,6 +171,16 @@ else if (utag.isMCO()) {
         b['checkOutDate'] = b['entity.checkout.cars.0.isoFormatDropOffDate'];
     }
 }
+else if (utag.isPPymt()){
+    //FH, HC, FHC
+    if (b["entity.checkout.hotels.0.isoCheckOutDate"] != undefined) {
+        b['checkOutDate'] = b["entity.checkout.hotels.0.isoCheckOutDate"];
+    }
+    //FC
+    if (b["entity.checkout.cars.0.isoFormatDropOffDate"] != undefined) {
+        b['checkOutDate'] = b["entity.checkout.cars.0.isoFormatDropOffDate"].split("T")[0];
+    }
+}
 
 if(b["checkOutDate"] != '')
 {
