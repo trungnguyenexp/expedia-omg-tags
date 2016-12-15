@@ -390,7 +390,7 @@ window.utag.isPTP = function(){
 }
 
 window.utag.isPPymt = function(){
-    if(pageName.indexOf("PKG_CKO_PMT") > -1 || pageName.indexOf("page.Package.Checkout.Info") > -1 ){
+    if(pageName.indexOf("PKG_CKO_PMT") > -1 || pageName.indexOf("page.Package.Checkout.Info") > -1 || pageName.indexOf("page.Checkout.Payment") > -1 ){
         b["isPackagePayment"] = true;
         b["pageType"] = "Payment";
         return true ;

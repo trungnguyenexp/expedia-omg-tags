@@ -171,6 +171,9 @@ else if (utag.isMCO()) {
         b['checkOutDate'] = b['entity.checkout.cars.0.isoFormatDropOffDate'];
     }
 }
+else if (utag.isPPymt() && b["entity.checkout.hotels.0.isoCheckOutDate"] != undefined){
+    b['checkOutDate'] = b["entity.checkout.hotels.0.isoCheckOutDate"];
+}
 
 if(b["checkOutDate"] != '')
 {

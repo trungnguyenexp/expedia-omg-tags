@@ -140,6 +140,9 @@ else if (utag.isMCO()) {
         b['checkInDate'] = b['entity.checkout.cars.0.isoFormatPickUpDate'];
     }
 }
+else if (utag.isPPymt() && b["entity.checkout.hotels.0.isoCheckInDate"] != undefined){
+    b['checkInDate'] = b["entity.checkout.hotels.0.isoCheckInDate"];
+}
 
 if(b["checkInDate"] != '')
 {
