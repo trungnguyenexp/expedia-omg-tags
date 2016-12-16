@@ -141,7 +141,11 @@ else if (utag.isMCO()) {
     }
 }
 else if (utag.isPPymt()){
-    //FH, HC, FHC
+    //FH
+    if (b["entity.checkout.hotel.isoCheckInDate"] != undefined) {
+        b['checkInDate'] = b["entity.checkout.hotel.isoCheckInDate"];
+    }
+    // HC, FHC
     if (b["entity.checkout.hotels.0.isoCheckInDate"] != undefined) {
         b['checkInDate'] = b["entity.checkout.hotels.0.isoCheckInDate"];
     }
