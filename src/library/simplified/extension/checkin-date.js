@@ -154,7 +154,16 @@ else if (utag.isPPymt()){
         b['checkInDate'] = b["entity.checkout.cars.0.isoFormatPickUpDate"].split("T")[0];
     }
 }
-
+else if (utag.isItinPage()){
+    //FH, FHC, FC (all has flights)
+    if (b["entity.tripDetails.flightOffers.0.flight.legs.0.segments.0.isoFormatDepartureTimestamp"] != undefined) {
+        b['checkInDate'] = b["entity.tripDetails.flightOffers.0.flight.legs.0.segments.0.isoFormatDepartureTimestamp"].split("T")[0];
+    }
+    //HC
+    if (b["entity.tripDetails.hotelOffer.isoFormatCheckInDate"] != undefined) {
+        b['checkInDate'] = b["entity.tripDetails.hotelOffer.isoFormatCheckInDate"];
+    }
+}
 if(b["checkInDate"] != '')
 {
     b["checkInDate"] = b["checkInDate"].split("T")[0];
