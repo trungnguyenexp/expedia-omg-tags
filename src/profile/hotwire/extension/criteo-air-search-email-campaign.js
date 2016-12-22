@@ -5,6 +5,7 @@ if (typeof utag_data['entity.flightSearch.searchParameters.isoFormatDepartureDat
     var splitArrival = utag_data['entity.flightSearch.searchParameters.isoFormatReturnDate'].slice(0, 10).split('-');
     utag_data['entity.flightSearch.searchParameters.isoFormatReturnDate_MMDDYYYY'] = splitArrival[1] +'/'+ splitArrival[2] +'/'+ splitArrival[0];
 }
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
 window.criteo_q= window.criteo_q|| [];window.criteo_q.push(
     { event: "manualFlush"},
     { event: "setAccount", account: [19574,19575]},
