@@ -323,7 +323,8 @@ window.utag.isPSR_FHC = function(){
 
 window.utag.isPCarSearch = function(){
     if(pageName.indexOf("page.Package.FC.Car-Search") > -1 || pageName.indexOf("page.Package.FHC.Car-Search") > -1
-        || pageName.indexOf("page.Package.HC.Car-Search") > -1){
+        || pageName.indexOf("page.Package.HC.Car-Search") > -1 || pageName.indexOf("page.Package.fhc.car.search.list.aws") > -1
+        || pageName.indexOf("page.Package.hc.car.search.list.aws") > -1 || pageName.indexOf("page.Package.fc.car.search.list.aws") > -1){
         b["isPackageCarSearchResult"] = true;
         b["isPackageSearchResults"] = true;
         b["pageType"] = "Search";
@@ -438,7 +439,7 @@ window.utag.isCO = function()
 window.utag.isItinPage = function(){
     if(pageName.toLowerCase().indexOf("page.Itin.Details.Booked") > -1 ){
         b["isItinPage"] = true;
-        b["pageType"] = "Confirmation";
+        b["pageType"] = "Itinerary";
         return true;
     }
     return false;
