@@ -19,7 +19,10 @@ if (typeof utag_data['entity.checkout.flightOffer.flight.legs.0.isoFormatDepartu
     var splitArrival = utag_data['entity.checkout.flightOffer.flight.arrivalDate'].slice(0, 10).split('-');
     utag_data['entity.checkout.flightOffer.flight.arrivalDate_MMDDYYYY'] = splitArrival[1] +'/'+ splitArrival[2] +'/'+ splitArrival[0];
 }
-<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+fileref=document.createElement('script');
+fileref.setAttribute("type","text/javascript");
+fileref.setAttribute("src", "//static.criteo.net/js/ld/ld.js");
+document.getElementsByTagName("head")[0].appendChild(fileref);
 window.criteo_q = window.criteo_q || [];window.criteo_q.push
 ( { event: "manualFlushing"},
     { event: "setAccount", account: [19574,19575] },{ event: "manualDising"},
