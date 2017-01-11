@@ -1,6 +1,6 @@
- if ( window.alertMenuRequestIds['SITEID'] == 28 && window.devicePixelRatio == 3)
+ if ( utag_data !== "undefined" && utag_data["device.device.type"].indexOf("Mobile") > -1 && (utag_data["dom.domain"].indexOf("www.expedia.co.jp") > -1 || utag_data["dom.domain"].indexOf("wwwexpediacojp") > -1))
  {
-     if (document.URL.indexOf("/createaccount") > -1 || window.s_PPVid.indexOf("page.Account.CreateAccount") > -1)
+     if (utag_data["dom.pathname"].indexOf("/user/createaccount") > -1)
      {
         function getParamsObj() {
             var query = location.search.substr(1);
