@@ -1,7 +1,13 @@
- if ( utag_data !== "undefined" && utag_data["device.device.type"].indexOf("Mobile") > -1 && (utag_data["dom.domain"].indexOf("www.expedia.co.jp") > -1 || utag_data["dom.domain"].indexOf("wwwexpediacojp") > -1))
+if (typeof(window.utag_data) !== "undefined" && window.utag_data["device.device.type"].indexOf("Mobile") > -1 
+    && (window.utag_data["dom.domain"].indexOf("www.expedia.co.jp") > -1 || utag_data["dom.domain"].indexOf("wwwexpediacojp") > -1))
  {
-     if (utag_data["dom.pathname"].indexOf("/user/createaccount") > -1)
-     {
+    if (utag_data["dom.pathname"].indexOf("/user/createaccount") > -1 || utag_data["dom.pathname"].indexOf("/user/signin") > -1)
+    {
+        if(('localStorage' in window) && (window.localStorage !== null)) 
+        {
+          localStorage.removeItem("line_cc");
+        }
+        
         function getParamsObj() {
             var query = location.search.substr(1);
             var params = query.split('&');
@@ -22,16 +28,11 @@
         }
     }
 
-    if (typeof(window.utag_data) !== "undefined" && window.utag_data['pageName'].indexOf("page.mobilehotellandingpage") > -1 && window.utag_data['expUser'] !== "undefined")
+    if (utag_data["dom.pathname"].indexOf("/MobileHotel") > -1 && typeof(window.utag_data) !== "undefined" && window.utag_data['pageName'] !== "undefined" 
+        && window.utag_data['pageName'].indexOf("page.mobilehotellandingpage") > -1 && window.utag_data['expUserId'] !== "undefined" 
+        && utag_data['userState'] !== "undefined")
     {
-        var expUserParts = window.utag_data['expUser'].split(',');
-        var expUserProperties = {};
-        for (var i = 0; i < expUserParts.length; i++) {
-            var propAndVal = expUserParts[i].split('=');
-            expUserProperties[propAndVal[0].trim()] = propAndVal[1];
-        }
-
-        if (expUserProperties['expUserState'].toLowerCase() == "indentified" || expUserProperties['expUserState'].toLowerCase() == "authenticated")
+        if (utag_data['userState'].toLowerCase() == "identified" || utag_data['userState'].toLowerCase() == "authenticated")
         {
             var _tsu_url = "https://tsunagaru019.linebc.jp/join/line_cc/v1/";
             var _tg_client_id = "19";
@@ -41,9 +42,9 @@
               var ls_cc = localStorage.getItem("line_cc");
             }
             
-            var _uid = expUserProperties['expUserId'];
+            var _uid = utag_data['expUserId'];
 
-            if (ls_cc != false && ls_cc !== "undefined" && _uid !== "undefined" && _uid !== -1) {
+            if (ls_cc != false && ls_cc != null && ls_cc !== "undefined" && _uid !== "undefined" && _uid !== -1) {
                 var script = document.createElement('script');
                 script.src = _tsu_url + _tg_client_id + "/" + _tg_test_env_flg + 
                         "/tg_connect_key.js?line_cc=" + ls_cc + "&uid=" + _uid +
@@ -53,13 +54,6 @@
                 
                 localStorage.removeItem("line_cc");
             }
-        }
-    }
-    else
-    {
-        if(('localStorage' in window) && (window.localStorage !== null)) 
-        {
-          localStorage.removeItem("line_cc");
         }
     }
 }
