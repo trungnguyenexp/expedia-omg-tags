@@ -1,7 +1,7 @@
-if (typeof(window.utag_data) !== "undefined" && window.utag_data["device.device.type"].indexOf("Mobile") > -1 
-    && (window.utag_data["dom.domain"].indexOf("www.expedia.co.jp") > -1 || utag_data["dom.domain"].indexOf("wwwexpediacojp") > -1))
+b["lineParameterExists"] = "false";
+if (typeof(window.utag_data) !== "undefined" && window.utag_data["device.device.type"].indexOf("Mobile") > -1 && (document.URL.indexOf("www.expedia.co.jp") > -1 || document.URL.indexOf("wwwexpediacojp") > -1))
  {
-    if (utag_data["dom.pathname"].indexOf("/user/createaccount") > -1 || utag_data["dom.pathname"].indexOf("/user/signin") > -1)
+    if (document.URL.indexOf("/user/createaccount") > -1 || document.URL.indexOf("/user/signin") > -1)
     {
         if(('localStorage' in window) && (window.localStorage !== null)) 
         {
@@ -15,44 +15,50 @@ if (typeof(window.utag_data) !== "undefined" && window.utag_data["device.device.
             for ( i = 0; i < params.length; i++ ) {
                 var neet = params[i].split("=");
                 paramsObj[neet[0].trim()] = neet[1];
+                if (neet[0].trim().toLowerCase() === "line_cc")
+                {
+                    break;
+                }
             }
             return paramsObj;
         }
 
         var paramsObj = getParamsObj();
         var ls_cc = paramsObj['line_cc'];
-        if (ls_cc !== undefined) {
+        if (typeof(ls_cc) !== undefined) {
             if(('localStorage' in window) && (window.localStorage !== null)) {
               localStorage.setItem("line_cc",ls_cc);
             }
         }
     }
 
-    if (utag_data["dom.pathname"].indexOf("/MobileHotel") > -1 && typeof(window.utag_data) !== "undefined" && window.utag_data['pageName'] !== "undefined" 
-        && window.utag_data['pageName'].indexOf("page.mobilehotellandingpage") > -1 && window.utag_data['expUserId'] !== "undefined" 
-        && utag_data['userState'] !== "undefined")
+    if (typeof(window.utag_data) !== "undefined" && ((typeof(window.utag_data["pageName"]) !== "undefined" && window.utag_data["pageName"].indexOf("page.mobilehotellandingpage") > -1) || (typeof(window.utag_data["utagPageName"]) !== "undefined" && utag_data["utagPageName"].indexOf("Home") > -1)))
     {
-        if (utag_data['userState'].toLowerCase() == "identified" || utag_data['userState'].toLowerCase() == "authenticated")
+        if ((typeof(window.utag_data["userState"]) !== "undefined" && (window.utag_data["userState"].toLowerCase() === "identified" || window.utag_data["userState"].toLowerCase() === "authenticated"))
+            || (typeof(window.utag_data["loggedUser"]) !== "undefined" && window.utag_data["loggedUser"].toLowerCase() === "logged user"))
         {
-            var _tsu_url = "https://tsunagaru019.linebc.jp/join/line_cc/v1/";
-            var _tg_client_id = "19";
-            var _tg_test_env_flg = "0";
+            b["line_cc"] = "";
+            b["line_uid"] = "";
+            b["line_yt"] = new Date().getTime();
 
-            if(('localStorage' in window) && (window.localStorage !== null)) {
-              var ls_cc = localStorage.getItem("line_cc");
+            if (typeof(utag_data["expUserId"]) !== "undefined")
+            {
+                b["line_uid"] = utag_data["expUserId"];
             }
-            
-            var _uid = utag_data['expUserId'];
 
-            if (ls_cc != false && ls_cc != null && ls_cc !== "undefined" && _uid !== "undefined" && _uid !== -1) {
-                var script = document.createElement('script');
-                script.src = _tsu_url + _tg_client_id + "/" + _tg_test_env_flg + 
-                        "/tg_connect_key.js?line_cc=" + ls_cc + "&uid=" + _uid +
-                        "&_yt=" + (new Date().getTime());
-                script.setAttribute('defer', true);
-                document.body.appendChild(script);
-                
-                localStorage.removeItem("line_cc");
+            if (typeof(window.utag_data["context.user.expUserProfileId"]) !== "undefined")
+            {
+                b["line_uid"] = utag_data["context.user.expUserProfileId"];
+            }
+
+            if (('localStorage' in window) && (window.localStorage !== null)) 
+            {
+                b["line_cc"] = localStorage.getItem("line_cc");
+
+                if (typeof(b["line_cc"])!== "undefined" && b["line_cc"]!=="" && typeof(b["line_uid"])!=="undefined" && b["line_uid"] !== "") 
+                {
+                    b["lineParameterExists"] = "true";
+                }
             }
         }
     }
