@@ -23,19 +23,19 @@
         /**
          * @param error Javascript error object
          * @param additionalData
-         * @returns {{message: string, fileName: string, stack: Array}}
+         * @returns {{label: string, message: string, fileName: string, stack: string, additionalData: *}}
          */
         createSafeframesMessage: function(error, additionalData) {
             var msg = {
                 label: CLIENT_ERROR_LABEL,
                 message: "",
                 fileName: "",
-                stack: [],
+                stack: "",
                 additionalData: additionalData
             };
             msg.message = error.message;
             msg.fileName = getSource(error);
-            msg.stack = parseStack(error);
+            msg.stack = parseStack(error).join(", ");
             return msg;
         }
     };
@@ -53,7 +53,11 @@
 
     var NoOpClientLogger = function () {};
     NoOpClientLogger.prototype = {
-        logError: function (error, additionalData) {}
+        logError: function (error, additionalData) {
+            if (omg.isDev()) {
+                console.error(CLIENT_ERROR_LABEL + ':',  error, 'additionalData:', additionalData || []);
+            }
+        }
     };
 
     /**
@@ -64,18 +68,10 @@
         if ('string' === typeof error.stack) {
             var stackArr = error.stack.split(/[\r\n]+/g);
             if (stackArr.length > 1) {
-                return parseSource(stackArr[1]);
+                return stackArr[1].replace(/at/gi, '').trim().split('?')[0];
             }
         }
         return error.stack;
-    }
-
-    function parseSource(rawLine) {
-        var line = rawLine.replace(/at/gi, '').trim();
-        if (line.indexOf('?') !== -1) {
-            return line.split('?')[0];
-        }
-        return line;
     }
 
     function parseStack(error) {
