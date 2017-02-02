@@ -146,9 +146,9 @@ if(b.siteId && utag.isHSR() ){
       b['doubleclick.cat.hsr'] = "apacv195";
       break;
    case 72:
-      b['doubleclick.src.hsr'] = "2589196";
-      b['doubleclick.type.hsr'] = "emeag857";
-      b['doubleclick.cat.hsr'] = "emeag550";
+      b['doubleclick.src.hsr'] = "3847545";
+      b['doubleclick.type.hsr'] = "emeac614";
+      b['doubleclick.cat.hsr'] = "emeac393";
       break;
    case 73:
       b['doubleclick.src.hsr'] = "3847494";
@@ -216,14 +216,14 @@ if(b.siteId && utag.isHSR() ){
       b['doubleclick.cat.hsr'] = "apacn00";
       break;
    case 70150:
-      b['doubleclick.src.hsr'] = "4598511";
-      b['doubleclick.type.hsr'] = "apaca0";
-      b['doubleclick.cat.hsr'] = "apaca0";
+      b['doubleclick.src.hsr'] = "4693435";
+      b['doubleclick.type.hsr'] = "apaca00";
+      b['doubleclick.cat.hsr'] = "apaca001";
       break;
    case 70151:
-      b['doubleclick.src.hsr'] = "4600929";
+      b['doubleclick.src.hsr'] = "4692458";
       b['doubleclick.type.hsr'] = "apacn00";
-      b['doubleclick.cat.hsr'] = "apacn00";
+      b['doubleclick.cat.hsr'] = "apacn001";
       break;
    case 70201:
       b['doubleclick.src.hsr'] = "5179340";
@@ -236,9 +236,9 @@ if(b.siteId && utag.isHSR() ){
       b['doubleclick.cat.hsr'] = "ctix02";
       break;
    case 80001:
-      b['doubleclick.src.hsr'] = "4259444";
-      b['doubleclick.type.hsr'] = "RTaF9-";
-      b['doubleclick.cat.hsr'] = "Categ-";
+      b['doubleclick.src.hsr'] = "5439637";
+      b['doubleclick.type.hsr'] = "natra00";
+      b['doubleclick.cat.hsr'] = "natra000";
       break;
    case 80004:
       b['doubleclick.src.hsr'] = "4259444";
