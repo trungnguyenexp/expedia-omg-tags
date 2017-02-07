@@ -196,7 +196,7 @@ else if (utag.isItinPage()){
 
     //utc
     if (b["entity.tripDetails.utcTripEndDate"] != undefined){
-        b['checkOutDateUtc'] = b["entity.tripDetails.utcTripEndDate"];
+        b['checkOutTimeStampUtc'] = b["entity.tripDetails.utcTripEndDate"];
     }
 }
 
