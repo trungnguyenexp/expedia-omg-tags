@@ -163,6 +163,11 @@ else if (utag.isItinPage()){
     if (b["entity.tripDetails.hotelOffer.isoFormatCheckInDate"] != undefined) {
         b['checkInDate'] = b["entity.tripDetails.hotelOffer.isoFormatCheckInDate"];
     }
+
+    //utc
+    if (b["entity.tripDetails.utcTripStartDate"] != undefined){
+        b['checkInTimeStampUtc'] = b["entity.tripDetails.utcTripStartDate"];
+    }
 }
 if(b["checkInDate"] != '')
 {

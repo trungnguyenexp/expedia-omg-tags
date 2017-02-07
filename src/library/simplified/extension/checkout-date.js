@@ -193,6 +193,11 @@ else if (utag.isItinPage()){
     if (b["entity.tripDetails.hotelOffer.isoFormatCheckOutDate"] != undefined) {
         b['checkOutDate'] = b["entity.tripDetails.hotelOffer.isoFormatCheckOutDate"];
     }
+
+    //utc
+    if (b["entity.tripDetails.utcTripEndDate"] != undefined){
+        b['checkOutTimeStampUtc'] = b["entity.tripDetails.utcTripEndDate"];
+    }
 }
 
 if(b["checkOutDate"] != '')
