@@ -1,5 +1,6 @@
 
 b['checkOutDate'] = '';
+b['checkOutTimeStampUtc'] = '';
 if (utag.isHSR() && b['entity.hotels.search.hotelParameters.checkOutDate'])
 {
     b['checkOutDate'] = b['entity.hotels.search.hotelParameters.checkOutDate'];
@@ -185,7 +186,7 @@ else if (utag.isPPymt()){
         b['checkOutDate'] = b["entity.checkout.cars.0.isoFormatDropOffDate"].split("T")[0];
     }
 }
-else if (utag.isItinPage()){
+if (utag.isItinPage()){
     //FH, FHC, FC (all has flights)
     if (b["entity.tripDetails.flightOffers.0.flight.legs.0.segments.0.isoFormatArrivalTimestamp"] != undefined) {
         b['checkOutDate'] = b["entity.tripDetails.flightOffers.0.flight.legs.0.segments.0.isoFormatArrivalTimestamp"].split("T")[0];
