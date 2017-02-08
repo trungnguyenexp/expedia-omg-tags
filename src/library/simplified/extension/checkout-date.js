@@ -132,10 +132,6 @@ else if (utag.isCruiseCO() && b['entity.checkout.cruise.isoFormatReturnDate'])
 {
     b['checkOutDate'] = b['entity.checkout.cruise.isoFormatReturnDate'];
 }
-else if (b['entity.tripDetails.hotelOffer.isoFormatCheckOutDate'])
-{
-    b['checkOutDate'] = b['entity.tripDetails.hotelOffer.isoFormatCheckOutDate'];
-}
 else if(utag.is3pp() && b['entity.checkout.hotel.checkOutDate']){
     b['checkOutDate'] = b['entity.checkout.hotel.checkOutDate'];
 }
@@ -186,7 +182,7 @@ else if (utag.isPPymt()){
         b['checkOutDate'] = b["entity.checkout.cars.0.isoFormatDropOffDate"].split("T")[0];
     }
 }
-if (utag.isItinPage()){
+else if (utag.isItinPage()){
     //FH, FHC, FC (all has flights)
     if (b["entity.tripDetails.flightOffers.0.flight.legs.0.segments.0.isoFormatArrivalTimestamp"] != undefined) {
         b['checkOutDate'] = b["entity.tripDetails.flightOffers.0.flight.legs.0.segments.0.isoFormatArrivalTimestamp"].split("T")[0];
