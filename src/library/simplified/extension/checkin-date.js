@@ -1,5 +1,6 @@
 
 b['checkInDate'] = '';
+b['checkInTimeStampUtc'] = '';
 if (utag.isHSR() && b['entity.hotels.search.hotelParameters.checkInDate'] != undefined)
 {
     b['checkInDate'] = b['entity.hotels.search.hotelParameters.checkInDate'];
@@ -115,10 +116,6 @@ else if (utag.isCruiseSR() && b['entity.cruiseSearch.cruiseSearchCriteria.isoFor
 else if ((utag.isCruiseIS() || utag.isCruiseTP() || utag.isCruiseCabinN()) && b['entity.cruise.isoFormatDepartureDate'])
 {
     b['checkInDate'] = b['entity.cruise.isoFormatDepartureDate'];
-}
-else if (b['entity.tripDetails.hotelOffer.isoFormatCheckInDate'])
-{
-    b['checkInDate'] = b['entity.tripDetails.hotelOffer.isoFormatCheckInDate'];
 }
 else if(utag.is3pp() && b['entity.checkout.hotel.checkInDate']){
     b['checkInDate'] = b['entity.checkout.hotel.checkInDate'];
