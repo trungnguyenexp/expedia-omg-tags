@@ -162,12 +162,15 @@
     }
 
     function createLogPixelPayload(tagInfo) {
-        var siteId, siteName;
+        var siteId, siteName, siteBrand;
         if (b.context && b.context.site) {
             siteId = b.context.site.siteId || -1;
         }
         if (b.context && b.context.site) {
             siteName = b.context.site.siteName;
+        }
+        if (b.SiteBrand) {
+            siteBrand = b.SiteBrand;
         }
 
         var pageName, lob, xlob, funnelLocation;
@@ -196,7 +199,8 @@
             },
             "site": {
                 "id": siteId,
-                "name": siteName
+                "name": siteName,
+                "brand": siteBrand
             },
             "page": {
                 "name": pageName,
