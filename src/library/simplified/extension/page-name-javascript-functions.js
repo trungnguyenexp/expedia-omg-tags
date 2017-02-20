@@ -455,7 +455,7 @@ window.utag.isLXS = function(){
 }
 
 window.utag.isLXI = function(){
-    if(pageName.indexOf("page.LX.Infosite.Information") > -1 ){
+    if(pageName.indexOf("page.LX.Infosite.Information") > -1  || pageName.indexOf('page.LX-Infosite') > -1){
         b["isLXI"] = true;
         b["pageType"] = "Infosite";
         return true ;
