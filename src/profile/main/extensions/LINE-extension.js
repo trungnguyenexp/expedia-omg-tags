@@ -14,15 +14,17 @@ if (typeof(window.utag_data) !== "undefined" && window.utag_data["device.device.
         }
 
         function getParamsObj() {
-            var query = location.search.substr(1);
-            var params = query.split('&');
+            var urlSplit = document.URL.split('?');
             var paramsObj = {};
-            for ( i = 0; i < params.length; i++ ) {
-                var neet = params[i].split("=");
-                paramsObj[neet[0].trim()] = neet[1];
-                if (neet[0].trim().toLowerCase() === "line_cc")
-                {
-                    break;
+            if (urlSplit.length > 1) {
+                var query = urlSplit[1];
+                var params = query.split('&');
+                for (i = 0; i < params.length; i++) {
+                    var neet = params[i].split("=");
+                    paramsObj[neet[0].trim()] = neet[1];
+                    if (neet[0].trim().toLowerCase() === "line_cc") {
+                        break;
+                    }
                 }
             }
             return paramsObj;
