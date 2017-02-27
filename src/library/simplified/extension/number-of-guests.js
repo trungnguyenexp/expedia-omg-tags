@@ -127,6 +127,10 @@
             b['numberOfGuests'] = b['entity.checkout.activity.travelerInfo.numberOfTickets'];
         }
     }
+	else if (utag.isCruiseCabinN() && b['entity.cruise.passengerCount'])
+    {
+        b['numberOfGuests'] = b['entity.cruise.passengerCount'];
+    }
     else if (utag.isCruiseCO())
     {
         if (b['entity.checkout.cruise.traveler.numberOfAdults']
