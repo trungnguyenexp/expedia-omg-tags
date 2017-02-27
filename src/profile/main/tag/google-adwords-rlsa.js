@@ -143,7 +143,7 @@ try {
                 }
             }
 
-            omg.pixel.fireTagPixel({id: id, name: 'google-rlsa'});
+            omg.pixel.fireTagPixel({id: id, name: 'google-rlsa', label: 'Google Adwords RLSA', context: { u: u, b: b }});
             //##UTENABLEDEBUG##utag.DB("send:##UTID##:COMPLETE");
         }
     };

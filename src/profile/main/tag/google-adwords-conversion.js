@@ -63,31 +63,19 @@ try{
               u.gac_callback();
           }
       }
+
+      omg.pixel.fireTagPixel({ id: id, name: 'google-adwords', label: 'Google Adwords Conversion', context: {u: u, b: b}});
+      //For testing pixel logs
+      if(utag_data["tealium_environment"].indexOf("prod") != -1){
+          u.img2 = new Image();
+          var pixelGoogleAdWords = u.data.base_url + "/?serverTimestamp=" + encodeURIComponent(new Date().toISOString()) +"&UID="+id+"&orderNumber="+ utag_data["entity.checkout.orderNumber"];
+          var logGoogleAdWords = 'https://queue.amazonaws.com/278265713271/tracking-tags?Action=SendMessage&Version=2009-02-01&MessageBody='
+              + encodeURIComponent(pixelGoogleAdWords);
+          u.img2.src = logGoogleAdWords;
+      }
+
   };
-
-        //For testing pixel logs
-        if(utag_data["tealium_environment"].indexOf("prod") != -1){
-            u.img2 = new Image();
-            var pixelGoogleAdWords = u.data.base_url + "/?serverTimestamp=" + encodeURIComponent(new Date().toISOString()) +"&UID="+id+"&orderNumber="+ utag_data["entity.checkout.orderNumber"];
-            var logGoogleAdWords = 'https://queue.amazonaws.com/278265713271/tracking-tags?Action=SendMessage&Version=2009-02-01&MessageBody='
-                + encodeURIComponent(pixelGoogleAdWords);
-            u.img2.src = logGoogleAdWords;
-        }
-
         utag.o[loader].loader.LOAD(id);
-        omg.pixel.fireTagPixel({id: id, name: 'google-adwords'});
-        try {
-            if(utag_data["tealium_environment"].indexOf("prod") != -1){
-                var dataMapping = "orderNumber="+ utag_data["entity.checkout.orderNumber"];
-                if(utag_data.main_margin){
-                    dataMapping = dataMapping + "&main_margin=" + utag_data.main_margin;
-                }else{
-                    dataMapping = dataMapping + "&main_margin=";
-                }
-                omg.pixel.fireTagAndLogPixel({id: id, name: 'google-adwords', dataMapping: dataMapping});
-            }
-        } catch (ex){
-        }
     })('##UTID##','##UTLOADERID##');
 }catch(e){}
 //end tealium universal tag
