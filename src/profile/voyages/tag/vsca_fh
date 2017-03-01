@@ -1,20 +1,21 @@
 //~~tv:20010.20140827
 //~~tc: Tealium Custom Container
 /*
- Tealium Custom Container Notes:
- - Add sending code between "Start Tag Sending Code" and "End Tag Sending Code".
- - Add JavaScript tag library code between "Start Tag Library Code" and "End Tag Library Code".
- - Add JavaScript code only, do not add HTML code in this file.
- - Remove any <script> and </script> tags from the code you place in this file.
- Loading external JavaScript files (Loader):
- - If you need to load an additional external JavaScript file, un-comment the singe-line JavaScript comments ("//") within the following Loader sections near the bottom of this file:
- - "Start Loader Function Call"
- - "End Loader Function Call"
- - "Start Loader Callback Function"
- - "End Loader Callback Function"
- - After un-commenting, insert the path to the external JavaScript file you want to load.
- - Finally, within the Loader callback function, insert the JavaScript code that should run after the external JavaScript file has loaded.
- */
+  Tealium Custom Container Notes:
+  - Add sending code between "Start Tag Sending Code" and "End Tag Sending Code".
+  - Add JavaScript tag library code between "Start Tag Library Code" and "End Tag Library Code".
+  - Add JavaScript code only, do not add HTML code in this file.
+  - Remove any <script> and </script> tags from the code you place in this file.
+
+  Loading external JavaScript files (Loader):
+  - If you need to load an additional external JavaScript file, un-comment the singe-line JavaScript comments ("//") within the following Loader sections near the bottom of this file:
+      - "Start Loader Function Call"
+      - "End Loader Function Call"
+      - "Start Loader Callback Function"
+      - "End Loader Callback Function"
+  - After un-commenting, insert the path to the external JavaScript file you want to load.
+  - Finally, within the Loader callback function, insert the JavaScript code that should run after the external JavaScript file has loaded.
+*/
 /* Start Tag Library Code */
 /* End Tag Library Code */
 //tealium universal tag - utag.sender.custom_container ut4.0.##UTVERSION##, Copyright ##UTYEAR## Tealium.com Inc. All Rights Reserved.
@@ -147,33 +148,269 @@ try {
                 /* Un-comment the single-line JavaScript comments ("//") to use this Loader callback function. */
                 window.vsca_pageTag = window.vsca_pageTag || {};
 
-                function widgetCall() {
-                    vsca_pageTag.config = {};
-                    vsca_pageTag.config.siteId = "agency-funnel";
-                    vsca_pageTag.config.vsca_version = "2.1";
-                    vsca_pageTag.config.country = "FR";
-                    vsca_pageTag.config.language = "fr";
-                    vsca_pageTag.contextData = {};
-                    if (utag_data.utagPageName == "page.Package.FH.Hotel-Search") {
-                        vsca_pageTag.config.pageId = "HotelSearch";
-                        vsca_pageTag.contextData = {
+                function widgetCall() {    
+                    vsca_pageTag.config = {};    
+                    vsca_pageTag.config.siteId = "agency-funnel";    
+                    vsca_pageTag.config.vsca_version = "2.1";    
+                    vsca_pageTag.config.country = "FR";    
+                    vsca_pageTag.config.language = "fr";    
+                    vsca_pageTag.contextData = {};    
+                    if (utag_data.utagPageName == "page.Package.FH.Hotel-Search") {        
+                        vsca_pageTag.config.pageId = "FH.HotelSearch";        
+                        vsca_pageTag.contextData = {            
                             "pageContext": "searchResult",
-                            "packageType": "FH",
-                            "outwardDepartureDate": utag_data.checkOutDate,
-                            "inwardDepartureDate": utag_data.checkInDate,
-                            "destination": {
-                                "stationCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport,
-                                "stationName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState,
-                                "cityCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport,
-                                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState
-                            },
-                            "origin": {
-                                "stationCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport,
-                                "stationName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState,
-                                "cityCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport,
-                                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState
-                            }
+                                        "packageType": "FH"        
                         };
+                        vsca_pageTag.contextData.products = [];
+                        var product0 = {            
+                            "productType": "Hotel",
+                                        "hotelId": "",
+                                        "hotelName": "",
+                                        "starRating": "",
+                                        "outwardDepartureDate": utag_data.checkInDate,
+                                        "inwardDepartureDate": utag_data.checkOutDate,
+                                        "destination": {                
+                                "stationCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport,
+                                                "stationName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState,
+                                                "cityCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport,
+                                                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState            
+                            },
+                                        "origin": {                
+                                "stationCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport,
+                                                "stationName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState,
+                                                "cityCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport,
+                                                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState            
+                            },
+                                        "rooms": [{                
+                                "adults": "",
+                                                "children": ""            
+                            }]        
+                        }
+                        vsca_pageTag.contextData.products.push(product0);        
+
+                            
+                    }    
+                    if (utag_data.utagPageName == "page.FH.Package.Infosite.Information") {        
+                        vsca_pageTag.config.pageId = "FH.HotelInfosite";        
+                        vsca_pageTag.contextData = {            
+                            "pageContext": "searchResult",
+                                        "packageType": "FH"        
+                        };
+                        vsca_pageTag.contextData.products = [];
+                        var product0 = {            
+                            "productType": "Hotel",
+                                        "hotelId": "",
+                                        "hotelName": "",
+                                        "starRating": "",
+                                        "outwardDepartureDate": utag_data.checkInDate,
+                                        "inwardDepartureDate": utag_data.checkOutDate,
+                                        "destination": {                
+                                "stationCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport,
+                                                "stationName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState,
+                                                "cityCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport,
+                                                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState            
+                            },
+                                        "origin": {                
+                                "stationCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport,
+                                                "stationName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState,
+                                                "cityCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport,
+                                                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState            
+                            },
+                                        "rooms": [{                
+                                "adults": "",
+                                                "children": ""            
+                            }]        
+                        }
+                        vsca_pageTag.contextData.products.push(product0);    
+                    }    
+                    if (utag_data.utagPageName == "page.Package.FH.Flight-Search-Roundtrip.Out") {        
+                        vsca_pageTag.config.pageId = "FH.FlightSearch";        
+                        vsca_pageTag.contextData = {            
+                            "pageContext": "searchResult",
+                            "packageType": "FH"
+                        }
+                        vsca_pageTag.contextData.products = [];
+                        var product0 = {            
+                            "productType": "Flight",
+                                        "outwardDepartureDate": utag_data.entity.packageSearch.packageSearchParameters.isoFormatDepartureDate,
+                                        "inwardDepartureDate": utag_data.entity.packageSearch.packageSearchParameters.isoFormatReturnDate,
+                                        "destination": {                
+                                "stationCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport,
+                                                "stationName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState,
+                                                "cityCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport,
+                                                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState            
+                            },
+                                        "origin": {                
+                                "stationCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport,
+                                                "stationName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState,
+                                                "cityCode": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport,
+                                                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState            
+                            }        
+                        }
+                        vsca_pageTag.contextData.products.push(product0);            
+                    }    
+                    if (utag_data.utagPageName == "page.Package.Ratedetails") {        
+                        vsca_pageTag.config.pageId = "FH.Detail";        
+                        vsca_pageTag.contextData = {            
+                            "pageContext": "basket",
+                                        "packageType": "FH"        
+                        };                
+                        vsca_pageTag.contextData.products = [];        
+                        var product0 = {            
+                            "productType": "Hotel",
+                                        "hotelId": utag_data.entity.tripDetails.hotelOffer.hotelId,
+                                        "hotelName": utag_data.entity.tripDetails.hotelOffer.hotelDescription.hotelName,
+                                        "outwardDepartureDate": utag_data.checkOutDate,
+                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "checkOutDate": utag_data.checkOutDate,
+                            "destination": {                
+                                "stationCode": utag_data.entity.tripDetails.flightOffer.destinationAirportCode,
+                                                "stationName": utag_data.entity.tripDetails.flightOffer.destinationAirportCityState,
+                                                "cityCode": utag_data.entity.tripDetails.flightOffer.destinationAirportCode,
+                                                "cityName": utag_data.entity.tripDetails.flightOffer.destinationAirportCityState            
+                            },
+                                        "origin": {                
+                                "stationCode": utag_data.entity.tripDetails.flightOffer.originAirportCode,
+                                                "stationName": utag_data.entity.tripDetails.flightOffer.originAirportCityState,
+                                                "cityCode": utag_data.entity.tripDetails.flightOffer.originAirportCode,
+                                                "cityName": utag_data.entity.tripDetails.flightOffer.originAirportCityState            
+                            },
+                                        "rooms": [{                
+                                "adults": utag_data.entity.tripDetails.travelersInfo.numberOfAdults,
+                                                "children": utag_data.entity.tripDetails.travelersInfo.numberOfChildren            
+                            }]        
+                        }        
+                        var product1 = {            
+                            "productType": "Flight",
+                                        "outwardDepartureDate": utag_data.checkOutDate,
+                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "destination": {                
+                                "stationCode": utag_data.entity.tripDetails.flightOffer.destinationAirportCode,
+                                                "stationName": utag_data.entity.tripDetails.flightOffer.destinationAirportCityState,
+                                                "cityCode": utag_data.entity.tripDetails.flightOffer.destinationAirportCode,
+                                                "cityName": utag_data.entity.tripDetails.flightOffer.destinationAirportCityState            
+                            },
+                                        "origin": {                
+                                "stationCode": utag_data.entity.tripDetails.flightOffer.originAirportCode,
+                                                "stationName": utag_data.entity.tripDetails.flightOffer.originAirportCityState,
+                                                "cityCode": utag_data.entity.tripDetails.flightOffer.originAirportCode,
+                                                "cityName": utag_data.entity.tripDetails.flightOffer.originAirportCityState            
+                            }        
+                        }
+                        vsca_pageTag.contextData.products.push(product1);        
+                        vsca_pageTag.contextData.products.push(product0);    
+                    }    
+                    if (utag_data.utagPageName == "page.Package.Checkout.Info") {        
+                        vsca_pageTag.config.pageId = "FH.Payment";        
+                        vsca_pageTag.contextData = {            
+                            "pageContext": "payment",
+                                        "packageType": "FH"        
+                        };        
+                        vsca_pageTag.contextData.products = [];        
+                        var product0 = {            
+                            "productType": "Hotel",
+                            "price": utag_data.entity.checkout.cartTotal.amount,
+                                        "hotelId": utag_data.entity.checkout.hotel.hotelId,
+                                        "hotelName": utag_data.entity.checkout.hotel.hotelName,
+                                        "starRating": utag_data.starRating,
+                                        "outwardDepartureDate": utag_data.checkOutDate,
+                                        "inwardDepartureDate": utag_data.checkInDate,
+                            "destination": {                
+                                "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
+                                                "stationName": "", // doesn't exist in this utag
+                                                "cityCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
+                                                "cityName": ""   // doesn't exist in this utag
+                                            
+                            },
+                                        "origin": {                
+                                "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].departureAirportCode,
+                                                "stationName": "", // doesn't exist in this utag
+                                                "cityCode": utag_data.entity.checkout.flightOffer.flight.legs[0].departureAirportCode,
+                                                "cityName": ""   // doesn't exist in this utag
+                                            
+                            },
+                                        "rooms": [{                
+                                "adults": utag_data.adults,
+                                                "children": utag_data.childrenCount            
+                            }]        
+                        }        
+                        var product1 = {            
+                            "productType": "Flight",
+                            "price": utag_data.entity.checkout.cartTotal.amount,
+                                        "outwardDepartureDate": utag_data.checkOutDate,
+                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "destination": {                
+                                "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
+                                                "stationName": "", // doesn't exist in this utag
+                                                "cityCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
+                                                "cityName": ""   // doesn't exist in this utag
+                                            
+                            },
+                                        "origin": {                
+                                "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].departureAirportCode,
+                                                "stationName": "", // doesn't exist in this utag
+                                                "cityCode": utag_data.entity.checkout.flightOffer.flight.legs[0].departureAirportCode,
+                                                "cityName": ""   // doesn't exist in this utag
+                                            
+                            }        
+                        }
+                        vsca_pageTag.contextData.products.push(product1);        
+                        vsca_pageTag.contextData.products.push(product0);    
+                    }    
+                    if (utag_data.utagPageName == "page.Package.Checkout.Confirmation") {        
+                        vsca_pageTag.config.pageId = "FH.Confirmation";        
+                        vsca_pageTag.contextData = {            
+                            "purchase": {                
+                                "orderPrice": utag_data.entity.checkout.cartTotal.amount,
+                                                "purchaseId": utag_data.entity.checkout.itineraryNumber            
+                            },
+                                        "pageContext": "confirmation",
+                                        "packageType": "FH"        
+                        };        
+                        vsca_pageTag.contextData.products = [];        
+                        var product0 = {            
+                            "productType": "Hotel",
+                                        "hotelId": utag_data.entity.checkout.hotel.hotelId,
+                                        "hotelName": utag_data.entity.checkout.hotel.hotelName,
+                                        "starRating": utag_data.starRating,
+                                        "outwardDepartureDate": utag_data.checkOutDate,
+                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "destination": {                
+                                "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
+                                                "stationName": utag_data.entity.checkout.flightOffer.originAirportCityState,
+                                                "cityCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
+                                                "cityName": utag_data.entity.checkout.flightOffer.originAirportCityState            
+                            },
+                                        "origin": {                
+                                "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].departureAirportCode,
+                                                "stationName": utag_data.entity.checkout.flightOffer.destinationAirportCityState,
+                                                "cityCode": utag_data.entity.checkout.flightOffer.flight.legs[0].departureAirportCode,
+                                                "cityName": utag_data.entity.checkout.flightOffer.destinationAirportCityState            
+                            },
+                                        "rooms": [{                
+                                "adults": utag_data.adults,
+                                                "children": utag_data.childrenCount            
+                            }]        
+                        }        
+                        var product1 = {            
+                            "productType": "Flight",
+                                        "outwardDepartureDate": utag_data.checkOutDate,
+                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "destination": {                
+                                "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
+                                                "stationName": utag_data.entity.checkout.flightOffer.originAirportCityState,
+                                                "cityCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
+                                                "cityName": utag_data.entity.checkout.flightOffer.originAirportCityState            
+                            },
+                                        "origin": {                
+                                "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].departureAirportCode,
+                                                "stationName": utag_data.entity.checkout.flightOffer.destinationAirportCityState,
+                                                "cityCode": utag_data.entity.checkout.flightOffer.flight.legs[0].departureAirportCode,
+                                                "cityName": utag_data.entity.checkout.flightOffer.destinationAirportCityState            
+                            }        
+                        }
+                        vsca_pageTag.contextData.products.push(product1);        
+                        vsca_pageTag.contextData.products.push(product0);    
                     }
                 }
                 widgetCall();
@@ -200,9 +437,7 @@ try {
                         "type": "script",
                         "src": u.data.base_url,
                         "cb": u.loader_cb,
-                        "
-                        loc " : "
-                        script ",
+                        "loc": "script",
                         "id": 'utag_##UTID##'
                     });
                 }
