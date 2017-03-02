@@ -3,9 +3,19 @@ if (utag.isCruiseCO() && b['entity.checkout.cruise.cabinCategory'])
 {
     b['cabinClass'] = b['entity.checkout.cruise.cabinCategory'];
 }
-else if (utag.isFRateDetails() && b['entity.flight.flight.flight.legs.0.segments.0.cabinClass'])
+else if (utag.isFRateDetails() && b.entity.flight.flight.flight.legs != "undefined")
 {
-    b['cabinClass'] = b['entity.flight.flight.flight.legs.0.segments.0.cabinClass'];
+    var numLegs = '0';
+    var numSegments = '0';
+    var cabinClass = "";
+    numLegs = b.entity.flight.flight.flight.legs.length;
+    for (var i = 0; i < numLegs; i++) {
+        numSegments = b.entity.flight.flight.flight.legs[i].segments.length;
+            for (var j = 0; j < numSegments; j++){
+                cabinClass = cabinClass + b.entity.flight.flight.flight.legs[i].segments[j].cabinClass + "|";
+            }
+        }
+    b["cabinClass"] = cabinClass.slice(0, -1);
 }
 else if ((utag.isPCO() || utag.isFCO()) && b['entity.checkout.flightOffer.flight.legs.0.segments.0.cabinClass'])
 {
