@@ -1,6 +1,3 @@
-(function ()
-{
-
     b['numberOfGuests'] = '';
     if (utag.isHSR() && b['entity.hotels.search.hotelParameters.numberOfGuests'])
     {
@@ -127,9 +124,9 @@
             b['numberOfGuests'] = b['entity.checkout.activity.travelerInfo.numberOfTickets'];
         }
     }
-	else if (utag.isCruiseCabinN() && b['entity.cruise.passengerCount'])
+	else if (utag.isCruiseCabinN() && b['entity.cruise.traveler.totalNumberOfTravelers'])
     {
-        b['numberOfGuests'] = b['entity.cruise.passengerCount'];
+        b['numberOfGuests'] = b['entity.cruise.traveler.totalNumberOfTravelers'];
     }
     else if (utag.isCruiseCO())
     {
@@ -176,8 +173,6 @@
         }
         return total;
     }
-
-})();
 
 
 /** old
