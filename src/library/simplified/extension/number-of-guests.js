@@ -128,6 +128,19 @@
     {
         b['numberOfGuests'] = b['entity.cruise.traveler.totalNumberOfTravelers'];
     }
+	else if (utag.isCruisePymt())
+	{
+        if (b['entity.checkout.cruise.traveler.numberOfAdults']
+            || b['entity.checkout.cruise.traveler.numberOfSeniors']
+            || b['entity.checkout.cruise.traveler.numberOfChildren'])
+        {
+            b['numberOfGuests'] = getTotal(
+                'entity.checkout.cruise.traveler.numberOfAdults',
+                'entity.checkout.cruise.traveler.numberOfSeniors',
+                'entity.checkout.cruise.traveler.numberOfChildren');
+            b['numberOfGuestsForCruise'] = b['numberOfGuests'];
+        }
+    }
     else if (utag.isCruiseCO())
     {
         if (b['entity.checkout.cruise.traveler.numberOfAdults']
