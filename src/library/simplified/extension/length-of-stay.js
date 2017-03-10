@@ -108,7 +108,7 @@
         var numHotelNights = b['entity.tripDetails.hotelOffer.numHotelNights'];
         if (!isNaN(numHotelNights) && numHotelNights > 0)
         {
-            b['lengthOfStay'] = numHotelNights + 1;
+            b['lengthOfStay'] = numHotelNights;
         }
     }
     else if (utag.isCruiseCO() && b['entity.checkout.cruise.duration'])
