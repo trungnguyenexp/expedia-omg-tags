@@ -260,8 +260,8 @@ try {
                             "productType": "Hotel",
                                         "hotelId": utag_data.entity.tripDetails.hotelOffer.hotelId,
                                         "hotelName": utag_data.entity.tripDetails.hotelOffer.hotelDescription.hotelName,
-                                        "outwardDepartureDate": utag_data.checkOutDate,
-                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "outwardDepartureDate": utag_data.checkInDate,
+                                        "inwardDepartureDate": utag_data.checkOutDate,
                                         "checkOutDate": utag_data.checkOutDate,
                             "destination": {                
                                 "stationCode": utag_data.entity.tripDetails.flightOffer.destinationAirportCode,
@@ -282,8 +282,8 @@ try {
                         }        
                         var product1 = {            
                             "productType": "Flight",
-                                        "outwardDepartureDate": utag_data.checkOutDate,
-                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "outwardDepartureDate": utag_data.checkInDate,
+                                        "inwardDepartureDate": utag_data.checkOutDate,
                                         "destination": {                
                                 "stationCode": utag_data.entity.tripDetails.flightOffer.destinationAirportCode,
                                                 "stationName": utag_data.entity.tripDetails.flightOffer.destinationAirportCityState,
@@ -313,8 +313,8 @@ try {
                                         "hotelId": utag_data.entity.checkout.hotel.hotelId,
                                         "hotelName": utag_data.entity.checkout.hotel.hotelName,
                                         "starRating": utag_data.starRating,
-                                        "outwardDepartureDate": utag_data.checkOutDate,
-                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "outwardDepartureDate": utag_data.checkInDate,
+                                        "inwardDepartureDate": utag_data.checkOutDate,
                             "destination": {                
                                 "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
                                                 "stationName": "", // doesn't exist in this utag
@@ -337,8 +337,8 @@ try {
                         var product1 = {            
                             "productType": "Flight",
                             "price": utag_data.entity.checkout.cartTotal.amount,
-                                        "outwardDepartureDate": utag_data.checkOutDate,
-                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "outwardDepartureDate": utag_data.checkInDate,
+                                        "inwardDepartureDate": utag_data.checkOutDate,
                                         "destination": {                
                                 "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
                                                 "stationName": "", // doesn't exist in this utag
@@ -373,8 +373,8 @@ try {
                                         "hotelId": utag_data.entity.checkout.hotel.hotelId,
                                         "hotelName": utag_data.entity.checkout.hotel.hotelName,
                                         "starRating": utag_data.starRating,
-                                        "outwardDepartureDate": utag_data.checkOutDate,
-                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "outwardDepartureDate": utag_data.checkInDate,
+                                        "inwardDepartureDate": utag_data.checkOutDate,
                                         "destination": {                
                                 "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
                                                 "stationName": utag_data.entity.checkout.flightOffer.originAirportCityState,
@@ -394,8 +394,8 @@ try {
                         }        
                         var product1 = {            
                             "productType": "Flight",
-                                        "outwardDepartureDate": utag_data.checkOutDate,
-                                        "inwardDepartureDate": utag_data.checkInDate,
+                                        "outwardDepartureDate": utag_data.checkInDate,
+                                        "inwardDepartureDate": utag_data.checkOutDate,
                                         "destination": {                
                                 "stationCode": utag_data.entity.checkout.flightOffer.flight.legs[0].arrivalAirportCode,
                                                 "stationName": utag_data.entity.checkout.flightOffer.originAirportCityState,
