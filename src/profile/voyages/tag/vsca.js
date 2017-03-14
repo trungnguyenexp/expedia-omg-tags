@@ -182,8 +182,8 @@ try {
                         vsca_pageTag.contextData.pageContext = "searchResult";
                         var product0 = {
                             "productType": "Car",
-                            "outwardDepartureDate": b.checkOutDate,
-                            "inwardDepartureDate": b.checkInDate,
+                            "outwardDepartureDate": b.checkInDate,
+                            "inwardDepartureDate": b.checkOutDate,
                             "destination": {
                                 "stationCode": b.carDropOffLocationCode,
                                 "stationName": b.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName,
@@ -205,8 +205,8 @@ try {
                         var product0 = {            
                             "productType": "Car",
                             "price": 0,
-                            "outwardDepartureDate": b.checkOutDate,
-                            "inwardDepartureDate": b.checkInDate,
+                            "outwardDepartureDate": b.checkInDate,
+                            "inwardDepartureDate": b.checkOutDate,
                             "agency": b.entity.carDetails.carVendorCode,
                             "carComfort": b.entity.carDetails.carType,
                             "destination": {                
@@ -230,8 +230,8 @@ try {
                         var product0 = {
                             "productType": "Car",
                             "price": b.entity.checkout.cartTotal.amount,
-                            "outwardDepartureDate": b.checkOutDate,
-                            "inwardDepartureDate": b.checkInDate,
+                            "outwardDepartureDate": b.checkInDate,
+                            "inwardDepartureDate": b.checkOutDate,
                             "agency": b.entity.checkout.car.vendorNameLocalized,
                             "carComfort": b.entity.checkout.car.carType,
                             "destination": {
@@ -259,8 +259,8 @@ try {
                         }
                         var product0 = {
                             "productType": "Car",
-                            "outwardDepartureDate": b.checkOutDate,
-                            "inwardDepartureDate": b.checkInDate,
+                            "outwardDepartureDate": b.checkInDate,
+                            "inwardDepartureDate": b.checkOutDate,
                             "agency": b.entity.checkout.car.carVendor,
                             "carComfort": b.entity.checkout.car.carType,
                             "destination": {
