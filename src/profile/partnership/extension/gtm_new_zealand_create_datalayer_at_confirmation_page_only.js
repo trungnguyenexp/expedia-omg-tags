@@ -31,6 +31,6 @@ if (typeof b.utagPageName != "undefined" && b.utagPageName.toLowerCase().indexOf
                 }]
             }
         },
-        'event': 'trackEventEcommerce', //This event name triggers corresponding tag in GTM and it has to be directly under dataLayer
+        'event': 'trackEventEcommerce' //This event name triggers corresponding tag in GTM and it has to be directly under dataLayer
     });
 }
