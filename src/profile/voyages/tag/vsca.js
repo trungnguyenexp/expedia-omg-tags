@@ -109,8 +109,7 @@ try {
             return a;
         };
 
-        ##
-        UTGEN##
+        ##UTGEN##
 
         u.send = function(a, b) {
             if (u.ev[a] || u.ev.all !== undefined) {
@@ -137,8 +136,7 @@ try {
                 };
 
                 // Start tag-scoped extensions
-                ##
-                UTEXTEND##
+                ##UTEXTEND##
                 // End tag-scoped extensions
 
                 utag.DB("send:##UTID##:EXTENSIONS");
