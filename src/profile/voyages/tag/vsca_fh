@@ -94,8 +94,7 @@ try {
 
         u.initialized = false;
 
-        ##
-        UTGEN##
+        ##UTGEN##
 
         u.send = function(a, b) {
             if (u.ev[a] || u.ev.all !== undefined) {
@@ -120,8 +119,7 @@ try {
 
                 /* Start Tag-Scoped Extensions Code */
                 /* Please Do Not Edit This Section */
-                ##
-                UTEXTEND##
+                ##UTEXTEND##
                 /* End Tag-Scoped Extensions Code */
 
 
