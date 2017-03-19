@@ -35,7 +35,7 @@ if(fullMarketingCode != undefined && patrialMarketingCode != undefined && fullMa
 }
 
 
-// Use Circuit ID (CID) for last touch
+// Use Campaign ID (CID) for last touch
 
 b["cescLastTouchTimeStamp"] = b["context.marketingAttribution.campaignIdTimestamp"];
 b["cescLastTouchMarketingCode"] = b["context.marketingAttribution.campaignId"];
