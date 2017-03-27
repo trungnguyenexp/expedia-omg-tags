@@ -53,8 +53,8 @@ try {
                 "base_url" : "https://ec3novn2y2.execute-api.us-west-2.amazonaws.com/test",
                 "partner_id" : "89",
                 "booking_date" : "",//'2015-11-01',   
-                "start_date" : "",//'2015-11-01', 
-                "end_date" : "",//'2015-11-03', 
+                "checkin_date" : "",//'2015-11-01', 
+                "checkout_date" : "",//'2015-11-03', 
                 "adults_count": "",
                 "child_count": "",
                 "hct_date_format" : '%25Y-%25m-%25d'
@@ -106,8 +106,8 @@ try {
             u.data.base_url += "/?";
             u.data.base_url += "data=hct_partner_hotel_id%3D"+ u.data.partner_hotel_id+ "%3B";
             u.data.base_url += "&data=hct_booking_date%3D"+ u.data.booking_date + "%3B";
-            u.data.base_url += "hct_start_date%3D"+ u.data.checkin_date + "%3B";
-            u.data.base_url += "hct_end_date%3D"+ u.data.checkout_date + "%3B";
+            u.data.base_url += "hct_checkin_date%3D"+ u.data.checkin_date + "%3B";
+            u.data.base_url += "hct_checkout_date%3D"+ u.data.checkout_date + "%3B";
             u.data.base_url += "hct_adults_count%3D"+ u.data.adults_count +"%3B";
             u.data.base_url += "hct_child_count%3D"+ u.data.child_count + "%3B";            
             u.data.base_url += "hct_date_format%3D" + u.data.hct_date_format + "%3B";
