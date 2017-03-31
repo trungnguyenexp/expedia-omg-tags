@@ -59,6 +59,9 @@ else if(utag.isLXCO() && b.entity.checkout.cartTotal.currency){
 else if(utag.isCarCO() && typeof b["entity.tripDetails.totalPrice"] != "undefined"){
     b['currencyCode'] = b["entity.tripDetails.totalPrice.currency"] ? b["entity.tripDetails.totalPrice.currency"] : "";
 }
+else if(utag.isItinPage() && typeof b["entity.tripDetails.totalPrice"] != "undefined"){
+    b['currencyCode'] = b["entity.tripDetails.totalPrice.currency"] ? b["entity.tripDetails.totalPrice.currency"] : "";
+}
 else if(utag.is3pp()){
     b['currencyCode'] = b["entity.checkout.currency"];
 }
