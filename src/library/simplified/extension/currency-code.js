@@ -10,12 +10,10 @@ if(utag.isHSR() && b["entity.hotels.resultsSummary.summaryPrice.currency"] != un
 }
 
 //Package
-else if (utag.isPSR() && b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] != undefined){
+else if ((utag.isPSR()  || utag.isPSR_F_Responsive()) && b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] != undefined){
     b["currencyCode"] = b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"];
 }
-else if(utag.isPSR_F_Responsive() && b["entity.hotels.listOfHotels.0.mostEconomicalRoomAvailable.averagePrice.currency"] != undefined){
-    b["currencyCode"] = b["entity.hotels.listOfHotels.0.mostEconomicalRoomAvailable.averagePrice.currency"];
-}
+
 
 //Flight path
 else if (utag.isFSR() && b["entity.flightSearch.searchResults.cheapest.price.currency"] != undefined){
