@@ -11,7 +11,7 @@
     {
         b['numberOfGuests'] = b['entity.checkout.hotel.numberOfGuests'];
     }
-    else if (utag.isPSR() || utag.isPSR_FH_Responsive() || utag.isPIS_FH())
+    else if (utag.isPSR() || utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_F_Responsive())
     {
         if (b['entity.packageFHSearch.packageFHSearchParameters.packageTravelersPerRooms.0.adultsCount']
             || b['entity.packageFHSearch.packageFHSearchParameters.packageTravelersPerRooms.0.seniorsCount']
@@ -57,7 +57,7 @@
                 'entity.packageSearch.packageSearchParameters.travelers.0.numberOfChildren');
         }
     }
-    else if (utag.isFSR() || utag.isPSR_F_Responsive())
+    else if (utag.isFSR())
     {
         if (b['entity.flightSearch.travelers.numberOfAdults']
             || b['entity.flightSearch.travelers.numberOfChildren']
