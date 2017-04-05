@@ -166,6 +166,9 @@ else if (utag.isItinPage()){
         b['checkInTimeStampUtc'] = b["entity.tripDetails.utcTripStartDate"];
     }
 }
+else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.isoFormatDepartureDate']){
+    b['checkInDate'] = b['entity.railSearch.railDetail.isoFormatDepartureDate'];
+}
 else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate']) {
     b['checkInDate'] = b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate'];
 }
