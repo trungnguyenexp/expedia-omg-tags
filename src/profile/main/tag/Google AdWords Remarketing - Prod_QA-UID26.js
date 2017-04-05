@@ -70,7 +70,7 @@ try {
                             if (e[f].substr(7) === "isFlightConfirmation") {
                                 isFlightConfirmation = b[d];
                             } else if (e[f].substr(7) === "bookingWindow") {
-                                bookingWindow = b[d];
+                                bookingWindow = parseInt(b[d]);
                             }
                             u.data.google_custom_params[e[f].substr(7)] = b[d];
                         } else {
