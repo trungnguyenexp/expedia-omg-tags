@@ -513,6 +513,14 @@ window.utag.isPIS_FlightHotel = function(){
     return false;
 }
 
+window.utag.isRailSearchResults = function(){
+    if(pageName.indexOf("page.Rail-Search-Oneway") > -1 || pageName.indexOf("page.Rail-Search-Roundtrip") > -1 ) {
+        b["isRailSR"] = true;
+        b["pageType"] = "Search";
+        return true;
+    }
+    return false;
+}
 // Rails
 window.utag.isRailRateDetails = function() {
     if(pageName.indexOf("page.Rail.Ratedetails") > -1) {

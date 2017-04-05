@@ -2,6 +2,9 @@ if(utag.isHSR() && typeof b.entity.hotels.search.country != "undefined"){
     var getCountry = b.entity.hotels.search.country.split(",");
     b["country"] = getCountry[getCountry.length -1];
 }
+else if((utag.isRailSearchResults) && b["entity.railSearch.searchParameters.arrivalStation.name"] != undefined) 
+    b["country"] = b["entity.railSearch.searchParameters.arrivalStation.name"].split(",")[2];
+}
 else if((utag.isHIS() || utag.isPIS()) && typeof b.entity.hotels.listOfHotels[0] != "undefined" && b.entity.hotels.listOfHotels[0].length > 0 && typeof b.entity.hotels.listOfHotels[0].hotelCountryName != "undefined"){
     b["country"] = b.entity.hotels.listOfHotels[0].hotelCountryName;
 }

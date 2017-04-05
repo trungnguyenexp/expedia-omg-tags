@@ -5,6 +5,10 @@ if (utag.isHSR() && b['entity.hotels.search.hotelParameters.checkOutDate'])
 {
     b['checkOutDate'] = b['entity.hotels.search.hotelParameters.checkOutDate'];
 }
+else if (utag.isRailSearchResults() && b['entity.railSearch.searchParameters.journeyLegs.1.isoFormatDate']!= undefined )
+{
+    b["checkOutDate"] = b['entity.railSearch.searchParameters.journeyLegs.1.isoFormatDate'];
+}
 else if (utag.isHIS() && b['entity.hotels.listOfHotels.0.checkOutDate'])
 {
     b['checkOutDate'] = b['entity.hotels.listOfHotels.0.checkOutDate'];

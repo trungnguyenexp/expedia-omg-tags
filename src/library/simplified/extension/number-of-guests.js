@@ -3,6 +3,10 @@
     {
         b['numberOfGuests'] = b['entity.hotels.search.hotelParameters.numberOfGuests'];
     }
+    if (utag.isRailSearchResults() && (b.entity.railSearch.searchResults.railLegs[0].railOfferItems[0].travelers.length != undefined))
+    {
+        b['numberOfGuests']  = b.entity.railSearch.searchResults.railLegs[0].railOfferItems[0].travelers.length;
+    }
     else if (utag.isHIS() && b['entity.hotels.listOfHotels.0.numberOfGuests'])
     {
         b['numberOfGuests'] = b['entity.hotels.listOfHotels.0.numberOfGuests'];
@@ -183,4 +187,3 @@
         }
         return total;
     }
-
