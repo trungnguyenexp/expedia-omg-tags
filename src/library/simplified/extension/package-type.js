@@ -15,9 +15,9 @@ else if (utag.isPCarSearch())
         b['packageType'] = b['entity.carSearch.searchCriteria.packageType']
     }
 }
-else if (utag.isMCO())
+else if (utag.isMCO() && b['entity.checkout.mickoTypeString'])
 {
-    b['packageType'] = b['entity.checkout.lobType'] //there is no packageType for MCO pages so using lobType
+    b['packageType'] = b['entity.checkout.mickoTypeString'].toUpperCase();;
 }
 else if (b['qp.packageType'])
 {
