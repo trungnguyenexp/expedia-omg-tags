@@ -62,17 +62,20 @@ try {
                     e = u.map[d].split(",");
                     for (f = 0; f < e.length; f++) {
                         prefix = /^ecomm\.|^hotel\.|^edu\.|^flight\.|^hrental\.|^job\.|^local\.|^listing\.|^travel\.|^dynx\./.exec(e[f]);
+                        prefix_custom = "custom.";
                         if (prefix !== null){
                             prefix = prefix[0].slice(0, -1);
                             u.data.params[prefix] = u.data.params[prefix] || {};
                             u.data.params[prefix][e[f].substr(prefix.length + 1)] = b[d];
-                        } else if (e[f].indexOf("custom.") == 0) {
-                            if (e[f].substr(7) === "isFlightConfirmation") {
+                        } else if (e[f].indexOf(prefix_custom) == 0) {
+                            if (e[f].substr(prefix_custom.length) === "isFlightConfirmation") {
                                 isFlightConfirmation = b[d];
-                            } else if (e[f].substr(7) === "bookingWindow") {
-                                bookingWindow = parseInt(b[d]);
+                            } else {
+                                u.data.google_custom_params[e[f].substr(prefix_custom.length)] = b[d];
+                                if (e[f].substr(prefix_custom.length) === "bookingWindow") {
+                                    bookingWindow = parseInt(b[d]);
+                                }
                             }
-                            u.data.google_custom_params[e[f].substr(7)] = b[d];
                         } else {
                             u.data[e[f]] = b[d];
                         }
