@@ -58,7 +58,6 @@ try {
             // Start Mapping
             for (d in utag.loader.GV(u.map)) {
                 if (b[d] !== undefined && b[d] !== "") {
-                    var isFlightConfirmation, bookingWindow;
                     e = u.map[d].split(",");
                     for (f = 0; f < e.length; f++) {
                         prefix = /^ecomm\.|^hotel\.|^edu\.|^flight\.|^hrental\.|^job\.|^local\.|^listing\.|^travel\.|^dynx\./.exec(e[f]);
@@ -68,23 +67,16 @@ try {
                             u.data.params[prefix] = u.data.params[prefix] || {};
                             u.data.params[prefix][e[f].substr(prefix.length + 1)] = b[d];
                         } else if (e[f].indexOf(prefix_custom) == 0) {
-                            if (e[f].substr(prefix_custom.length) === "isFlightConfirmation") {
-                                isFlightConfirmation = b[d];
-                            } else {
-                                u.data.google_custom_params[e[f].substr(prefix_custom.length)] = b[d];
-                                if (e[f].substr(prefix_custom.length) === "bookingWindow") {
-                                    bookingWindow = parseInt(b[d]);
-                                }
-                            }
+                            u.data.google_custom_params[e[f].substr(prefix_custom.length)] = b[d];
                         } else {
                             u.data[e[f]] = b[d];
                         }
                     }
-                    if (isFlightConfirmation !== "" && isFlightConfirmation === true) {
-                        if (bookingWindow !== "") {
-                            if (bookingWindow <= 30) {
+                    if (b["isFlightConfirmation"]) {
+                        if (b["bookingWindow"] !== "") {
+                            if (b["bookingWindow"] <= 30) {
                                 u.data.google_custom_params["flightBookersMembershipTTL"] = "10";
-                            } else if (bookingWindow > 30) {
+                            } else if (b["bookingWindow"] > 30) {
                                 u.data.google_custom_params["flightBookersMembershipTTL"] = "20";
                             }
                         }
