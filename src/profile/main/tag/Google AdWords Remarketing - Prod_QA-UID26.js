@@ -72,14 +72,14 @@ try {
                             u.data[e[f]] = b[d];
                         }
                     }
-                    if (b["isFlightConfirmation"]) {
-                        if (b["bookingWindow"] !== "") {
-                            if (b["bookingWindow"] <= 30) {
-                                u.data.google_custom_params["flightBookersMembershipTTL"] = "10";
-                            } else if (b["bookingWindow"] > 30) {
-                                u.data.google_custom_params["flightBookersMembershipTTL"] = "20";
-                            }
-                        }
+                }
+            }
+            if (b["isFlightConfirmation"]) {
+                if (b["bookingWindow"] !== "") {
+                    if (b["bookingWindow"] <= 30) {
+                        u.data.google_custom_params["flightBookersMembershipTTL"] = "10";
+                    } else if (b["bookingWindow"] > 30) {
+                        u.data.google_custom_params["flightBookersMembershipTTL"] = "20";
                     }
                 }
             }
