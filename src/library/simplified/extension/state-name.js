@@ -26,13 +26,19 @@ else if(utag_data["pageInfo.pageName"] == "page.Package-Search.Mobile,P,20" && u
         utag_data["state"] = cityState.split("(")[0].trim();
     }
 }
-else if((utag.isPSR_HC() || utag.isPIS_HC() || utag.isPSR_FC() || utag.isPSR_FHC()
-    || utag.isPSR_FH_Responsive() || utag.isPIS_FH())
+else if((utag.isPSR_HC() || utag.isPIS_HC() || utag.isPSR_FHC())
     && (typeof b.entity.packageSearch.packageSearchParameters != "undefined" && typeof b.entity.packageSearch.packageSearchParameters.flightSearchParameters != "undefined")){
     var stateSplit = b.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState.split(",").length;
     if(stateSplit >= 2){
         utag_data["state"] = b.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState.split(",")[stateSplit - 2];
     }
+}
+else if((utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_FC()) 
+	&& (typeof b.entity.packageSearch.packageSearchParameters != "undefined" && typeof b.entity.packageSearch.packageSearchParameters.flightSearchParameters != "undefined")){
+	var stateSplit = b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState.split(",").length;
+	if(stateSplit >= 2){
+		utag_data["state"] = b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState.split(",")[stateSplit - 2];
+	}
 }
 else if (utag.isFCO() && utag_data['entity.checkout.flightOffer.destinationAirportCityState'] != undefined && utag_data['entity.checkout.flightOffer.destinationAirportCityState'] != ""){
     utag_data["state"] = utag_data['entity.checkout.flightOffer.destinationAirportCityState'].split(",")[1].trim();
