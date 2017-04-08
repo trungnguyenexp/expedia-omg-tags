@@ -74,12 +74,12 @@ try {
                     }
                 }
             }
-            if ((typeof b["isFlightConfirmation"] != 'undefined' && b["isFlightConfirmation"]) 
-                && (typeof b["bookingWindow"] != 'undefined' && b["bookingWindow"])) {
-                if (parseInt(b["bookingWindow"]) <= 30) {
-                    u.data.google_custom_params["flightBookersMembershipTTL"] = "10";
-                } else if (parseInt(b["bookingWindow"]) > 30) {
-                    u.data.google_custom_params["flightBookersMembershipTTL"] = "20";
+            if ((typeof b['isFlightConfirmation'] != 'undefined' && b['isFlightConfirmation']) 
+                && (typeof b['bookingWindow'] != 'undefined' && b['bookingWindow'])) {
+                if (parseInt(b['bookingWindow']) <= 30) {
+                    u.data.google_custom_params['flightBookersMembershipTTL'] = '10';
+                } else if (parseInt(b['bookingWindow']) > 30) {
+                    u.data.google_custom_params['flightBookersMembershipTTL'] = '20';
                 }
             }
             // End Mapping
