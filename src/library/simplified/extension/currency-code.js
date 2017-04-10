@@ -46,6 +46,11 @@ else if (utag.isLXS() && b["entity.activities.activitySearchResults.cheapestPric
     b["currencyCode"] = b["entity.activities.activitySearchResults.cheapestPrice.currency"];
 }
 
+//Rails Path
+else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.price.currency'] != undefined) {
+    b['currencyCode'] = b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.price.currency'];
+}
+
 //Common data element
 else if((utag.isCarPymt() || utag.isCarCO() || utag.isHCO() || utag.isHPymt()
     || utag.isCruisePymt() || utag.isCruiseCO() || utag.isLXCO() || utag.isPCO() || utag.isPCO_Mobile() || utag.isMCO()) && typeof b["entity.checkout.cartTotal.currency"] != "undefined"){

@@ -88,6 +88,14 @@
     {
         b['numberOfGuests'] = b['entity.tripDetails.travelersInfo.totalNumberOfTravelers'];
     }
+    else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.travelers.0.count'])
+    {
+        var numberOfGuests = 0;
+        for(var guest = 0 ; guest < b.entity.railSearch.railDetail.railLegs.get(0).railOfferItems.get(0).travelers.length; guest++){
+            numberOfGuests += b.entity.railSearch.railDetail.railLegs.get(0).railOfferItems.get(0).travelers.get(guest).count ;
+        }
+        b['numberOfGuests'] = numberOfGuests;
+    }
     else if (utag.isFCO())
     {
         if (b['entity.checkout.flightOffer.travelersInfo.numberOfAdults']
