@@ -44,5 +44,11 @@ else if(utag.isRCO() && b['entity.checkout.railOffers.0.railProductList.0.legOpt
    b['cabinClass'] = b['entity.checkout.railOffers.0.railProductList.0.legOptionList.0.travelSegmentList.0.availableSeatPreferenceList.0.serviceClass'];
 }
 else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.serviceClass']) {
-   b['cabinClass'] = b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.serviceClass'];
+	var cabinClass = "";
+	var numLegs = '0';
+	numLegs = b.entity.railSearch.railDetail.railLegs.length;
+	for (var leg = 0; leg<numLegs; leg++) {
+		cabinClass = cabinClass + b.entity.railSearch.railDetail.railLegs[leg].railOfferItems[0].serviceClass + "|";
+	}
+	b['cabinClass'] = cabinClass.slice(0, -1);
 }
