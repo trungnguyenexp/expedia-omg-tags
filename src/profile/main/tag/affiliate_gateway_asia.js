@@ -1,6 +1,10 @@
 //~~tv:1153.201400916
 //~~tc: Update to latest template
 //      Domain Prefix functionality
+// ~TL: 2017-Apr-24
+//      Add extra decode logic to CAT parameter
+//      This template applies to: SG, MY, ID, TH, PH, HK, TW, IN, KR
+
 
 //tealium universal tag - utag.sender.template ut4.0.##UTVERSION##, Copyright ##UTYEAR## Tealium.com Inc. All Rights Reserved.
 try {
@@ -89,7 +93,7 @@ try {
                 c.push("NUMOFITEMS" + u.data.kvp_delim + u.data['NUMOFITEMS']);
                 c.push("CUR" + u.data.kvp_delim + u.data.order_currency);
                 c.push("SUBID" + u.data.kvp_delim + u.data['SUBID']);
-                c.push("CAT" + u.data.kvp_delim + u.data['CAT']); // custom - added CAT per vendor request
+                c.push("CAT" + u.data.kvp_delim + decodeURIComponent(u.data['CAT'])); // custom - added CAT per vendor request
                 u.data.base_url = u.data.base_url + u.data.dom_suffix;
 
                 u.loader({ "type": "img", "src": u.data.base_url + '/saleServlet?' + c.join(u.data.qsp_delim) });
