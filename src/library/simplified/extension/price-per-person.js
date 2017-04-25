@@ -7,6 +7,10 @@ else if (utag.isCruiseSR() && b['entity.cruiseSearch.lowestOfferPerPassengerPric
 {
     b['pricePerPerson'] = b['entity.cruiseSearch.lowestOfferPerPassengerPrice.amount'];
 }
+else if (utag.isPSR() && (b['entity.packageSearch.lowestPriceOffer.decimalAmountString']))
+{
+    b['pricePerPerson'] = b['entity.packageSearch.lowestPriceOffer.decimalAmountString'];
+}
 else if((utag.isHCO()|| utag.isFCO() || utag.isPCO()|| utag.isLXCO() || utag.isMCO()) && b['checkout.cartTotal.amount'] && b['numberOfGuests'])
 {
     if(b['numberOfGuests'] > 0)
