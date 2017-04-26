@@ -1,4 +1,4 @@
-if(b.siteId && utag.isHSR() ){
+if((b.siteId && utag.isHSR()) || (b.siteId && utag.isPSR()) ) {
   switch(b.siteId){
     case 1:
       b['doubleclick.src.hsr'] = "2588783";
