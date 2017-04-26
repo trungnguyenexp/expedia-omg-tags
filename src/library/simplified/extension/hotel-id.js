@@ -32,7 +32,7 @@ else if(utag.isPIS_FH() && b["entity.packageSearch.packageSearchParameters.packa
 }
 else if((utag.isPSR() || utag.isPSR_FH_Responsive()) && b["entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.topTenHotelIds"] != undefined)
 {
-    b['hotelId'] = b["entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.topTenHotelIds"];
+    b['hotelId'] = b["entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.topTenHotelIds"].split('|').slice(0, 5);
 }
 else if (b['entity.tripDetails.hotelOffer.hotelId'])
 {
