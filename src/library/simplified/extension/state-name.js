@@ -3,6 +3,9 @@ utag_data["state"] = '';
 if(utag.isHSR() && typeof b.entity.hotels.search.province != "undefined"){
     utag_data["state"] = b.entity.hotels.search.province.split(",")[1].trim();
 }
+else if((utag.isRailSearchResults) && b["entity.railSearch.searchParameters.arrivalStation.name"] != undefined) {
+    utag_data["state"] = b["entity.railSearch.searchParameters.arrivalStation.name"].split(",")[1];
+}
 else if((utag.isHIS() || utag.isPIS()) && typeof b.entity.hotels.listOfHotels[0].hotelProvinceName != "undefined"){
     utag_data["state"] = b.entity.hotels.listOfHotels[0].hotelProvinceName;
 }
@@ -62,4 +65,5 @@ else if (utag.isMCO()) {
 if(utag_data["state"] != '')
 {
     utag_data["state"] = utag_data["state"].trim();
+
 }

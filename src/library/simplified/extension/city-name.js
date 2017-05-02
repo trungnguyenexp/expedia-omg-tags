@@ -47,6 +47,10 @@ else if(utag.isFSR() && b["entity.flightSearch.searchParameters.arrivalAirportCi
         b["city"] = cityState[0];
     }
 }
+else if((utag.isRailSearchResults) && b["entity.railSearch.searchParameters.arrivalStation.name"] != undefined) 
+{
+    b["city"] = b["entity.railSearch.searchParameters.arrivalStation.name"].split(",")[0];
+}
 else if(utag.isLXCO() && b["entity.checkout.activities.0.activityDetail.destination"]){
     b["city"] = b["entity.checkout.activities.0.activityDetail.destination"];
 }
