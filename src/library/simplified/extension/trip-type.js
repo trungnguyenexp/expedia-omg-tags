@@ -53,6 +53,10 @@
     {
         b['tripType'] = ROUND_TRIP;
     }
+    else if((utag.isRailSearchResults) && b["entity.railSearch.searchParameters.journeyType"] != undefined) 
+    {
+		b["tripType"] = b["entity.railSearch.searchParameters.journeyType"];
+    }
     else if (utag.isPRateDetails() && b['entity.tripDetails.flightOffer.tripType'] != undefined){
         b['tripType'] = getTripType(b['entity.tripDetails.flightOffer.tripType']);
     }

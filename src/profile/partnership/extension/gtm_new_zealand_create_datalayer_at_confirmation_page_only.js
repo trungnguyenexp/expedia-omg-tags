@@ -16,7 +16,7 @@ if (typeof b.utagPageName != "undefined" && b.utagPageName.toLowerCase().indexOf
                 'products': [{
                     'id': b['hotelId'], //string - id of the product
                     'name': b['hotelName'].toLowerCase(), //string - name of the product - use propertytype?
-                    'price': b['checkout.cartTotal.amount'], //float - should be in storefront currency value
+                    'price': b['checkout.hotel.totalRoomRate'],  //float - should be in storefront currency value
                     'brand': b['SiteBrand'].toLowerCase(), //string
                     'category': 'ancillary/hotels/' + b['starRating'], //string - set the levels of category separated by "/" - first level "Ancillary", next level "hotels", then <star rating>, followed by <property type> (if available)
                     'variant': 'hotels', //string

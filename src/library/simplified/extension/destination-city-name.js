@@ -62,6 +62,9 @@ else if ((utag.isCarSR() || utag.isPCarSearch()) && utag_data["entity.carSearch.
         utag_data['destination'] = utag_data["entity.carSearch.searchCriteria.dropOffLocation.regionName"].split(",")[0];
     }
 }
+else if (utag.isRailSearchResults() && b['entity.railSearch.searchParameters.arrivalStation.name'] != undefined) {
+    b['destination'] = b['entity.railSearch.searchParameters.arrivalStation.name'].split(",")[0];
+}
 else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.arrivalStation.name'])
 {
     b['destination'] = b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.arrivalStation.name'];

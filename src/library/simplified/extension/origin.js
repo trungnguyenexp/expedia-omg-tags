@@ -34,6 +34,9 @@ else if (utag.isPSR()){
 else if (utag.isRCO()){
     b['origin'] = b['entity.checkout.railOffers.0.railProductList.0.legOptionList.0.travelSegmentList.0.departureStationName'];
 }
+else if (utag.isRailSearchResults() && b['entity.railSearch.searchParameters.departureStation.name'] != undefined) {
+    b['origin'] = b['entity.railSearch.searchParameters.departureStation.name'].split(",")[0];
+}
 else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.departureStation.name']) {
     b['origin'] = b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.departureStation.name'];
 }
