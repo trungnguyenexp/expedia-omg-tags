@@ -4,18 +4,6 @@
 window.taq = window.taq || function() {}
 window.taq.queue = window.taq.queue = [];  
 
-/*function getUrlParam( name )
-{
-  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-  var regexS = "[\\?&]"+name+"=([^&#]*)";
-  var regex = new RegExp( regexS );
-  var results = regex.exec( window.location.href );
-  if( results == null )
-    return "";
-  else
-    return results[1];
-} */
-
 //tealium universal tag - utag.sender.custom_container ut4.0.##UTVERSION##, Copyright ##UTYEAR## Tealium.com Inc. All Rights Reserved.
 try {
   (function (id, loader) {
@@ -37,13 +25,9 @@ try {
           "travel_start_date": "",
           "travel_end_date": "",
           "track_action": "",
-          "is_member": "",
           "pixel_id" : "",
           "page_type" : "",
-          "order_id": "",
           "refid": "",
-          "gbv": "",
-          "currency": "",
           "base_url" : "//www.tripadvisor.com/js3/taevents-c.js" 
         };
 
@@ -63,37 +47,22 @@ try {
         }
 
         var mid = b['cp.mid_cookie'] ? b['cp.mid_cookie'].replace(/M/,"") : "";
-        var gbv = b['checkout.cartTotal.amount'] ? b['checkout.cartTotal.amount'] * 100 : .00;
-          
         u.data.pixel_id = u.data.pixel_id || "934926769";
         u.data.partner_id = u.data.partner_id || "Hotwire";
-        u.data.order_id = u.data.order_id || b['checkout.itineraryNumber'] || "";
-        u.data.track_action = u.data.order_id ? "BOOKING_CONFIRMATION" : "PAGEVIEW";
-        u.data.travel_start_date = u.data.travel_start_date || b['checkInDate'] || "";
-        u.data.travel_end_date = u.data.travel_end_date || b['checkOutDate'] || "";
+        u.data.track_action = u.data.track_action || "PAGEVIEW";
         u.data.page_type = u.data.page_type || b['utagPageName'] || "";
         u.data.refid = u.data.refid || mid;
-        u.data.gbv = u.data.gbv || gbv;
-        u.data.currency = u.data.currency || b['currencyCode'] || "";
 
         u.loader_cb = function () {
           u.initialized = true;
           taq('init', u.data.pixel_id);
-          if (u.data.order_id) {
             taq('track', u.data.track_action, {
               'partner': u.data.partner_id,
               'refid': u.data.refid,
-              'gbv': u.data.gbv,
-              'currency': u.data.currency,
-              'order_id': u.data.order_id
-            });
-          } else {
-            taq('track', u.data.track_action, {
               'travel_start_date': u.data.travel_start_date,
               'travel_end_date': u.data.travel_end_date,
               'page_type': u.data.page_type
             });
-          }
         };
 
           if (!u.initialized) {
