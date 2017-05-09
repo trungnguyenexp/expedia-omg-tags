@@ -15,20 +15,18 @@ else if(utag.isCarSR() && typeof b.entity.carSearch.searchCriteria.dropOffLocati
     var getCountryName = b.entity.carSearch.searchCriteria.dropOffLocation.regionName.split(",");
     b["country"] = getCountryName[getCountryName.length -1];
 }
+
+else if((isPSR_FHC || isPIS_FHC || isPSR_HC || isPIS_HotelCar)  && b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState != undefined) {
+	b["country"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"].split(",")[2]
+}
+
+else if((utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_FC() || utag.isPIS_FlightHotel()) &&
+    (b.entity.packageSearch.packageSearchParameters.flightSearchParameters != undefined)){
+    b["country"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalCountry"];
+}
 else if(utag.isPSR() && b.entity.packageFHSearch != undefined
     && b.entity.packageFHSearch.packageFHSearchParameters != undefined){
     b["country"] = b["entity.packageFHSearch.packageFHSearchParameters.arrivalCountryName"];
-}
-else if((utag.isPSR_HC() || utag.isPIS_HC()) && ( b.entity.packageSearch.packageSearchParameters.flightSearchParameters != undefined)){
-    b["country"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.departureCountry"];
-}
-else if((utag.isPSR_HC() || utag.isPIS_HotelCar()) &&
-    (b.entity.packageSearch.packageSearchParameters.flightSearchParameters != undefined)){
-    b["country"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.departureCountry"];
-}
-else if((utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_FHC() || utag.isPSR_FC() || utag.isPIS_FlightHotel()) &&
-    (b.entity.packageSearch.packageSearchParameters.flightSearchParameters != undefined)){
-    b["country"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalCountry"];
 }
 else if (utag.isFSR() && b["entity.flightSearch.searchParameters.arrivalCountry"] != undefined){
     b["country"] = getCountryName(b["entity.flightSearch.searchParameters.arrivalCountry"]);
