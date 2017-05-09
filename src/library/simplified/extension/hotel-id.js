@@ -45,4 +45,7 @@ else if (utag.is3pp() && b['entity.checkout.hotel.hotelId'])
 else if (utag.isMCO() && b['entity.checkout.hotels.0.hotelId']) {
     b['hotelId'] = b['entity.checkout.hotels.0.hotelId'].toString();
 }
+else if (utag.isPCarSearch() && b['entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.selectedHotelId']) {
+    b['hotelId'] = b['entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.selectedHotelId'];
+ }
 b['hotelId_array'].push(b['hotelId']);
