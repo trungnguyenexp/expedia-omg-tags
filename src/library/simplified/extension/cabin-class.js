@@ -52,3 +52,6 @@ else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.
 	}
 	b['cabinClass'] = cabinClass.slice(0, -1);
 }
+else if (utag.isPCarSearch() && b['entity.packageSearch.packageSearchParameters.flightSearchParameters.travelClass']) {
+   b['cabinClass'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.travelClass'];
+}
