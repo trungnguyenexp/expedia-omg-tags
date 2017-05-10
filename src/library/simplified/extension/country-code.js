@@ -4,7 +4,7 @@ if((utag.isFRateDetails() || utag.isPRateDetails())  && typeof b["entity.tripDet
 else if(utag.isFCO() && typeof b["entity.checkout.flightOffer.arrivalCountryName"] != "undefined"){
     b["countryCode"] = b["entity.checkout.flightOffer.arrivalCountryName"];
 }
-else if(utag.isCarSR()){
+else if((utag.isCarSR() || utag.isPCarSearch()) && b["entity.carSearch.searchCriteria.dropOffRegion.countryCode"] != undefined){
     b["countryCode"] = b["entity.carSearch.searchCriteria.dropOffRegion.countryCode"];
 }
 else if((utag.isCarCO() || utag.isCarPymt()) && b["entity.checkout.car.dropOffLocation.address.country"])

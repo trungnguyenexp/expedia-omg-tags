@@ -1,5 +1,7 @@
 utag_data["state"] = '';
 
+var packageSearchOrInfosite = utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_FC() || utag.isPSR_FHC() || utag.isPIS_FHC() || utag.isPSR_HC() || utag.isPIS_HotelCar();
+
 if(utag.isHSR() && typeof b.entity.hotels.search.province != "undefined"){
     utag_data["state"] = b.entity.hotels.search.province.split(",")[1].trim();
 }
@@ -29,14 +31,7 @@ else if(utag_data["pageInfo.pageName"] == "page.Package-Search.Mobile,P,20" && u
         utag_data["state"] = cityState.split("(")[0].trim();
     }
 }
-else if((utag.isPSR_HC() || utag.isPIS_HC() || utag.isPSR_FHC())
-    && (typeof b.entity.packageSearch.packageSearchParameters != "undefined" && typeof b.entity.packageSearch.packageSearchParameters.flightSearchParameters != "undefined")){
-    var stateSplit = b.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState.split(",").length;
-    if(stateSplit >= 2){
-        utag_data["state"] = b.entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState.split(",")[stateSplit - 2];
-    }
-}
-else if((utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_FC()) 
+else if(packageSearchOrInfosite) 
 	&& (typeof b.entity.packageSearch.packageSearchParameters != "undefined" && typeof b.entity.packageSearch.packageSearchParameters.flightSearchParameters != "undefined")){
 	var stateSplit = b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState.split(",").length;
 	if(stateSplit >= 2){

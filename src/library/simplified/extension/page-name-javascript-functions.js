@@ -358,6 +358,10 @@ window.utag.isPIS_HC = function() {
     return false;
 }
 
+window.utag.isPIS_FHC = function(){
+    return pageName.indexOf("page.FHC.Package.Infosite.Information") > -1;
+}
+
 window.utag.isPCF = function(){
     if(pageName.indexOf("page.Package-Change-Flight.Outbound") > -1
         || pageName.indexOf("page.Package-Change-Flight.Inbound") > -1

@@ -1,5 +1,7 @@
 b["stateProvinceCode"] = "";
 
+var packageSearchOrInfosite = utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_FC() || utag.isPSR_FHC() || utag.isPIS_FHC() || utag.isPSR_HC() || utag.isPIS_HotelCar();
+
 if(utag.isFCO() && b['entity.checkout.flightOffer.arrivalAirportCityState'] != undefined )
 {
     b["stateProvinceCode"] = b['entity.checkout.flightOffer.arrivalAirportCityState'].split(",")[1].trim();
@@ -32,9 +34,9 @@ else if(utag.isPSR() && b['entity.packageSearch.packageSearchParameters.flightSe
         b["stateProvinceCode"] = b["stateProvinceCode"].split("(")[0].trim();
     }
 }
-else if(utag.isPSR_FHC() && b["entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState"] != undefined)
+else if((packageSearchOrInfosite) && b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"] != undefined)
 {
-    var dacs = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState"].split(",")
+    var dacs = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"].split(",")
     if (dacs.length == 3)
     {
         b["stateProvinceCode"] = dacs[1].trim();
