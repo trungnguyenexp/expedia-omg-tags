@@ -114,7 +114,7 @@ else if (utag.isFRateDetails() && b.entity.tripDetails.flightOffer.flight.legs !
         b["checkOutDate"] = b["entity.tripDetails.flightOffer.flight.legs."+indexOfLastLeg+".segments."+indexOfLastSegment+".isoFormatArrivalTimestamp"];
     }
 }
-else if (utag.isFCO() && b.entity.checkout.flightOffer.flight.legs != undefined )
+else if ((utag.isFCO() || utag.isFPymt()) && b.entity.checkout.flightOffer.flight.legs != undefined )
 {
     var indexOfLastLeg = b.entity.checkout.flightOffer.flight.legs.length - 1;
     var indexOfLastSegment = b.entity.checkout.flightOffer.flight.legs[indexOfLastLeg].segments.length - 1;

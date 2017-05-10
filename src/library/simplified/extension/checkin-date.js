@@ -101,7 +101,7 @@ else if (utag.isFRateDetails() && b.entity.tripDetails.flightOffer.flight.legs !
 else if((utag.isCarSR() || utag.isPCarSearch()) && b['entity.carSearch.searchCriteria.isoFormatPickUpDate'] != undefined){
     b['checkInDate'] =  b['entity.carSearch.searchCriteria.isoFormatPickUpDate'];
 }
-else if(utag.isFCO() && b['entity.checkout.flightOffer.flight.legs.0.isoFormatDepartureTimestamp'] != undefined)
+else if((utag.isFCO() || utag.isFPymt()) && b['entity.checkout.flightOffer.flight.legs.0.isoFormatDepartureTimestamp'] != undefined)
 {
     b['checkInDate'] = b['entity.checkout.flightOffer.flight.legs.0.isoFormatDepartureTimestamp'];
 }
