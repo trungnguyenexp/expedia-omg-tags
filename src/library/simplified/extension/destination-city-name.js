@@ -38,7 +38,7 @@ else if (utag.isPCO() && b['entity.checkout.flightOffer.destinationAirportCitySt
 else if (utag.isFCO() && b['entity.checkout.flightOffer.destinationAirportCityState']) {
     b['destination'] = b['entity.checkout.flightOffer.destinationAirportCityState'].split(',')[0].trim();
 }
-else if (utag.isHCO()) {
+else if (utag.isHCO() || utag.isPTP()) {
     b['destination'] = b['entity.checkout.hotel.hotelCityName'];
 }
 else if (utag.isCarCO()) {
