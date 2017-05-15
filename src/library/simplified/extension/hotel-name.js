@@ -6,7 +6,7 @@ if (utag.isHIS() && b['entity.hotels.listOfHotels.0.hotelName'])
 {
     b['hotelName'] = b['entity.hotels.listOfHotels.0.hotelName'];
 }
-else if ((utag.isHCO() || utag.isPCO()) && b['entity.checkout.hotel.hotelName'])
+else if ((utag.isHCO() || utag.isPCO() || utag.isPTP()) && b['entity.checkout.hotel.hotelName'])
 {
     b['hotelName'] = b['entity.checkout.hotel.hotelName'];
 }

@@ -377,7 +377,7 @@ window.utag.isPCF = function(){
 }
 
 window.utag.isPRateDetails = function(){
-    if(pageName.indexOf("page.Package.Ratedetails") > -1 ){
+    if(pageName.indexOf("page.Package.Ratedetails") > -1 || pageName.indexOf("page.Packages.Ratedetails") > -1 ){
         b["isPackageRateDetails"] = true;
         b["pageType"] = "UDP";
         return true ;
