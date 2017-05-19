@@ -11,7 +11,7 @@
     {
         b['numberOfGuests'] = b['entity.hotels.listOfHotels.0.numberOfGuests'];
     }
-    else if ((utag.isHCO() || utag.isPCO()) && b['entity.checkout.hotel.numberOfGuests'])
+    else if ((utag.isHCO() || utag.isPCO() || utag.isPPymt()) && b['entity.checkout.hotel.numberOfGuests'])
     {
         b['numberOfGuests'] = b['entity.checkout.hotel.numberOfGuests'];
     }
