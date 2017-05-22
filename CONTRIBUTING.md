@@ -1,6 +1,6 @@
 # How to contribute
 
-Third-party patches are essential for helping our marketing team to reach their performance metrics. 
+Tracking tags are essential for helping our marketing team to reach their performance metrics. 
 We want to keep it as easy as possible to contribute changes that
 get things working. There are a few guidelines that we
 need contributors to follow so that we can have a chance of keeping on
@@ -23,12 +23,15 @@ For the remainder of this document the tealium javascript extension or customize
 - Profile Tags tags under src/profile/[profile-name]/tag
 - Create missing folders as needed.
 
-## General Guidelines
+## Coding General Guidelines
 
 ### Naming
 
 Try to keep the name of the tag and extension similar to the javascript file name, i.e. “Check-In Date” extension is stored in checkin-date.js
 Tag specific extensions should be prefixed, i.e. “PHG Supplier” / phg-supplier.js
+
+### ESLint
+ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs. 
 
 ## Custom Tag
 
