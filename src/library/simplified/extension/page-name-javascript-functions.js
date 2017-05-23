@@ -113,7 +113,7 @@ window.utag.isFTP = function(){
 }
 
 window.utag.isFPymt = function(){
-    if(pageName.indexOf("FLT_CKO_PMT") > -1 || pageName.indexOf("page.Flight.Checkout.Info") > -1){
+    if(pageName.indexOf("FLT_CKO_PMT") > -1 || pageName.indexOf("page.Flight.Checkout.Info") || pageName.indexOf("page.Flight.Checkout.Payment") > -1){
         b["isFlightPayment"] = true;
         b["pageType"] = "Payment";
         return true ;
