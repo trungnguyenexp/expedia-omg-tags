@@ -11,9 +11,20 @@
     {
         b['numberOfGuests'] = b['entity.hotels.listOfHotels.0.numberOfGuests'];
     }
-    else if ((utag.isHCO() || utag.isPCO() || utag.isPPymt()) && b['entity.checkout.hotel.numberOfGuests'])
+    else if ((utag.isHCO() || utag.isPCO()) && b['entity.checkout.hotel.numberOfGuests'])
     {
         b['numberOfGuests'] = b['entity.checkout.hotel.numberOfGuests'];
+    }
+    else if (utag.isPPymt())
+    {
+        if (b['entity.checkout.hotels.0.numberOfGuests'])
+        {
+            b['numberOfGuests'] = b['entity.checkout.hotels.0.numberOfGuests'];
+        }
+        else if (b['entity.checkout.hotel.numberOfGuests'])
+        {
+            b['numberOfGuests'] = b['entity.checkout.hotel.numberOfGuests'];
+        }
     }
     else if (utag.isPSR() || utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_F_Responsive())
     {
