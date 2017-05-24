@@ -543,3 +543,12 @@ window.utag.isRCO = function() {
     }
     return false;
 }
+
+window.utag.isDestinationLandingPage = function() {
+    if (pageName.indexOf('page.TravelGuides.Landing.Destinations') > -1
+	|| pageName.indexOf("page.TravelGuides.Landing.Hotels") > -1
+	|| pageName.indexOf("page.TravelGuides.Destinations.City") > -1) {
+        return true;
+    }
+    return false;
+}
