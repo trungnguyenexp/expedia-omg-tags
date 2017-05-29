@@ -19,7 +19,12 @@ else if((utag.isCarSR() || utag.isPCarSearch()) && typeof b.entity.carSearch.sea
 }
 
 else if(packageSearchOrInfosite  && b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState != undefined) {
-	b["country"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"].split(",")[2]
+	var ctry = b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState.split(",");
+	if (ctry.length == 3) {
+		b["country"] = b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState.split(",")[2];
+	} else if (ctry.length == 2) {
+		b["country"] =   b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState.split(",")[1];
+	}
 }
 else if(utag.isPIS_FlightHotel() &&
     (b.entity.packageSearch.packageSearchParameters.flightSearchParameters != undefined)){
