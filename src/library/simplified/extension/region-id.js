@@ -36,3 +36,7 @@ else if (utag.isMCO())
         b["regionId"] = b["entity.checkout.hotels.0.regionId"];
     }
 }
+else if (utag.isDestinationLandingPage() && b.entity.tripDetails.hotelOffer.hotelDescription.gaiaRegion.regionId != undefined)
+{
+    b['regionId'] = b['entity.tripDetails.hotelOffer.hotelDescription.gaiaRegion.regionId'];
+}
