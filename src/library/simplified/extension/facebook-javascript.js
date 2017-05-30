@@ -14,7 +14,7 @@ try {// Hotel ID to string
     b['utagPageName'] = b['utagPageName'] || "";
     var pn_s = b['utagPageName'].toString().toLowerCase();
 
-// Content ids, content types, checkin/checkout dates 
+// Content ids, content types, checkin/checkout dates
 // and departing/returning dates based on lob
 // add old destination & origin to hotel/flight infosite page
     if (lob && lob_s.indexOf('hotel'.toLowerCase()) > -1) {
@@ -61,9 +61,14 @@ try {// Hotel ID to string
         }
         b['fb_content_type'] = ['product', 'route'];
     }
-    if (pn && pn_s.indexOf('page.Packages.Infosite.Information'.toLowerCase()) > -1) {
+    else if (pn && pn_s.indexOf('page.Packages.Infosite.Information'.toLowerCase()) > -1) {
         u.map['hotelId'] = "vc.content_ids"
     }
+	else if(utag.isDestinationLandingPage()) {
+        b['fb_content_type'] = ['destination'];
+        u.map['regionId'] = "search.content_ids";
+        u.map['state'] = "search.region";
+	}
 
 // If destination / origin are not available, send blank parameter
     b['destination'] = typeof b['destination'] != "undefined" && b['destination'] == "" ? " " : b['destination'];
@@ -75,7 +80,7 @@ try {// Hotel ID to string
     }
 
 
-// Package pages 
+// Package pages
 
 // flight + car
     if (pn && pn_s.indexOf('fc'.toLowerCase()) > -1 && pn_s.indexOf('package'.toLowerCase()) > -1) {
@@ -87,12 +92,12 @@ try {// Hotel ID to string
         u.map['hotelId'] = "vc.content_ids,cout.content_ids, purch.content_ids";
         b['fb_content_type'] = ['product', 'hotel', 'flight'];
     }
-// flight + hotel + car    
+// flight + hotel + car
     else if (pn && pn_s.indexOf('fhc'.toLowerCase()) > -1 && pn_s.indexOf('package'.toLowerCase()) > -1) {
         u.map['hotelId'] = "vc.content_ids,cout.content_ids, purch.content_ids";
         b['fb_content_type'] = ['product', 'hotel', 'flight', 'route'];
     }
-// hotel + car    
+// hotel + car
     else if (pn && pn_s.indexOf('hc'.toLowerCase()) > -1 && pn_s.toLowerCase().indexOf('package'.toLowerCase()) > -1) {
         u.map['hotelId'] = "vc.content_ids,cout.content_ids, purch.content_ids";
         b['fb_content_type'] = ['product', 'hotel'];

@@ -7,6 +7,9 @@ if(utag.isHSR() && typeof b.entity.hotels.search.country != "undefined"){
 else if((utag.isRailSearchResults) && b["entity.railSearch.searchParameters.arrivalStation.name"] != undefined) {
     b["country"] = b["entity.railSearch.searchParameters.arrivalStation.name"].split(",")[2];
 }
+else if (utag.isDestinationLandingPage() && b['entity.tripDetails.hotelOffer.hotelDescription.destination'] != undefined) {
+    b["country"] = b['entity.tripDetails.hotelOffer.hotelDescription.destination'].split(",")[2];
+}
 else if((utag.isHIS() || utag.isPIS()) && typeof b.entity.hotels.listOfHotels[0] != "undefined" && b.entity.hotels.listOfHotels[0].length > 0 && typeof b.entity.hotels.listOfHotels[0].hotelCountryName != "undefined"){
     b["country"] = b.entity.hotels.listOfHotels[0].hotelCountryName;
 }

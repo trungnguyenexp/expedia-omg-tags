@@ -56,6 +56,10 @@ else if (utag.isMCO()) {
         utag_data["state"] = utag_data['entity.checkout.flightOffers.0.destinationAirportCityState'].split(",")[1].trim();
     }
 }
+else if (utag.isDestinationLandingPage() && utag_data['entity.tripDetails.hotelOffer.hotelDescription.destination'] != undefined)
+{
+    utag_data['state'] = utag_data['entity.tripDetails.hotelOffer.hotelDescription.destination'].split(",")[1];
+}
 
 if(utag_data["state"] != '')
 {

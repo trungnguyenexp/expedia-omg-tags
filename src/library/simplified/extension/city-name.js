@@ -79,3 +79,6 @@ else if (utag.isMCO()) {
         b["city"] = b["entity.checkout.hotels.0.hotelCityName"];
     }
 }
+else if (utag.isDestinationLandingPage() && b['entity.tripDetails.hotelOffer.hotelDescription.destination'] != undefined) {
+    b["city"] = b['entity.tripDetails.hotelOffer.hotelDescription.destination'].split(",")[0];
+}
