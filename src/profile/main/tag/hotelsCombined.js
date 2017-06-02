@@ -19,8 +19,11 @@ try{
       for(d in utag.loader.GV(u.map)){if(typeof b[d]!=="undefined"&&b[d]!==""){e=u.map[d].split(",");for(f=0;f<e.length;f++){c.push(e[f]+u.kvp_delim+encodeURIComponent(b[d]))}}}
 
       if(typeof b._corder!="undefined"){
-	c.push("BookingValue="+b._csubtotal);
-	c.push("Currency="+((b._ccurrency)?b._ccurrency:"USD"));
+	//c.push("BookingValue="+b._csubtotal);
+	c.push("BookingValue="+b.checkout.hotel.totalRoomRate);
+	//c.push("Currency="+((b._ccurrency)?b._ccurrency:"USD"));
+	c.push("Currency="+((b.currencyCode)?b.currencyCode:"USD"));
+	c.push("ConversionID="+b.channelTracking.conversionId);
 	if(b._ccity)c.push("ClientCity="+b._ccity);
 	if(b._ccountry)c.push("ClientCountry="+b._ccountry);
       }
