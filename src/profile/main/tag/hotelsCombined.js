@@ -9,7 +9,7 @@ try{
   u.qsp_delim="&";
   u.kvp_delim="=";
   u.providercode="##UTVARconfig_providercode##";
-  u.base_url="https://secure.hotelscombined.com/ConversionBooking.ashx?";
+  u.base_url="https://secure.hotelcdn.com/ConversionBooking.ashx?";
 ##UTGEN##
   u.send=function(a,b,c,d,e,f){
     if(u.ev[a]||typeof u.ev.all!="undefined"){
