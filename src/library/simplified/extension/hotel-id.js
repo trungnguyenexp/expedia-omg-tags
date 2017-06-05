@@ -48,4 +48,7 @@ else if (utag.isMCO() && b['entity.checkout.hotels.0.hotelId']) {
 else if (utag.isPCarSearch() && b['entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.selectedHotelId']) {
     b['hotelId'] = b['entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.selectedHotelId'];
  }
+else if (utag.isDestinationLandingPage() && b['entity.tripDetails.hotelOffer.hotelDescription.gaiaRegion.regionId']) {
+    b['hotelId'] = b['entity.tripDetails.hotelOffer.hotelDescription.gaiaRegion.regionId'];
+}
 b['hotelId_array'].push(b['hotelId']);
