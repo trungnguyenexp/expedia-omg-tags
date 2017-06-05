@@ -65,9 +65,9 @@ try {// Hotel ID to string
         u.map['hotelId'] = "vc.content_ids"
     }
 	else if(utag.isDestinationLandingPage()) {
-        b['fb_content_type'] = ['destination'];
-        u.map['regionId'] = "search.content_ids";
-        u.map['state'] = "search.region";
+        u.map['hotelId'] = "vc.content_ids";
+        b['fb_content_type'] = ['destination'];   
+        b['country'] = b['country'] ? b['country'] : b['stateProvinceCode'];
 	}
 
 // If destination / origin are not available, send blank parameter

@@ -80,7 +80,7 @@ try {
             "content_ids" : function(g){
                 // custom - content id only on hotel, pkg, and lx pages
                 var pn_s = utag.data['utagPageName'].toLowerCase();
-                if (typeof utag.data['utagPageName'] != "undefined" && (pn_s.indexOf('hotel') < 0) && (pn_s.indexOf('fhc.') < 0) && (pn_s.indexOf('package') < 0)&& (pn_s.indexOf('lx') < 0)) {
+                if (typeof utag.data['utagPageName'] != "undefined" && (pn_s.indexOf('hotel') < 0) && (pn_s.indexOf('fhc.') < 0) && (pn_s.indexOf('package') < 0)&& (pn_s.indexOf('lx') < 0) && (pn_s.indexOf('travelguides') < 0)) {
                     g.content_ids = "";
                 } else {
                     if (!g.content_ids) {

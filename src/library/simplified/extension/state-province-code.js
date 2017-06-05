@@ -57,3 +57,6 @@ else if (utag.isMCO()) {
         b["stateProvinceCode"] = b["entity.checkout.cars.0.dropOffLocation.address.province"];
     }
 }
+else if (utag.isDestinationLandingPage() && b['entity.tripDetails.hotelOffer.hotelDescription.destination'] != undefined) {
+    b['stateProvinceCode'] = b['entity.tripDetails.hotelOffer.hotelDescription.destination'].split(",")[1];
+}
