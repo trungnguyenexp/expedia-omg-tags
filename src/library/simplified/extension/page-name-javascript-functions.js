@@ -552,3 +552,17 @@ window.utag.isDestinationLandingPage = function() {
     }
     return false;
 }
+window.utag.isLXGT_CO = function() {
+    if(pageName.indexOf("page.LX-GT.Checkout.Confirmation") > -1 ){
+        b["pageType"] = "Confirmation";
+        return true ;
+    }
+    return false;
+}
+window.utag.isLXGT_Pymt = function() {
+    if(pageName.indexOf("page.LX-GT.Checkout.Payment") > -1 ){
+        b["pageType"] = "Payment";
+        return true ;
+    }
+    return false;
+}
