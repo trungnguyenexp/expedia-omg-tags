@@ -191,6 +191,9 @@ else if (utag.isItinPage()){
     if (b["entity.tripDetails.utcTripEndDate"] != undefined){
         b['checkOutTimeStampUtc'] = b["entity.tripDetails.utcTripEndDate"];
     }
+    if (typeof b['entity.tripDetails.activities.0.isoFormatEndDate'] !== undefined) {
+        b['checkOutDate'] = b['entity.tripDetails.activities.0.isoFormatEndDate'];
+    }
 }
 else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.isoFormatReturnDate']{
     b['checkOutDate'] = b['entity.railSearch.railDetail.isoFormatReturnDate'];
