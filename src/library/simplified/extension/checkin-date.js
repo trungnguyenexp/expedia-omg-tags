@@ -79,15 +79,7 @@ else if (utag.isCarCO() && b.entity.tripDetails != undefined)
 {
     b["checkInDate"] = b.entity.tripDetails.carInfo.isoFormatPickUpDate;
 }
-else if (utag.isLXCO() && b['entity.checkout.activities.0.isoFormatStartDate'] != undefined)
-{
-    b['checkInDate'] = b['entity.checkout.activities.0.isoFormatStartDate'];
-}
-else if(utag.isLXCO() && b['entity.checkout.activity.activityDetail.isoFormatStartDate'] != undefined)
-{
-    b['checkInDate'] = b['entity.checkout.activity.activityDetail.isoFormatStartDate'];
-}
-else if(utag.isLXCO() && b.entity.checkout.activity.isoFormatStartDate != undefined){
+else if((utag.isLXCO() || utag.isLXGT_CO() || isLXGT_Pymt() || utag.isLXPymt()) && typeof b['entity.checkout.activity.isoFormatStartDate'] !== undefined){
     b['checkInDate'] = b.entity.checkout.activity.isoFormatStartDate;
 }
 else if((utag.isFSR() || utag.isPSR_F_Responsive()) && b['entity.flightSearch.searchParameters.isoFormatDepartureDate'])
