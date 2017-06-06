@@ -20,7 +20,7 @@ try{
 
       if(typeof b._corder!="undefined"){
 	//c.push("BookingValue="+b._csubtotal);
-	c.push("BookingValue="+b.checkout.hotel.totalRoomRate);
+	c.push("BookingValue="+b['checkout.cartTotal.amount'];
 	//c.push("Currency="+((b._ccurrency)?b._ccurrency:"USD"));
 	c.push("Currency="+((b.currencyCode)?b.currencyCode:"USD"));
 	c.push("ConversionID="+b.channelTracking.conversionId);
