@@ -30,7 +30,7 @@ try{
       u.img=new Image();u.img.src=u.base_url+c.join(u.qsp_delim);
     }
   }
-
+  omg.pixel.fireTagPixel({id: id, name: 'hotelscombined', label: 'hotelsCombined', context: {u: u, b: b}});
   try{utag.o[loader].loader.LOAD(id)}catch(e){utag.loader.LOAD(id)}
 })('##UTID##','##UTLOADERID##');
 }catch(e){}
