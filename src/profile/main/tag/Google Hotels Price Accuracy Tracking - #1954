@@ -116,6 +116,8 @@ try{
           "loc" : "script",
           "id" : "utag_##UTID##"
         });
+        
+        omg.pixel.fireTagPixel({id: Math.floor((Math.random() * 10000000000000000)), name: 'google-price-accuracy', label: 'Google Price Accuracy', context:{ u: u, b: b }});
 
         utag.DB("send:##UTID##:COMPLETE");
       }
