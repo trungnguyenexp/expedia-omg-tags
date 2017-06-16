@@ -79,6 +79,7 @@ else if (utag.isMCO()) {
         b["city"] = b["entity.checkout.hotels.0.hotelCityName"];
     }
 }
-else if (utag.isDestinationLandingPage() && b['entity.tripDetails.hotelOffer.hotelDescription.destination'] != undefined) {
-    b["city"] = b['entity.tripDetails.hotelOffer.hotelDescription.destination'].split(",")[0];
+else if (utag.isDestinationLandingPage() && typeof  b['entity.tripDetails.hotelOffer.hotelDescription.destination'] !== "undefined") {
+    var destination = b['entity.tripDetails.hotelOffer.hotelDescription.destination'].split(',');
+    b["city"] =  destination.length > 2 ? destination.reverse()[2] : destination.reverse()[1];
 }
