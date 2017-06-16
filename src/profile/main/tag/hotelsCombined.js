@@ -23,7 +23,7 @@ try{
 	c.push("BookingValue="+b['checkout.cartTotal.amount'];
 	//c.push("Currency="+((b._ccurrency)?b._ccurrency:"USD"));
 	c.push("Currency="+((b.currencyCode)?b.currencyCode:"USD"));
-	c.push("ConversionID="+b.channelTracking.conversionId);
+	c.push("ConversionID="+b['conversionId']);
 	if(b._ccity)c.push("ClientCity="+b._ccity);
 	if(b._ccountry)c.push("ClientCountry="+b._ccountry);
       }
