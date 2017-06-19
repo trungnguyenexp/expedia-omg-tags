@@ -548,7 +548,8 @@ window.utag.isDestinationLandingPage = function() {
     if (pageName.indexOf('page.TravelGuides.Landing.Destinations') > -1
 	|| pageName.indexOf("page.TravelGuides.Landing.Hotels") > -1
 	|| pageName.indexOf("page.TravelGuides.Destinations.Hlr") > -1
-	|| pageName.indexOf("page.TravelGuides.Destinations.City") > -1) {
+	|| pageName.indexOf("page.TravelGuides.Destinations.City") > -1
+	|| pageName.indexOf("page.TravelGuides.Hotels.HLR")) {
         return true;
     }
     return false;
