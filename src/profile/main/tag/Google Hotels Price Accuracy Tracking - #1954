@@ -83,6 +83,12 @@ try{
           u.data.url = location.protocol + "//" + u.data.url;
         }
 
+        if (typeof b['entity.hotels.results.results.0.rooms.0.averagePrice.amount'] != 'undefined' && b['entity.hotels.results.results.0.rooms.0.averagePrice.amount']) {
+          u.data.base_price = b['entity.hotels.results.results.0.rooms.0.averagePrice.currency'] + Math.round(b['entity.hotels.results.results.0.rooms.0.averagePrice.amount']);
+        } else {
+          u.data.base_price = b['entity.hotels.results.results.0.rooms.0.totalPrice.currency'] + Math.round(b['entity.hotels.results.results.0.rooms.0.totalPrice.amount']);
+        }
+
         u.data.base_price = b['entity.hotels.results.results.0.rooms.0.averagePrice.currency'] + Math.round(b['entity.hotels.results.results.0.rooms.0.averagePrice.amount']);
         u.data.partner_id = '89';
 
