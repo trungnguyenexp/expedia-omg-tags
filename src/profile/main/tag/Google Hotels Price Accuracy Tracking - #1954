@@ -88,8 +88,6 @@ try{
         } else {
           u.data.base_price = b['entity.hotels.results.results.0.rooms.0.totalPrice.currency'] + Math.round(b['entity.hotels.results.results.0.rooms.0.totalPrice.amount']);
         }
-
-        u.data.base_price = b['entity.hotels.results.results.0.rooms.0.averagePrice.currency'] + Math.round(b['entity.hotels.results.results.0.rooms.0.averagePrice.amount']);
         u.data.partner_id = '89';
 
         u.data.url +=  u.data.partner_id + "/?label=FH&guid=ON&script=0&ord=" + Math.floor((Math.random() * 10000000000000000));
