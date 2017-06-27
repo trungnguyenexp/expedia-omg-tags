@@ -203,16 +203,20 @@
             },
             site: {},
             page: {},
-            tag: {}
+            tag: {},
+            guid: {},
+            trl: {}
         };
 
         payload.tag = createTag(tagInfo, optionalCustomMappingHandler);
         if ('undefined' !== typeof tagInfo && 'undefined' !== typeof tagInfo.context && 'undefined' !== typeof tagInfo.context.b) {
             var udo = tagInfo.context.b;
+            payload.guid = udo.guid;
             payload.utcTimestamp = udo.utcTimestamp || dateInMilli;
             payload.site = createSite(udo);
             if ('undefined' !== typeof udo.pageInfo) {
                 payload.page = createPage(udo.pageInfo);
+                payload.trl = populateTRLForConfirmationPage(udo);
             }
         }
         log.debug(payload.tag.name + ':', JSON.stringify(payload));
@@ -256,6 +260,15 @@
             tag.dataMapping = defaultMappingHandler(tagInfo.context);
         }
         return tag;
+    }
+	
+    function populateTRLForConfirmationPage(udo) {
+        var trl = '';
+        var pageName = udo.pageInfo.pageName;		
+        if (pageName.indexOf("Checkout.Confirmation") > -1) {
+            trl = udo.entity.checkout.trl;
+        }
+        return trl;
     }
 
     /**
