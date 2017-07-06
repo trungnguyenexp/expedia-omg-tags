@@ -85,7 +85,7 @@ try{
 
         u.data.total_price = b['entity.tripDetails.totalPrice.decimalAmountString'];
         u.data.taxes_and_fees = b['entity.tripDetails.totalPrice.taxes'];        
-        u.data.base_price = parseFloat(u.data.total_price) - parseFloat(u.data.taxes_and_fees);
+        u.data.base_price = (parseFloat(u.data.total_price) - parseFloat(u.data.taxes_and_fees)).toFixed(2);
 
         u.data.partner_id = '1';
 
