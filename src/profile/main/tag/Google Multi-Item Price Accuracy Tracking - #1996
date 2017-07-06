@@ -83,7 +83,7 @@ try{
           u.data.url = location.protocol + "//" + u.data.url;
         }
 
-        u.data.total_price = b['totalPrice.currency'] + b['totalPrice.decimalAmountString'];
+        u.data.total_price = b['entity.tripDetails.totalPrice.currency'] + b['entity.tripDetails.totalPrice.decimalAmountString'];
 
         u.data.partner_id = '1';
 
