@@ -1,4 +1,4 @@
-if(b.siteId && (utag.isLXCO() || utag.isCarCO() || utag.isHCO() || utag.isFCO())){
+if(b.siteId && isConfirmationPage()){
     switch(b.siteId){
         case 1:
             b['doubleclick.src.conf'] = "2588783";
@@ -248,6 +248,10 @@ if(b.siteId && (utag.isLXCO() || utag.isCarCO() || utag.isHCO() || utag.isFCO())
         default:
             break;
     }
+}
+
+function isConfirmationPage() {
+	return (utag.isLXCO() || utag.isCarCO() || utag.isHCO() || utag.isFCO() || utag.isPCO() || utag.isMCO());
 }
 
 /** old
