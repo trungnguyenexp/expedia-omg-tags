@@ -83,13 +83,16 @@ try{
           u.data.url = location.protocol + "//" + u.data.url;
         }
 
-        u.data.total_price = b['entity.tripDetails.totalPrice.currency'] + b['entity.tripDetails.totalPrice.decimalAmountString'];
+        u.data.total_price = b['entity.tripDetails.totalPrice.decimalAmountString'];
+        u.data.taxes_and_fees = b['entity.tripDetails.totalPrice.taxes'];        
+        u.data.base_price = parseFloat(u.data.total_price) - parseFloat(u.data.taxes_and_fees);
 
         u.data.partner_id = '1';
 
         u.data.url +=  u.data.partner_id + "/?label=FH&guid=ON&script=0&ord=" + Math.floor((Math.random() * 10000000000000000));
         u.data.url += "&price=partner_id%3D" + u.data.partner_id + "%3B";
-        u.data.url += "base_price_value_string%3D" + u.data.total_price + "%3B";
+        u.data.url += "base_price_value_string%3D" + b['entity.tripDetails.totalPrice.currency'] + u.data.base_price + "%3B";
+        u.data.url += "tax_price_value_string%3D" + b['entity.tripDetails.totalPrice.currency'] + u.data.taxes_and_fees + "%3B";        
 
         if (u.data.static_params) {
           c.push(u.data.static_params);
