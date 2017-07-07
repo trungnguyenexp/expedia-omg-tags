@@ -10,10 +10,6 @@ else if (utag.isRailRateDetails() && utag_data["entity.railSearch.railDetail.rai
 else if (utag.isFCO() && b['entity.checkout.flightOffer.totalPrice.netValue']) {
 	b['totalPrice'] = formatAmount(parseInt(b['entity.checkout.flightOffer.totalPrice.netValue']));
 }
-else if ((utag.isPCO() || utag.isMCO()) && utag_data['entity.checkout.cartTotal.amount']) {
-	utag_data['totalPrice'] = formatAmount(parseInt(utag_data['entity.checkout.cartTotal.amount']));
-}
-
 
 function formatAmount(amount) {
     amount= amount.toFixed(2);
