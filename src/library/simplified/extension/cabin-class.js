@@ -69,3 +69,6 @@ else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.
 else if (utag.isPCarSearch() && b['entity.packageSearch.packageSearchParameters.flightSearchParameters.travelClass']) {
    b['cabinClass'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.travelClass'];
 }
+else if (utag.isCarCO() && b['entity.checkout.car.carCategoryNameLocalized']) {
+   b['cabinClass'] = b['entity.checkout.car.carCategoryNameLocalized'];
+}
