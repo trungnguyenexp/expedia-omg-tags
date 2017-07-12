@@ -19,6 +19,9 @@ if (utag.isFRateDetails() || utag.isPRateDetails())
         b["carrierCodes"] = carrierCodes.slice(0, -1);
     }
 }
+else if (utag.isFSR() && typeof b['entity.flightSearch.searchParameters.preferredAirline'] !== undefined)  {
+    b['carrierCodes'] = b['entity.flightSearch.searchParameters.preferredAirline'];
+}
 else if (utag.isFPymt() || utag.isFCO() || utag.isPPymt() || utag.isPCO() || utag.isMCO())
 {
     var flightObject;

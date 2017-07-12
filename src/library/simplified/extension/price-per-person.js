@@ -18,9 +18,21 @@ else if((utag.isHCO()|| utag.isFCO() || utag.isPCO()|| utag.isLXCO() || utag.isM
         b['pricePerPerson'] = (b['checkout.cartTotal.amount'] / b['numberOfGuests']).toFixed(2);
     }
 }
+else if (utag.isFSR() && typeof b['entity.flightSearch.searchResults.cheapest.pricePerTraveler.amount'] !== undefined) {
+    b['pricePerPerson'] = b['entity.flightSearch.searchResults.cheapest.pricePerTraveler.amount'];
+}
 else if (utag.isFRateDetails() && (b['entity.flight.flight.avgPriceOfAdultAndSenior.amount'] || b['entity.flight.flight.avgPriceOfChildrenAndInfants.amount']))
 {
     b['pricePerPerson'] = formatAmount(b['entity.flight.flight.avgPriceOfAdultAndSenior.amount']) + "|" + formatAmount(b['entity.flight.flight.avgPriceOfChildrenAndInfants.amount']);
+}
+else if(utag.isHSR()){
+    var pricePerPerson = 0;
+    for(var i=0;i<5;i++){
+        if(b["entity.hotels.results.results."+i+".rooms.0.averagePrice.amount"] !== undefined ){
+            pricePerPerson =  pricePerPerson + b["entity.hotels.results.results."+i+".rooms.0.averagePrice.amount"];
+        }
+    }
+    b['pricePerPerson'] = formatAmount(pricePerPerson / 5);
 }
 
 function formatAmount(amount) {
