@@ -57,13 +57,13 @@ if(b.siteId && utag.isHCO()){
             break;
         case 17:
             b['doubleclick.src.hotel.conf'] = "2997550";
-            b['doubleclick.type.hotel.conf'] = "apact438";
-            b['doubleclick.cat.hotel.conf'] = "apact892";
+            b['doubleclick.type.hotel.conf'] = "apact585";
+            b['doubleclick.cat.hotel.conf'] = "apact123";
             break;
         case 18:
             b['doubleclick.src.hotel.conf'] = "3012675";
-            b['doubleclick.type.hotel.conf'] = "apact585";
-            b['doubleclick.cat.hotel.conf'] = "apact123";
+            b['doubleclick.type.hotel.conf'] = "apach469";
+            b['doubleclick.cat.hotel.conf'] = "apach276";
             break;
         case 20:
             b['doubleclick.src.hotel.conf'] = "2589195";
