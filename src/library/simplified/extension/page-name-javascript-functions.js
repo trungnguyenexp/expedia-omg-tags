@@ -159,7 +159,8 @@ window.utag.isCarPymt = function(){
 }
 
 window.utag.isCarCO = function(){
-    if(pageName.indexOf("page.Cars.Checkout.Confirmation") > -1) {
+	if((pageName.indexOf("page.Cars.Checkout.Confirmation") > -1) || 
+	( pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'CAR')) {
         b["isCarCO"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -243,7 +244,8 @@ window.utag.isCruiseCO = function(){
 
 //MultiItem
 window.utag.isMCO = function(){
-    if(pageName.indexOf("page.Checkout.Confirmation") > -1 || pageName.indexOf("page.MultiItem.Checkout.Confirmation") > -1 ){
+	if((pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes.length > 1) 
+		|| pageName.indexOf("page.MultiItem.Checkout.Confirmation") > -1 ){
         b["isMultiItemConfirmation"] = true;
         b["isPackageConfirmation"] = true;
         b["pageType"] = "Confirmation";
