@@ -32,3 +32,6 @@ else if(utag.isPCF() || utag.isPSR_FC() && b["destinationAirportCode"]) {
 else if (utag.isPCarSearch() && b['entity.carSearch.searchCriteria.dropOffLocation.locationCode']) {
     b['dest'] = b['entity.carSearch.searchCriteria.dropOffLocation.locationCode'];
  }
+else if (utag.isPIS() && typeof b["entity.packageSearch.packageSearchParameters.destinationRegionId"] !== "undefined") {
+    b["dest"] = b["entity.packageSearch.packageSearchParameters.destinationRegionId"];
+ }

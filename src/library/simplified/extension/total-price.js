@@ -11,6 +11,9 @@ else if (utag.isFCO() && b['entity.checkout.flightOffer.totalPrice.netValue']) {
 	b['totalPrice'] = formatAmount(parseInt(b['entity.checkout.flightOffer.totalPrice.netValue']));
 }
 
+else if (utag.isPIS() && typeof b.entity.packageSearch.results !== undefined) {
+	b['totalPrice'] = b['entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.decimalAmountString'];
+}
 function formatAmount(amount) {
     amount= amount.toFixed(2);
     amount += '';
