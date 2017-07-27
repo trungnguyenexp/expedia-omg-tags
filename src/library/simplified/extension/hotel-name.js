@@ -21,6 +21,9 @@ else if (utag.isPRateDetails() && b['entity.tripDetails.hotelOffer.hotelDescript
 else if (utag.isMCO() && b['entity.checkout.hotels.0.hotelName']) {
     b['hotelName'] = b['entity.checkout.hotels.0.hotelName'];
 }
+else if (utag.isPIS() && typeof b.entity.packageSearch.results !== "undefined") {
+    b['hotelName'] = b['entity.packageSearch.results.offers.0.packageHotel.hotelDescription.hotelName'];
+}
 
 
 /** old

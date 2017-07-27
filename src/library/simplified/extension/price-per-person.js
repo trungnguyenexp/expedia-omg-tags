@@ -34,6 +34,9 @@ else if(utag.isHSR()){
     }
     b['pricePerPerson'] = formatAmount(pricePerPerson / 5);
 }
+else if (utag.isPIS() && typeof b.entity.packageSearch.results !== undefined) {
+    b['pricePerPerson'] = b.entity.packageSearch.results.offers[0].pricePerTraveler.decimalAmountString;
+}
 
 function formatAmount(amount) {
     amount= amount.toFixed(2);
