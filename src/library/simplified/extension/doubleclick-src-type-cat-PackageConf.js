@@ -57,13 +57,13 @@ if(b.siteId && (utag.isPCO() || utag.isMCO())){
             break;
         case 17:
             b['doubleclick.src.conf'] = "2997550";
-            b['doubleclick.type.conf'] = "apact438";
-            b['doubleclick.cat.conf'] = "apact892";
+            b['doubleclick.type.conf'] = "apact585";
+            b['doubleclick.cat.conf'] = "apact123";
             break;
         case 18:
             b['doubleclick.src.conf'] = "3012675";
-            b['doubleclick.type.conf'] = "apact585";
-            b['doubleclick.cat.conf'] = "apact123";
+            b['doubleclick.type.conf'] = "apach469";
+            b['doubleclick.cat.conf'] = "apach276";
             break;
         case 20:
             b['doubleclick.src.conf'] = "2589195";
@@ -161,24 +161,19 @@ if(b.siteId && (utag.isPCO() || utag.isMCO())){
             b['doubleclick.cat.conf'] = "emeau681";
             break;
         case 75:
-            b['doubleclick.src.conf'] = "3847494";
-            b['doubleclick.type.conf'] = "emeaf270";
-            b['doubleclick.cat.conf'] = "emeaf786";
+            b['doubleclick.src.conf'] = "3012675";
+            b['doubleclick.type.conf'] = "apach469";
+            b['doubleclick.cat.conf'] = "apach276";
             break;
         case 1146:
             b['doubleclick.src.conf'] = "3645995";
-            b['doubleclick.cat.conf'] = "nausa335";
             b['doubleclick.type.conf'] = "nausa852";
+            b['doubleclick.cat.conf'] = "nausa335";
             break;
         case 80001:
             b['doubleclick.src.conf'] = "5439637";
             b['doubleclick.cat.conf'] = "natra0";
             b['doubleclick.type.conf'] = "natra0";
-            break;
-        case 80004:
-            b['doubleclick.src.conf'] = "4259444";
-            b['doubleclick.cat.conf'] = "Canad-";
-            b['doubleclick.type.conf'] = "Canad-";
             break;
         case 70201:
             b['doubleclick.src.conf'] = "5179340";
@@ -189,26 +184,6 @@ if(b.siteId && (utag.isPCO() || utag.isMCO())){
             b['doubleclick.src.conf'] = "5192003";
             b['doubleclick.type.conf'] = "nausc00";
             b['doubleclick.cat.conf'] = "ctix00";
-            break;
-        case 70125:
-            b['doubleclick.src.conf'] = "4598511";
-            b['doubleclick.type.conf'] = "sales0";
-            b['doubleclick.cat.conf'] = "apaca0";
-            break;
-        case 70129:
-            b['doubleclick.src.conf'] = "4600929";
-            b['doubleclick.type.conf'] = "apacn0";
-            b['doubleclick.cat.conf'] = "apacn0";
-            break;
-        case 70150:
-            b['doubleclick.src.conf'] = "4693435";
-            b['doubleclick.type.conf'] = "apaca0";
-            b['doubleclick.cat.conf'] = "apaca0";
-            break;
-        case 70151:
-            b['doubleclick.src.conf'] = "4692458";
-            b['doubleclick.type.conf'] = "apacn0";
-            b['doubleclick.cat.conf'] = "apacn0";
             break;
         case 70472:
             b['doubleclick.src.conf'] = "5469129";

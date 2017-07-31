@@ -13,5 +13,5 @@ if (offeredAmenities){
     for (var amenity = 0; amenity < offeredAmenities.length; amenity++){
         amenityNames = amenityNames + offeredAmenities[amenity] + "|";
     }
-    b["offeredAmenities"] = amenityNames;
+    b['offeredAmenities'] = amenityNames;
 }
