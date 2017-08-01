@@ -155,6 +155,16 @@ if(b.siteId && utag.isHIS() ){
             b['doubleclick.type.his'] = "emeaf270";
             b['doubleclick.cat.his'] = "emeaf718";
             break;
+        case 74:
+            b['doubleclick.src.his'] = "2588791";
+            b['doubleclick.type.his'] = "emeau111";
+            b['doubleclick.cat.his'] = "emeau716";
+            break;
+        case 75:
+            b['doubleclick.src.his'] = "3012675";
+            b['doubleclick.type.his'] = "apach256";
+            b['doubleclick.cat.his'] = "apach577";
+            break;
         case 80001:
             b['doubleclick.src.his'] = "5439637";
             b['doubleclick.type.his'] = "natra00";
@@ -169,6 +179,41 @@ if(b.siteId && utag.isHIS() ){
             b['doubleclick.src.his'] = "3645995";
             b['doubleclick.type.his'] = "nausa900";
             b['doubleclick.cat.his'] = "nausa746";
+            break;
+        case 1255:
+            b['doubleclick.src.his'] = "3899497";
+            b['doubleclick.type.his'] = "airas701";
+            b['doubleclick.cat.his'] = "AirAs000";
+            break;
+        case 1256:
+            b['doubleclick.src.his'] = "3899600";
+            b['doubleclick.type.his'] = "airas348";
+            b['doubleclick.cat.his'] = "AirAs00";
+            break;
+        case 1257:
+            b['doubleclick.src.his'] = "3899565";
+            b['doubleclick.type.his'] = "airas723";
+            b['doubleclick.cat.his'] = "AirAs00";
+            break;
+        case 2000:
+            b['doubleclick.src.his'] = "3899617";
+            b['doubleclick.type.his'] = "airas972";
+            b['doubleclick.cat.his'] = "AirAs00";
+            break;
+        case 2001:
+            b['doubleclick.src.his'] = "3899597";
+            b['doubleclick.type.his'] = "airas809";
+            b['doubleclick.cat.his'] = "AirAs00";
+            break;
+        case 2002:
+            b['doubleclick.src.his'] = "3899621";
+            b['doubleclick.type.his'] = "airas649";
+            b['doubleclick.cat.his'] = "AirAs00";
+            break;
+        case 2004:
+            b['doubleclick.src.his'] = "3901108";
+            b['doubleclick.type.his'] = "nausc0";
+            b['doubleclick.cat.his'] = "airas756";
             break;
         case 10122006:
             b['doubleclick.src.his'] = "2589203";
@@ -204,6 +249,61 @@ if(b.siteId && utag.isHIS() ){
             b['doubleclick.src.his'] = "5192003";
             b['doubleclick.type.his'] = "nausc0";
             b['doubleclick.cat.his'] = "ctix03";
+            break;
+        case 70420:
+            b['doubleclick.src.his'] = "5472721";
+            b['doubleclick.type.his'] = "emeaf000";
+            b['doubleclick.cat.his'] = "emeaf0";
+            break;
+        case 70472:
+            b['doubleclick.src.his'] = "5469129";
+            b['doubleclick.type.his'] = "emeac00";
+            b['doubleclick.cat.his'] = "emeac00";
+            break;
+        case 70473:
+            b['doubleclick.src.his'] = "5470592";
+            b['doubleclick.type.his'] = "emeaf00";
+            b['doubleclick.cat.his'] = "emeaf00";
+            break;
+        case 70403:
+            b['doubleclick.src.his'] = "5472717";
+            b['doubleclick.type.his'] = "emeau00";
+            b['doubleclick.cat.his'] = "emeau00";
+            break;
+        case 70406:
+            b['doubleclick.src.his'] = "5484924";
+            b['doubleclick.type.his'] = "emead00";
+            b['doubleclick.cat.his'] = "emead000";
+            break;
+        case 70463:
+            b['doubleclick.src.his'] = "5488524";
+            b['doubleclick.type.his'] = "emeai00";
+            b['doubleclick.cat.his'] = "emeai00";
+            break;
+        case 70465:
+            b['doubleclick.src.his'] = "5522838";
+            b['doubleclick.type.his'] = "emead00";
+            b['doubleclick.cat.his'] = "emeas00";
+            break;
+        case 7110307:
+            b['doubleclick.src.his'] = "2589199";
+            b['doubleclick.type.his'] = "emeai191";
+            b['doubleclick.cat.his'] = "emeai063";
+            break;
+        case 3140309:
+            b['doubleclick.src.his'] = "2589201";
+            b['doubleclick.type.his'] = "emeas325";
+            b['doubleclick.cat.his'] = "emeas136";
+            break;
+        case 3270335:
+            b['doubleclick.src.his'] = "2589200";
+            b['doubleclick.type.his'] = "emean433";
+            b['doubleclick.cat.his'] = "emean032";
+            break;
+        case 3920336:
+            b['doubleclick.src.his'] = "2589202";
+            b['doubleclick.type.his'] = "emead466";
+            b['doubleclick.cat.his'] = "emead725";
             break;
         default:
             break;
