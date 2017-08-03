@@ -1,4 +1,5 @@
 if (typeof b.utagPageName != "undefined" && b.utagPageName.toLowerCase().indexOf('checkout.confirmation'.toLowerCase()) > -1) {
+    dataLayer = dataLayer || [];
     dataLayer.push({
         'event': 'trackEventEcommerce', //This event name triggers corresponding tag
         'eventDetails.category': 'ecommerce',
