@@ -48,7 +48,7 @@ try {
           /* Initialize default tag parameter values here */
           /* Examples: */
           /* "account_id" : "1234567" */
-          /* "base_url" : "//insert.your.javascript.library.url.here.js" */
+          "base_url" : "//cdn.d2-apps.net/js/tr.js" 
           /* A value mapped to "account_id" or "base_url" in TiQ will replace these default values. */
         };
 
@@ -81,14 +81,14 @@ try {
         /* Start Loader Callback Function */
         /* Un-comment the single-line JavaScript comments ("//") to use this Loader callback function. */
 
-        //u.loader_cb = function () {
-          //u.initialized = true;
+        u.loader_cb = function () {
+          u.initialized = true;
           /* Start Loader Callback Tag Sending Code */
 
             // Insert your post-Loader tag sending code here.
 
           /* End Loader Callback Tag Sending Code */
-        //};
+        };
 
         /* End Loader Callback Function */
 
@@ -96,12 +96,12 @@ try {
         /* Start Loader Function Call */
         /* Un-comment the single-line JavaScript comments ("//") to use Loader. */
 
-          //if (!u.initialized) {
-            //u.loader({"type" : "iframe", "src" : u.data.base_url + c.join(u.data.qsp_delim), "cb" : u.loader_cb, "loc" : "body", "id" : 'utag_##UTID##' });
-            //u.loader({"type" : "script", "src" : u.data.base_url, "cb" : u.loader_cb, "loc" : "script", "id" : 'utag_##UTID##' });
-          //} else {
-            //u.loader_cb();
-          //}
+          if (!u.initialized) {
+           // u.loader({"type" : "iframe", "src" : u.data.base_url + c.join(u.data.qsp_delim), "cb" : u.loader_cb, "loc" : "body", "id" : 'utag_##UTID##' });
+            u.loader({"type" : "script", "src" : u.data.base_url, "cb" : u.loader_cb, "loc" : "script", "id" : 'utag_##UTID##' });
+          } else {
+            u.loader_cb();
+          }
 
           //u.loader({"type" : "img", "src" : u.data.base_url + c.join(u.data.qsp_delim) });
 
