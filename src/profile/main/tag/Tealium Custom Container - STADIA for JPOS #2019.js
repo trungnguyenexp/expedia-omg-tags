@@ -19,6 +19,9 @@
 */
 
 /* Start Tag Library Code */
+
+var __pParams = __pParams || [];
+
 /* End Tag Library Code */
 
 //tealium universal tag - utag.sender.custom_container ut4.0.##UTVERSION##, Copyright ##UTYEAR## Tealium.com Inc. All Rights Reserved.
@@ -71,9 +74,11 @@ try {
         /* End Mapping Code */
 
 
-        /* Start Tag Sending Code */
+        /* Start Tag Sending Code */ 
 
-          // Insert your tag sending code here.
+         __pParams.push({
+        	client_id : 24
+        });
 
         /* End Tag Sending Code */
 
