@@ -336,8 +336,7 @@ window.utag.isPCarSearch = function(){
 }
 
 window.utag.isPIS = function(){
-    if(pageName.indexOf("page.Packages.Infosite.Information") > -1 || pageName.indexOf("page.HC.Packages.Infosite.Information") > -1
-        || pageName.indexOf("Packages.Infosite.Information") > -1 || pageName.indexOf("Package.Infosite.Information") > -1){
+    if(pageName.indexOf("Packages.Infosite.Information") > -1 || pageName.indexOf("Package.Infosite.Information") > -1){
         b["isPackageHotelInfoSite"] = true;
         b["isPackageSearchResults"] = true;
         b["pageType"] = "Infosite";
