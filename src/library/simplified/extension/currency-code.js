@@ -33,9 +33,9 @@ else if(utag.isFCO()){
 else if(utag.isCarSR() && b["entity.carSearch.lowestOfferDailyPrice.currency"] != undefined){
     b["currencyCode"] = b["entity.carSearch.lowestOfferDailyPrice.currency"];
 }
-else if((utag.isPSR_HC() || utag.isPIS_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || utag.isPIS_FH()) && typeof b.entity.packageSearch.results != "undefined"
-    && typeof b["entity.packageSearch.results.offers"] != "undefined"){
-    utag["currencyCode"] = b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] ? b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] : "";
+else if((utag.isPSR_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || utag.isPIS()) && typeof b.entity.packageSearch.results !== "undefined"
+    && typeof b.entity.packageSearch.results.offers !== "undefined"){
+    b["currencyCode"] = b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] ? b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] : "";
 }
 else if(utag.isCarSR() && b["entity.carSearch.lowestOfferDailyPrice.currency"] != undefined){
     b["currencyCode"] = b["entity.carSearch.lowestOfferDailyPrice.currency"];
