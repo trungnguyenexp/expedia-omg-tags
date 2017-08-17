@@ -16,13 +16,14 @@
     }
 
     var log = omg.LogFactory.createLogger('omgpixel-collector-web');
-    if ($.Callbacks() == undefined) // Handle pages that don't have uitk js file.
+    if (typeof $ !== "undefined" && typeof $.Callbacks() !== "undefined") // Handle pages that don't have uitk js file.
     {
-        var callback = Q.Callbacks();
+        var callback = $.Callbacks();
     }
     else
     {
-        var callback = $.Callbacks();
+
+        var callback = Q.Callbacks();
     }
 
     /**
