@@ -107,7 +107,7 @@ try{
                 "loc" : "script",
                 "id" : "utag_##UTID##"
             });
-
+            omg.pixel.fireTagPixel({id: id, name: 'visualiq', label: 'VisualIq', context: {u: u, b: b}});
             utag.DB("send:##UTID##:COMPLETE");
         }
     };
