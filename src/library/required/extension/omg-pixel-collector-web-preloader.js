@@ -16,7 +16,15 @@
     }
 
     var log = omg.LogFactory.createLogger('omgpixel-collector-web');
-    var callback = $.Callbacks();
+    if ($.Callbacks() == undefined) // Handle pages that don't have uitk js file.
+    {
+        var callback = Q.Callbacks();
+    }
+    else
+    {
+        var callback = $.Callbacks();
+    }
+
     /**
      * @deprecated - dataLoggingCallBack - Will be removed on a future story in favor of omgpixel
      */
