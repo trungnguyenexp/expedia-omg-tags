@@ -130,6 +130,7 @@ try {
 
 
         //##UTENABLEDEBUG##utag.DB("send:##UTID##:COMPLETE");
+        omg.pixel.fireTagPixel({id: id, name: 'tv_squared_conf', label: 'TvSquaredConf', context: {u: u, b: b}});
       }
     };
     utag.o[loader].loader.LOAD(id);

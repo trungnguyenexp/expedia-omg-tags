@@ -63,6 +63,7 @@ try{
       } else {
         u.gac_callback();
       }
+      omg.pixel.fireTagPixel({id: id, name: 'google_adwords', label: 'GoogleAdwords', context: {u: u, b: b}});
     }
   }
   utag.o[loader].loader.LOAD(id);

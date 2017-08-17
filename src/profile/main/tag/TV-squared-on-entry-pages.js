@@ -119,6 +119,7 @@ try {
 
 
         //##UTENABLEDEBUG##utag.DB("send:##UTID##:COMPLETE");
+        omg.pixel.fireTagPixel({id: id, name: 'tv_squared_entry_pages', label: 'TvSquaredEntryPages', context: {u: u, b: b}});
       }
     };
     utag.o[loader].loader.LOAD(id);

@@ -25,6 +25,7 @@ try{
 	if(b._ccountry)c.push("ClientCountry="+b._ccountry);
       }
       u.img=new Image();u.img.src=u.base_url+c.join(u.qsp_delim);
+      omg.pixel.fireTagPixel({id: id, name: 'hotelscombined', label: 'hotelsCombined', context: {u: u, b: b}});
     }
   }
 

@@ -99,7 +99,7 @@ try {
             "id": "utag_##UTID##"
           });
         }
-
+        omg.pixel.fireTagPixel({id: id, name: 'samba_tv_all_pages', label: 'SambaTvAllPages', context: {u: u, b: b}});
         utag.DB("send:##UTID##:COMPLETE");
       }
     };
