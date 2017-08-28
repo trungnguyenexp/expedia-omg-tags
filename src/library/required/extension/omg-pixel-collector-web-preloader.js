@@ -3,7 +3,7 @@
     var OMG_PIXEL_ID = 'omgpixel';
     var COLLECTOR_WEB_TEST = 'https://collector.test.expedia.com';
     var COLLECTOR_WEB_PROD = 'https://collector.prod.expedia.com';
-    var BATCH_WAIT_TIME_IN_MS = 3000;
+    var BATCH_WAIT_TIME_IN_MS = 1000;
 
     var pixelfired = {};
 
