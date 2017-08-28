@@ -4,10 +4,7 @@
     var COLLECTOR_WEB_TEST = 'https://collector.test.expedia.com';
     var COLLECTOR_WEB_PROD = 'https://collector.prod.expedia.com';
     var BATCH_WAIT_TIME_IN_MS = 1000;
-    /**
-     * @deprecated - TAG_LOGGING - Will be removed on a future story in favor of omgpixel
-     */
-    var TAG_LOGGING = 'omgmarketingpixel';
+
     var pixelfired = {};
 
     if (!('object' == typeof omg && 'function' == typeof omg.isJQueryPresent && omg.isJQueryPresent())) {
@@ -16,24 +13,8 @@
     }
 
     var log = omg.LogFactory.createLogger('omgpixel-collector-web');
-    var callback = $.Callbacks();
-    /**
-     * @deprecated - dataLoggingCallBack - Will be removed on a future story in favor of omgpixel
-     */
-    var dataLoggingCallBack = $.Callbacks();
-    callback.add(batchedCallbackHandler);
-    dataLoggingCallBack.add(batchedCallbackHandlerForDataMapping);
     var tagPixelBatchedPayload = [];
-    /**
-     * @deprecated - dataMappingPixelBatchedPayload - Will be removed on a future story in favor of omgpixel
-     */
-    var dataMappingPixelBatchedPayload = [];
     var pixelTagTimeout = undefined;
-    /**
-     *
-     * @deprecated - dataMappingPixelTagTimeout - dataMappingPixelBatchedPayload
-     */
-    var dataMappingPixelTagTimeout = undefined;
 
     omg.pixel = {
         fireTagPixel: function (tagInfo, optionalMappingHandler) {
@@ -44,27 +25,11 @@
             }
             if (pixelTagTimeout === undefined) {
                 pixelTagTimeout = setTimeout(function () {
-                    callback.fire(OMG_PIXEL_ID);
+                        sendPayloadToCollectorWeb(OMG_PIXEL_ID);
                     pixelTagTimeout = undefined;
                 }, BATCH_WAIT_TIME_IN_MS);
             }
             addTagPixelPayload(OMG_PIXEL_ID, tagInfo, tagPixelBatchedPayload, optionalMappingHandler);
-        },
-        /**
-         * @deprecated - Use #fireTagPixel() - Will be removed on a future story in favor of omgpixel
-         */
-        fireTagAndLogPixel: function (tagInfo) {
-            if (!isEnabled()) {
-                log.info('omgmarketingpixel fire is disabled, tag=', tagInfo);
-                return;
-            }
-            if (dataMappingPixelTagTimeout === undefined) {
-                dataMappingPixelTagTimeout = setTimeout(function () {
-                    dataLoggingCallBack.fire(TAG_LOGGING);
-                    dataMappingPixelTagTimeout = undefined;
-                }, BATCH_WAIT_TIME_IN_MS);
-            }
-            addTagPixelPayload(TAG_LOGGING, tagInfo, dataMappingPixelBatchedPayload);
         }
     };
 
@@ -90,39 +55,9 @@
                 });
             }
         }
-
     };
 
-    /**
-     * @deprecated - batchedCallbackHandlerForDataMapping - Will be removed on a future story in favor of omgpixel
-     */
-    function batchedCallbackHandlerForDataMapping(messageId) {
-        var tagLoggingConfig = {
-            "stream": !omg.isProd(),
-            "persist": true,
-            "batch": true
-        };
-        var collectorWebResourceURL = getCollectorWebResource(messageId, tagLoggingConfig);
-        var items = dataMappingPixelBatchedPayload.splice(0, dataMappingPixelBatchedPayload.length);
-        if (items.length <= 0) {
-            log.debug('No payload to publish to collector-web');
-            return;
-        }
-        var payload = JSON.stringify(items);
-        $.ajax({
-            type: "POST",
-            url: collectorWebResourceURL,
-            data: payload,
-            contentType: "text/plain; charset=utf-8",
-            crossDomain: true
-        }).done(function () {
-            // log.debug('post to collector-web success. args=', arguments);
-        }).fail(function () {
-            log.warn('post to collector-web failed. args=', arguments);
-        });
-    }
-
-    function batchedCallbackHandler(messageId) {
+    function sendPayloadToCollectorWeb(messageId) {
         var tagLoggingConfig = {
             "stream": true,
             "persist": true,
@@ -180,12 +115,12 @@
         }
         return base;
     }
-    
+
     function dataForTagAlerting(tagInfo, pixelfired){
         if(typeof tagInfo.name !== "undefined" && window.utag_data){
             pixelfired[tagInfo.name.split("-").join("")]=true;
             window.utag_data.pixelfired = pixelfired;
-        }   
+        }
     }
 
     /**
@@ -261,10 +196,10 @@
         }
         return tag;
     }
-	
+
     function populateTRLForConfirmationPage(udo) {
         var trl = '';
-        var pageName = udo.pageInfo.pageName;		
+        var pageName = udo.pageInfo.pageName;
         if (pageName.indexOf("Checkout.Confirmation") > -1) {
             trl = udo.entity.checkout.trl;
         }
