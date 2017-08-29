@@ -81,14 +81,14 @@ else if ((utag.isCarSR() || utag.isPCarSearch()) && typeof b["entity.carSearch.s
 {
     b['checkOutDate'] = b.entity.carSearch.searchCriteria.isoFormatDropOffDate.split('T')[0];
 }
-else if ((utag.isCarCO() || utag.isCarPymt()) && b["entity.checkout.car.isoFormatDropOffDate"])
-{
-    b["checkOutDate"] = b["entity.checkout.car.isoFormatDropOffDate"]
+else if (utag.isCarCO() || utag.isCarPymt()) {
+    if (b["entity.checkout.car.isoFormatDropOffDate"]) {
+        b["checkOutDate"] = b["entity.checkout.car.isoFormatDropOffDate"]
+    } else if (b.entity.tripDetails != undefined) {
+        b["checkOutDate"] = b.entity.tripDetails.carInfo.isoFormatDropOffDate;
+    }
 }
-else if (utag.isCarCO() && b.entity.tripDetails != undefined)
-{
-    b["checkOutDate"] = b.entity.tripDetails.carInfo.isoFormatDropOffDate;
-}
+
 else if((utag.isLXCO() || utag.isLXGT_CO() || utag.isLXGT_Pymt() || utag.isLXPymt()) && typeof b['entity.checkout.activity.isoFormatEndDate'] !== undefined){
     b['checkOutDate'] = b.entity.checkout.activity.isoFormatEndDate;
 }
@@ -200,6 +200,9 @@ else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.isoFormatRe
 }
 else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate']) {
     b['checkOutDate'] = b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate'];
+}
+else if (utag.isCarCO() && typeof b.entity.checkout.cars[0].isoFormatDropOffDate !== "undefined") {
+    b['checkOutDate'] = b.entity.checkout.cars[0].isoFormatDropOffDate;
 }
 if(b["checkOutDate"] != '')
 {

@@ -71,13 +71,12 @@ else if (utag.isPCO() && b['entity.checkout.hotel.isoCheckInDate'])
 {
     b["checkInDate"] = b['entity.checkout.hotel.isoCheckInDate'];
 }
-else if ((utag.isCarCO() || utag.isCarPymt()) && b["entity.checkout.car.isoFormatPickUpDate"] != undefined)
-{
-    b["checkInDate"] = b.entity.checkout.car.isoFormatPickUpDate;
-}
-else if (utag.isCarCO() && b.entity.tripDetails != undefined)
-{
-    b["checkInDate"] = b.entity.tripDetails.carInfo.isoFormatPickUpDate;
+else if ((utag.isCarCO() || utag.isCarPymt()) {
+    if (b["entity.checkout.car.isoFormatPickUpDate"] != undefined) {
+        b["checkInDate"] = b.entity.checkout.car.isoFormatPickUpDate;
+    }else if (b.entity.tripDetails != undefined) {
+        b["checkInDate"] = b.entity.tripDetails.carInfo.isoFormatPickUpDate;
+    }
 }
 else if((utag.isLXCO() || utag.isLXGT_CO() || utag.isLXGT_Pymt() || utag.isLXPymt()) && typeof b['entity.checkout.activity.isoFormatStartDate'] !== undefined){
     b['checkInDate'] = b.entity.checkout.activity.isoFormatStartDate;
@@ -172,6 +171,9 @@ else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.isoFormatDe
 else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate']) {
     b['checkInDate'] = b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate'];
 }
+else if (utag.isCarCO() && typeof b.entity.checkout.cars[0].isoFormatPickUpDate !== "undefined") {
+    b['checkInDate'] = b.entity.checkout.cars[0].isoFormatPickUpDate;
+ }
 if(b["checkInDate"] != '')
 {
     b["checkInDate"] = b["checkInDate"].split("T")[0];
