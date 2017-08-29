@@ -97,11 +97,16 @@
         checkOutISOText = b['entity.carSearch.searchCriteria.isoFormatDropOffDate'];
         b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
     }
-    else if (utag.isCarCO() || utag.isCarPymt())
-    {
-        var checkInISOText = b['entity.checkout.car.isoFormatPickUpDate'];
-        var checkOutISOText = b['entity.checkout.car.isoFormatDropOffDate'];
-        b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
+    else if (utag.isCarCO() || utag.isCarPymt()) {
+        if (b['entity.checkout.car.isoFormatPickUpDate'] != "undefined" && b['entity.checkout.car.isoFormatDropOffDate'] != "undefined") {
+            var checkInISOText = b['entity.checkout.car.isoFormatPickUpDate'];
+            var checkOutISOText = b['entity.checkout.car.isoFormatDropOffDate'];
+            b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
+        } else if (typeof b.entity.checkout.cars[0].isoFormatPickUpDate != "undefined" &&  typeof b.entity.checkout.cars[0].isoFormatDropOffDate != "undefined") {
+            var checkInISOText = b.entity.checkout.cars[0].isoFormatPickUpDate;
+            var checkOutISOText = b.entity.checkout.cars[0].isoFormatDropOffDate;
+            b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);    
+        }
     }
     else if (utag.isPRateDetails())
     {

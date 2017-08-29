@@ -5,12 +5,16 @@ if(utag.isFCO() || utag.isPCO()){
 else if(utag.isHCO()){
     b['origin'] = b['entity.checkout.hotel.cityCode'];
 }
-else if(utag.isCarCO() && b['entity.checkout.car.pickUpLocation.locationCode'] != undefined){
-    b['origin'] = b['entity.checkout.car.pickUpLocation.locationCode'];
+else if(utag.isCarCO() {
+    if(utag.isCarCO() && b['entity.checkout.car.pickUpLocation.locationCode'] != undefined) {
+        b['origin'] = b['entity.checkout.car.pickUpLocation.locationCode'];
+    }else if(b.entity.tripDetails != undefined) {
+        b['origin'] = b.entity.tripDetails.carInfo.pickUpLocation.locationCode;
+    }else if(b.entity.checkout.cars[0].pickUpLocation.locationCode != undefined) {
+        b['origin'] = b.entity.checkout.cars[0].pickUpLocation.locationCode;
+    }
 }
-else if(utag.isCarCO() && b.entity.tripDetails != undefined){
-    b['origin'] = b.entity.tripDetails.carInfo.pickUpLocation.locationCode;
-}
+
 else if(utag.isLXCO()){
     b['origin'] = b['entity.checkout.activity.activityDetail.destination'];
 }
