@@ -1,4 +1,4 @@
-if(b.siteId && isConfirmationPage()){
+if(b.siteId && (utag.isFCO())){
     switch(b.siteId){
         case 1:
             b['doubleclick.src.conf'] = "2588783";
@@ -57,13 +57,13 @@ if(b.siteId && isConfirmationPage()){
             break;
         case 17:
             b['doubleclick.src.conf'] = "2997550";
-            b['doubleclick.type.conf'] = "apact438";
-            b['doubleclick.cat.conf'] = "apact892";
+            b['doubleclick.type.conf'] = "apact585";
+            b['doubleclick.cat.conf'] = "apact123";
             break;
         case 18:
             b['doubleclick.src.conf'] = "3012675";
-            b['doubleclick.type.conf'] = "apact585";
-            b['doubleclick.cat.conf'] = "apact123";
+            b['doubleclick.type.conf'] = "apach469";
+            b['doubleclick.cat.conf'] = "apach276";
             break;
         case 20:
             b['doubleclick.src.conf'] = "2589195";
@@ -161,24 +161,19 @@ if(b.siteId && isConfirmationPage()){
             b['doubleclick.cat.conf'] = "emeau681";
             break;
         case 75:
-            b['doubleclick.src.conf'] = "3847494";
-            b['doubleclick.type.conf'] = "emeaf270";
-            b['doubleclick.cat.conf'] = "emeaf786";
+            b['doubleclick.src.conf'] = "3012675";
+            b['doubleclick.type.conf'] = "apach469";
+            b['doubleclick.cat.conf'] = "apach276";
             break;
         case 1146:
             b['doubleclick.src.conf'] = "3645995";
-            b['doubleclick.cat.conf'] = "nausa335";
             b['doubleclick.type.conf'] = "nausa852";
+            b['doubleclick.cat.conf'] = "nausa335";
             break;
         case 80001:
             b['doubleclick.src.conf'] = "5439637";
             b['doubleclick.cat.conf'] = "natra0";
             b['doubleclick.type.conf'] = "natra0";
-            break;
-        case 80004:
-            b['doubleclick.src.conf'] = "4259444";
-            b['doubleclick.cat.conf'] = "Canad-";
-            b['doubleclick.type.conf'] = "Canad-";
             break;
         case 70201:
             b['doubleclick.src.conf'] = "5179340";
@@ -245,17 +240,57 @@ if(b.siteId && isConfirmationPage()){
             b['doubleclick.type.conf'] = "emeas0";
             b['doubleclick.cat.conf'] = "emeas0";
             break;
-		case 10122006:
+        case 10122006:
             b['doubleclick.src.conf'] = "2589203";
             b['doubleclick.type.conf'] = "emeaa452";
             b['doubleclick.cat.conf'] = "emeaa375";
+            break;
+        case 2004:
+            b['doubleclick.src.conf'] = "3901108";
+            b['doubleclick.type.conf'] = "airas177";
+            b['doubleclick.cat.conf'] = "airas0";
+            break;
+        case 2001:
+            b['doubleclick.src.conf'] = "3899597";
+            b['doubleclick.type.conf'] = "airas264";
+            b['doubleclick.cat.conf'] = "AirAs0";
+            break;
+        case 1257:
+            b['doubleclick.src.conf'] = "3899565";
+            b['doubleclick.type.conf'] = "airas357";
+            b['doubleclick.cat.conf'] = "AirAs0";
+            break;
+        case 1256:
+            b['doubleclick.src.conf'] = "3899600";
+            b['doubleclick.type.conf'] = "airas317";
+            b['doubleclick.cat.conf'] = "AirAs0";
+            break;
+        case 1255:
+            b['doubleclick.src.conf'] = "3899497";
+            b['doubleclick.type.conf'] = "airas842";
+            b['doubleclick.cat.conf'] = "AirAs0";
+            break;
+        case 2002:
+            b['doubleclick.src.conf'] = "3899621";
+            b['doubleclick.type.conf'] = "airas167";
+            b['doubleclick.cat.conf'] = "AirAs0";
+            break;
+        case 2000:
+            b['doubleclick.src.conf'] = "3899617";
+            b['doubleclick.type.conf'] = "airas437";
+            b['doubleclick.cat.conf'] = "AirAs0";
+            break;
+        case 30031:
+            b['doubleclick.src.conf'] = "2588783";
+            b['doubleclick.type.conf'] = "nauss258";
+            b['doubleclick.cat.conf'] = "nausg811";
+            break;
+        case 1170:
+            b['doubleclick.src.conf'] = "3645995";
+            b['doubleclick.type.conf'] = "nausa852";
+            b['doubleclick.cat.conf'] = "nausa335";
             break;
         default:
             break;
     }
 }
-
-function isConfirmationPage() {
-	return (utag.isLXCO() || utag.isCarCO());
-}
-
