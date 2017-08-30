@@ -8,6 +8,9 @@ else if (typeof b.entity.checkout !== "undefined" && typeof b.entity.checkout.ho
 else if (utag.isPIS() && typeof b.entity.packageSearch.results !== "undefined"){
     offeredAmenities = b["entity.packageSearch.results.offers.0.packageHotel.hotelDescription.offeredAmenities"];
 }
+else if (utag.isPRateDetails() && typeof b.entity.hotels.listOfHotels !== "undefined") {
+    offeredAmenities = b['entity.hotels.listOfHotels.0.offeredAmenities']
+}
 if (offeredAmenities){
     var amenityNames = "";
     for (var amenity = 0; amenity < offeredAmenities.length; amenity++){

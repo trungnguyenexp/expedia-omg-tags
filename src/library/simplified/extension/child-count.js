@@ -52,8 +52,7 @@ else if(utag.isFSR() || utag.isPSR_F_Responsive()){
 else if(utag.isFRateDetails()){
     b["childrenCount"] = b["entity.flight.travelerInfo.numberOfChildren"];
 }
-else if (utag.isPRateDetails() && b['entity.tripDetails.travelersInfo.numberOfChildren'])
-{
+else if (utag.isPRateDetails() && typeof b['entity.tripDetails.travelersInfo.numberOfChildren'] !== "undefined") {
     b["childrenCount"] = b['entity.tripDetails.travelersInfo.numberOfChildren'];
 }
 else if(utag.isFPymt() || utag.isFCO() || utag.isPPymt() || utag.isPCO()){
