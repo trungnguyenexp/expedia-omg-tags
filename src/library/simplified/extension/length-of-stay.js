@@ -87,10 +87,13 @@
         checkOutISOText = b['entity.flightSearch.searchParameters.isoFormatReturnDate'];
         b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
     }
-    else if(utag.isFCO() && b['entity.checkout.flightOffer.flight.legs.0.isoFormatDepartureTimestamp'] != undefined && b['entity.checkout.flightOffer.flight.legs.0.isoFormatArrivalTimestamp'] != undefined){
-        checkInISOText = b['entity.checkout.flightOffer.flight.legs.0.isoFormatDepartureTimestamp'];
-        checkOutISOText = b['entity.checkout.flightOffer.flight.legs.0.isoFormatArrivalTimestamp'];
-        b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
+    else if(utag.isFCO() && typeof b.entity.checkout.flightOffer.flight.legs !== "undefined"){
+        var finalLeg = b.entity.checkout.flightOffer.flight.legs.length - 1;
+        if(b.entity.checkout.flightOffer.flight.legs[0].isoFormatDepartureTimestamp != undefined && b.entity.checkout.flightOffer.flight.legs[finalLeg].isoFormatArrivalTimestamp != undefined) {
+			checkInISOText = b.entity.checkout.flightOffer.flight.legs[0].isoFormatDepartureTimestamp;
+			checkOutISOText = b.entity.checkout.flightOffer.flight.legs[finalLeg].isoFormatArrivalTimestamp;
+			b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
+        }
     }
     else if((utag.isCarSR() || utag.isPCarSearch()) && b['entity.carSearch.searchCriteria.isoFormatPickUpDate'] && b['entity.carSearch.searchCriteria.isoFormatDropOffDate'] ){
         checkInISOText = b['entity.carSearch.searchCriteria.isoFormatPickUpDate'];
