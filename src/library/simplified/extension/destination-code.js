@@ -8,13 +8,13 @@ else if(utag.isHCO()){
 else if (utag.isHSR()) {
     b["dest"] = b["entity.hotels.search.hotelParameters.regionId"] ? b["entity.hotels.search.hotelParameters.regionId"] : "";
 }
-else if(utag.isCarCO() {
+else if(utag.isCarCO()) {
     if(typeof b["entity.checkout.car.dropOffLocation.locationCode"] != "undefined"){
         b["dest"] = b["entity.checkout.car.dropOffLocation.locationCode"];
-    } else if(utag.isCarCO() && typeof b.entity.checkout.cars[0].dropOffLocation.locationCode !== "undefined") {
+    } else if(typeof b.entity.checkout.cars[0].dropOffLocation.locationCode !== "undefined") {
         b["dest"] = b.entity.checkout.cars[0].dropOffLocation.locationCode;
-    } else if(utag.isCarCO() && b.entity.tripDetails != undefined) {
-        b["dest"] = b["entity.tripDetails.carInfo.dropOffLocation.locationCode"] ? b["entity.checkout.hotel.hotelCityName"] : "";;
+    } else if(b.entity.tripDetails != undefined) {
+        b["dest"] = b["entity.tripDetails.carInfo.dropOffLocation.locationCode"] ? b["entity.tripDetails.carInfo.dropOffLocation.locationCode"] : "";
     }
 }
 
