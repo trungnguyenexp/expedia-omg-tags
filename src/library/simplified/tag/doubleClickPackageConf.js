@@ -120,6 +120,7 @@ try {
         for (f = 0; f < u.data.multicat_arr.length; f++) {
           u.loader({ "type" : "iframe", "src" : u.data.base_url + 'cat=' + u.data.multicat_arr[f] + ((c.length > 0) ? ';' + c.join(u.data.qsp_delim) : '') + '?', "loc" : "body", "id" : 'utag_##UTID##_iframe' });
         }
+        omg.pixel.fireTagPixel({id: id, name: 'doubleclick_package_conf', label: 'DoubleclickPackageConf', context: {u: u, b: b}});
       }
     };
     utag.o[loader].loader.LOAD(id);
