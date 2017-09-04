@@ -61,7 +61,7 @@ For custom tag, ensure you respect the checklist below and provide any extra inf
 
 ## Workflow
 
-Workflow for a new customized tag
+Workflow for a new customized tag, update to existing templates or extensions. See below an example of creating a new customized tag script. In doubt, reach out to omgsup@expedia.com.
 
 1. Developer A initially forks the github repo
 2. Developer A makes changes to the repo
