@@ -13,3 +13,6 @@ if (utag.isCarCO()) {
     } 
     b['pricePerDay'] = pricePerDay;
 }
+if (utag.isCarUDP() && typeof utag_data["entity.carDetails.pricePerDay"] !== undefined) {
+    utag_data['pricePerDay'] = utag_data["entity.carDetails.pricePerDay"];
+}

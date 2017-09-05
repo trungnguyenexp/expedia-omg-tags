@@ -99,6 +99,11 @@
         checkInISOText = b['entity.carSearch.searchCriteria.isoFormatPickUpDate'];
         checkOutISOText = b['entity.carSearch.searchCriteria.isoFormatDropOffDate'];
         b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
+    }	
+    else if (utag.isCarUDP() && (typeof b["entity.carDetails.isoFormatPickUpDate"] !== "undefined" && typeof b["entity.carDetails.isoFormatDropOffDate"] !== "undefined")) {
+        checkInISOText = b["entity.carDetails.isoFormatPickUpDate"];
+        checkOutISOText = b["entity.carDetails.isoFormatDropOffDate"];
+        b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
     }
     else if (utag.isCarCO() || utag.isCarPymt()) {
         if (typeof b['entity.checkout.car.isoFormatPickUpDate'] !== "undefined" && typeof b['entity.checkout.car.isoFormatDropOffDate'] !== "undefined") {

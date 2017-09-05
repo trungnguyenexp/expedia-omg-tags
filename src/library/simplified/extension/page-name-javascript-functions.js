@@ -149,6 +149,15 @@ window.utag.isCarSR = function(){
     return false;
 }
 
+window.utag.isCarUDP = function(){
+    if(pageName.indexOf("page.Cars.Infosite.Information") > -1){
+        b["isCarUDP"] = true;
+        b["pageType"] = "UDP";
+        return true ;
+    }
+    return false;
+}
+
 window.utag.isCarPymt = function(){
     if(pageName.indexOf("page.Cars.Checkout.Payment") > -1) {
         b["isCarPymt"] = true;
