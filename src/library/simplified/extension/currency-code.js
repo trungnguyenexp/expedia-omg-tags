@@ -40,6 +40,9 @@ else if((utag.isPSR_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || uta
 else if(utag.isCarSR() && b["entity.carSearch.lowestOfferDailyPrice.currency"] != undefined){
     b["currencyCode"] = b["entity.carSearch.lowestOfferDailyPrice.currency"];
 }
+else if(utag.isCarUDP() && b["entity.carDetails.totalPrice.currency"] !== undefined) {
+	b["currencyCode"] = b["entity.carDetails.totalPrice.currency"];
+}
 
 //LX
 else if (utag.isLXS() && b["entity.activities.activitySearchResults.cheapestPrice.currency"] != undefined){
