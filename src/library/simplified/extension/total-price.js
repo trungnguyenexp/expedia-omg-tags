@@ -14,6 +14,11 @@ else if (utag.isFCO() && b['entity.checkout.flightOffer.totalPrice.netValue']) {
 else if (utag.isPIS() && typeof b.entity.packageSearch.results !== undefined) {
 	b['totalPrice'] = b['entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.decimalAmountString'];
 }
+
+else if (utag.isCarUDP() && typeof b.entity.carDetails.totalPrice !== undefined) {
+    b['totalPrice'] = b["entity.carDetails.totalPrice.decimalAmountString"];
+}
+
 function formatAmount(amount) {
     amount= amount.toFixed(2);
     amount += '';
