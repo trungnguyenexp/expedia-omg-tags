@@ -19,6 +19,10 @@ else if (utag.isCarUDP() && typeof b.entity.carDetails.totalPrice !== undefined)
     b['totalPrice'] = b["entity.carDetails.totalPrice.decimalAmountString"];
 }
 
+else if (utag.isPRateDetails() && typeof b['entity.tripDetails.totalPrice.decimalAmountString'] !== "undefined") {
+    b['totalPrice'] = b['entity.tripDetails.totalPrice.decimalAmountString'];
+}
+
 function formatAmount(amount) {
     amount= amount.toFixed(2);
     amount += '';

@@ -13,7 +13,9 @@ if(utag.isHSR() && b["entity.hotels.resultsSummary.summaryPrice.currency"] != un
 else if ((utag.isPSR()  || utag.isPSR_F_Responsive()) && b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] != undefined){
     b["currencyCode"] = b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"];
 }
-
+else if (utag.isPRateDetails() && typeof b['entity.tripDetails.totalPrice.currency'] !== "undefined") {
+    b['currencyCode'] = b['entity.tripDetails.totalPrice.currency'];
+}
 
 //Flight path
 else if (utag.isFSR() && b["entity.flightSearch.searchResults.cheapest.price.currency"] != undefined){
