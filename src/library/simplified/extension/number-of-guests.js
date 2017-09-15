@@ -180,6 +180,18 @@
                 'entity.checkout.flightOffers.0.travelersInfo.numberOfSeniors');
         }
     }
+    else if (utag.isPCF()) {
+            if (typeof b['entity.multiItemSearch.multiItemSearchParameters.travelers.0.numberOfAdults'] !== undefined
+             && typeof b['entity.multiItemSearch.multiItemSearchParameters.travelers.0.numberOfChildren'] !== undefined
+             && typeof b['entity.multiItemSearch.multiItemSearchParameters.travelers.0.numberOfInfantsInLap'] !== undefined
+             && typeof b['entity.multiItemSearch.multiItemSearchParameters.travelers.0.numberOfInfantsInSeat'] !== undefined) {
+                b['numberOfGuests'] = getTotal(
+                    'entity.multiItemSearch.multiItemSearchParameters.travelers.0.numberOfAdults',
+                    'entity.multiItemSearch.multiItemSearchParameters.travelers.0.numberOfChildren',
+                    'entity.multiItemSearch.multiItemSearchParameters.travelers.0.numberOfInfantsInLap',
+                    'entity.multiItemSearch.multiItemSearchParameters.travelers.0.numberOfInfantsInSeat');
+            }
+    }
 
     function getTotal()
     {
@@ -190,7 +202,6 @@
             if (key && !isNaN(b[key]))
             {
                 total += parseInt(b[key]);
-                // console.debug('[number_of_guests|getTotal()]: Added to total key: %s value: %s', key, b[key]);
             }
         }
         return total;

@@ -77,3 +77,6 @@ else if(utag.isItinPage() && typeof b["entity.tripDetails.totalPrice"] != "undef
 else if(utag.is3pp()){
     b['currencyCode'] = b["entity.checkout.currency"];
 }
+else if(utag.isPCF() && typeof b['entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency'] !== undefined) {
+    b['currencyCode'] = b['entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency'];
+}
