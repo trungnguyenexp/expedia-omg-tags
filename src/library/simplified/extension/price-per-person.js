@@ -42,6 +42,11 @@ else if (utag.isPRateDetails() && b['totalPrice'] && b['numberOfGuests']) {
         b['pricePerPerson'] = (b['totalPrice'] / b['numberOfGuests']).toFixed(2);
     }
 }
+else if (utag.isPRateDetails() && b['entity.tripDetails.totalPrice.decimalAmountString'] && b['numberOfGuests']) {
+    if (b['numberOfGuests'] > 0) {
+        b['pricePerPerson'] = (b['entity.tripDetails.totalPrice.decimalAmountString'] / b['numberOfGuests']).toFixed(2);
+    }
+}
 
 function formatAmount(amount) {
     amount= amount.toFixed(2);
