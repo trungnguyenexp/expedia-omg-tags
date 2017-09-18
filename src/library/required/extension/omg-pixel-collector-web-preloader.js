@@ -36,7 +36,7 @@
     omg.udo = {
         logFlattenedUdo: function () {
             var tagLoggingConfig = {
-                "stream": omg.isProd(),
+                "stream": true,
                 "persist": true
             };
             var collectorWebResourceURL = getCollectorWebResource("omg-udo", tagLoggingConfig);
