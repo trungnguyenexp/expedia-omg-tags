@@ -116,12 +116,12 @@
             b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);    
         }
     }
-    else if (utag.isPRateDetails())
-    {
-        var numHotelNights = b['entity.tripDetails.hotelOffer.numHotelNights'];
-        if (!isNaN(numHotelNights) && numHotelNights > 0)
-        {
-            b['lengthOfStay'] = numHotelNights;
+    else if (utag.isPRateDetails() && typeof b.entity.tripDetails.flightOffer.flight.legs !== "undefined") {
+        var finalLeg = b.entity.tripDetails.flightOffer.flight.legs.length - 1;
+        if (typeof b.entity.tripDetails.flightOffer.flight.legs[0].isoFormatDepartureTimestamp !== "undefined" && typeof b.entity.tripDetails.flightOffer.flight.legs[finalLeg].isoFormatArrivalTimestamp !== "undefined") {
+            var checkInISOText = b.entity.tripDetails.flightOffer.flight.legs[0].isoFormatDepartureTimestamp;
+            var checkOutISOText = b.entity.tripDetails.flightOffer.flight.legs[finalLeg].isoFormatArrivalTimestamp;
+            b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
         }
     }
     else if (utag.isCruiseCO() && b['entity.checkout.cruise.duration'])
