@@ -432,7 +432,8 @@ window.utag.isPCO_Mobile = function(){
 }
 
 window.utag.isLXCO = function(){
-    if(pageName.indexOf("page.LX.Checkout.Confirmation") > -1 ){
+    if ((pageName.indexOf("page.LX.Checkout.Confirmation") > -1) ||
+        (pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'LX')){
         b["isLXCO"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -478,7 +479,8 @@ window.utag.isLXI = function(){
 }
 
 window.utag.isLXPymt = function(){
-    if(pageName.indexOf("page.LX.Checkout.Payment") > -1 ){
+    if(pageName.indexOf(("page.LX.Checkout.Payment") > -1 ) ||
+        (pageName.indexOf("page.Checkout.Payment") > -1 && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'LX')){
         b["isLXPymt"] = true;
         b["pageType"] = "Payment";
         return true ;

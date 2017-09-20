@@ -90,9 +90,15 @@ else if (utag.isCarCO() || utag.isCarPymt()) {
         b['checkOutDate'] = b.entity.checkout.cars[0].isoFormatDropOffDate;
     }
 }
-
-else if((utag.isLXCO() || utag.isLXGT_CO() || utag.isLXGT_Pymt() || utag.isLXPymt()) && typeof b['entity.checkout.activity.isoFormatEndDate'] !== undefined){
-    b['checkOutDate'] = b.entity.checkout.activity.isoFormatEndDate;
+else if(utag.isLXCO() || utag.isLXGT_CO() || utag.isLXGT_Pymt() || utag.isLXPymt()){
+    //handle old page here:
+    if (typeof b['entity.checkout.activity.isoFormatEndDate'] !== 'undefined') {
+        b['checkOutDate'] = b['entity.checkout.activity.isoFormatEndDate'];
+    }
+    //handle old or new page here:
+    if (b["entity.checkout.activities.0.isoFormatEndDate"] !== 'undefined') {
+        b['checkOutDate'] = b["entity.checkout.activities.0.isoFormatEndDate"];
+    }
 }
 else if((utag.isFSR() || utag.isPSR_F_Responsive()) && b['entity.flightSearch.searchParameters.isoFormatReturnDate'])
 {
@@ -197,7 +203,7 @@ else if (utag.isItinPage()){
         b['checkOutDate'] = b['entity.tripDetails.activities.0.isoFormatEndDate'];
     }
 }
-else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.isoFormatReturnDate']{
+else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.isoFormatReturnDate']){
     b['checkOutDate'] = b['entity.railSearch.railDetail.isoFormatReturnDate'];
 }
 else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate']) {
