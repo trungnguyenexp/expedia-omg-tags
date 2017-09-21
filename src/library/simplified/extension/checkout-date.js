@@ -96,7 +96,7 @@ else if(utag.isLXCO() || utag.isLXGT_CO() || utag.isLXGT_Pymt() || utag.isLXPymt
         b['checkOutDate'] = b['entity.checkout.activity.isoFormatEndDate'];
     }
     //handle old or new page here:
-    if (b["entity.checkout.activities.0.isoFormatEndDate"] !== 'undefined') {
+    if (typeof b["entity.checkout.activities.0.isoFormatEndDate"] !== 'undefined') {
         b['checkOutDate'] = b["entity.checkout.activities.0.isoFormatEndDate"];
     }
 }
