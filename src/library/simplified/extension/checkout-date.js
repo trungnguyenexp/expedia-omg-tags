@@ -100,9 +100,17 @@ else if(utag.isLXCO() || utag.isLXGT_CO() || utag.isLXGT_Pymt() || utag.isLXPymt
         b['checkOutDate'] = b["entity.checkout.activities.0.isoFormatEndDate"];
     }
 }
-else if((utag.isFSR() || utag.isPSR_F_Responsive()) && b['entity.flightSearch.searchParameters.isoFormatReturnDate'])
+else if((utag.isFSR() || utag.isPSR_F_Responsive()))
 {
-    b['checkOutDate'] = b['entity.flightSearch.searchParameters.isoFormatReturnDate'];
+    if (utag.isFSRMDest()) {
+        var legLength = b.entity.flightSearch.searchResults.cheapest.flight.legs.length;
+        if (typeof b.entity.flightSearch.searchResults.cheapest.flight.legs[legLength-1].isoFormatDepartureTimestamp !== "undefined") {
+            b['checkOutDate'] = b.entity.flightSearch.searchResults.cheapest.flight.legs[legLength-1].isoFormatDepartureTimestamp;
+        }
+    }
+    else if (typeof b['entity.flightSearch.searchParameters.isoFormatReturnDate'] !== "undefined") {
+        b['checkOutDate'] = b['entity.flightSearch.searchParameters.isoFormatReturnDate'];
+    }
 }
 else if (utag.isFRateDetails() && b.entity.tripDetails.flightOffer.flight.legs != undefined )
 {
@@ -209,7 +217,7 @@ else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.isoFormatRe
 else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate']) {
     b['checkOutDate'] = b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate'];
 }
-if(b["checkOutDate"] != '')
+if(b["checkOutDate"] != undefined)
 {
     b["checkOutDate"] = b["checkOutDate"].split("T")[0];
 }
