@@ -80,8 +80,15 @@ else if (utag.isCarCO() || utag.isCarPymt()) {
         b['checkInDate'] = b.entity.checkout.cars[0].isoFormatPickUpDate;
     }
 }
-else if((utag.isLXCO() || utag.isLXGT_CO() || utag.isLXGT_Pymt() || utag.isLXPymt()) && typeof b['entity.checkout.activity.isoFormatStartDate'] !== undefined){
-    b['checkInDate'] = b.entity.checkout.activity.isoFormatStartDate;
+else if(utag.isLXCO() || utag.isLXGT_CO() || utag.isLXGT_Pymt() || utag.isLXPymt()) {
+    //handle old page here:
+    if(typeof b['entity.checkout.activity.isoFormatStartDate'] !== 'undefined') {
+        b['checkInDate'] = b.entity.checkout.activity.isoFormatStartDate;
+    }
+    //handle old or new page here:
+    if(typeof b["entity.checkout.activities.0.isoFormatStartDate"] !== 'undefined'){
+        b['checkInDate'] = b["entity.checkout.activities.0.isoFormatStartDate"];
+    }
 }
 else if((utag.isFSR() || utag.isPSR_F_Responsive()) && b['entity.flightSearch.searchParameters.isoFormatDepartureDate'])
 {
