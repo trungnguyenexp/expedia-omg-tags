@@ -23,7 +23,7 @@
     {
         b['numberOfGuests'] = b['entity.checkout.hotel.numberOfGuests'];
     }
-    else if (utag.isPSR() || utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_F_Responsive())
+    else if (utag.isPSR() || utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_F_Responsive() || utag.isPIS_HotelCar())
     {
         if (b['entity.packageFHSearch.packageFHSearchParameters.packageTravelersPerRooms.0.adultsCount']
             || b['entity.packageFHSearch.packageFHSearchParameters.packageTravelersPerRooms.0.seniorsCount']
