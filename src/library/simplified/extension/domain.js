@@ -14,6 +14,10 @@ if (typeof b['domain'] != "undefined") {
                     b['lob.domain'] = "LX";
                     b['lobDomain'] = "LX";
                     break;
+                case "LX_GT":
+                    b['lob.domain'] = "LX_GT";
+                    b['lobDomain'] = "LX_GT";
+                    break;
             }
         }
     } else {
