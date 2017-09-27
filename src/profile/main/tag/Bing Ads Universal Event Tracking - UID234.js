@@ -111,7 +111,7 @@ try {
         } else {
           u.loader_cb();
         }
-
+        omg.pixel.fireTagPixel({id: id, name: 'bing_ads_universal_event_tracking_uid234', label: 'Bing_Ads_Universal_Event_Tracking_UID234', context: {u: u, b: b}});
         //##UTENABLEDEBUG##utag.DB("send:##UTID##:COMPLETE");
       }
     };
