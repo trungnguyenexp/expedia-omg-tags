@@ -479,7 +479,7 @@ window.utag.isLXI = function(){
 }
 
 window.utag.isLXPymt = function(){
-    if(pageName.indexOf(("page.LX.Checkout.Payment") > -1 ) ||
+    if(pageName.indexOf("page.LX.Checkout.Payment") > -1 ||
         (pageName.indexOf("page.Checkout.Payment") > -1 && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'LX')){
         b["isLXPymt"] = true;
         b["pageType"] = "Payment";
