@@ -1,11 +1,11 @@
 b['destination'] = '';
-if (utag.isLXCO() && b['entity.checkout.activity.activityDetail.destination'])
-{
-    b['destination'] = b['entity.checkout.activity.activityDetail.destination'];
-}
-if (utag.isLXCO() && b.entity.checkout.activity.activityDetail.destination)
-{
-    b['destination'] = b.entity.checkout.activity.activityDetail.destination;
+if (utag.isLXCO()) {
+    if (typeof b["entity.checkout.activity.activityDetail.destination"] !== "undefined") {
+        b['destination'] = b.entity.checkout.activity.activityDetail.destination;
+    }
+    else if (typeof b["entity.checkout.activities.0.activityDetail.destination"] !== "undefined") {
+        b['destination'] = b["entity.checkout.activities.0.activityDetail.destination"];
+    }
 }
 else if (utag.isCruiseCO() && b['entity.checkout.cruise.destination'])
 {
@@ -15,11 +15,21 @@ else if ((utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPCF()) && b['e
 {
     b['destination'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'].split(',')[0].split('(')[0].trim();
 }
-else if ((utag.isPSR() || utag.isPSR_FHC()) && b['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName'])
-{
-    b['destination'] = b['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName'].split('(')[0].trim();
+else if (utag.isPIS_FHC() && typeof b["entity.multiItemSearch.multiItemSearchParameters.flightSearchParameters.arrivalAirportCityState"] !== "undefined") {
+    b['destination'] = b["entity.multiItemSearch.multiItemSearchParameters.flightSearchParameters.arrivalAirportCityState"].split(',')[0].split('(')[0].trim();
+} 
+else if (utag.isPSR() || utag.isPSR_FHC()) {
+    if (typeof b['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName'] !== "undefined") {
+        b['destination'] = b['entity.packageFHSearch.packageFHSearchParameters.arrivalCityName'].split('(')[0].trim();
+    } 
+    else if (typeof b["entity.multiItemSearch.multiItemSearchParameters.flightSearchParameters.arrivalAirportCityState"] !== "undefined") {
+        b['destination'] = b["entity.multiItemSearch.multiItemSearchParameters.flightSearchParameters.arrivalAirportCityState"].split(",")[0].split('(')[0].trim();
+    }
+    else if(typeof b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"] !== "undefined") {
+		b['destination'] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"].split(",")[0]
+    }
 }
-else if ((utag.isPSR_FC() || utag.isPSR_Mobile()) && b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'])
+else if ((utag.isPSR_FC() || utag.isPSR_Mobile()|| utag.isPIS_HotelCar()) && b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'])
 {
     b['destination'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState'].split(',')[0].split('(')[0].trim();
 }
@@ -42,7 +52,12 @@ else if (utag.isHCO() || utag.isPTP()) {
     b['destination'] = b['entity.checkout.hotel.hotelCityName'];
 }
 else if (utag.isCarCO()) {
-    b['destination'] = b['entity.checkout.car.pickUpLocation.address.city'];
+    if (b['entity.checkout.car.pickUpLocation.address.city'] != undefined) {
+        b['destination'] = b['entity.checkout.car.pickUpLocation.address.city'];
+    } 
+    else if (b['entity.checkout.cars.0.dropOffLocation.address.city'] != undefined) {
+        b['destination'] = b['entity.checkout.cars.0.dropOffLocation.address.city'];
+    }
 }
 else if (utag.isHSR() && b['entity.hotels.search.city'])
 {
@@ -69,15 +84,21 @@ else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.
 {
     b['destination'] = b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.arrivalStation.name'];
 }
+else if (utag.isPPymt() && typeof b["entity.checkout.flightOffers.0.destinationAirportCityState"] !== "undefined") {
+	b['destination'] = b["entity.checkout.flightOffers.0.destinationAirportCityState"].split(",")[0];
+}
 else if (utag.isMCO()) {
-    if (b["entity.checkout.cars.0.dropOffLocation.address.city"] != undefined) {
+    if (typeof b["entity.checkout.cars.0.dropOffLocation.address.city"] !== "undefined") {
         b["destination"] = b["entity.checkout.cars.0.dropOffLocation.address.city"];
-    }
-    else if (b["entity.checkout.flightOffers.0.destinationAirportCityState"] != undefined) {
+    } 
+	else if (typeof b["entity.checkout.flightOffers.0.destinationAirportCityState"] !== "undefined") {
         b["destination"] = b["entity.checkout.flightOffers.0.destinationAirportCityState"].split(",")[0].trim();
-    }
-    else if (b["entity.checkout.hotels.0.hotelCityName"] != undefined) {
+    } 
+	else if (typeof b["entity.checkout.hotels.0.hotelCityName"] !== "undefined") {
         b["destination"] = b["entity.checkout.hotels.0.hotelCityName"];
+    } 
+	else if (typeof b["entity.checkout.activities.0.activityDetail.destination"] !== "undefined") {
+        b['destination'] = b["entity.checkout.activities.0.activityDetail.destination"];
     }
 }
 

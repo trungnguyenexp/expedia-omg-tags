@@ -14,9 +14,13 @@ if (utag.isHIS() && b['entity.hotels.listOfHotels.0.hotelId'] != undefined)
 {
     b['hotelId'] = b['entity.hotels.listOfHotels.0.hotelId'];
 }
-else if (utag.isPIS() && b['qp.hotelId'] != undefined)
-{
-    b['hotelId'] = b['qp.hotelId'];
+else if (utag.isPIS()){
+	if(b['qp.hotelId'] != undefined)
+	{
+		b['hotelId'] = b['qp.hotelId'];
+	} else if(typeof b["entity.multiItemSearch.multiItemSearchResults.offers.0.hotels.0.hotelId"] !== "undefined"){
+		b['hotelId'] = b["entity.multiItemSearch.multiItemSearchResults.offers.0.hotels.0.hotelId"];
+	}
 }
 else if ((utag.isHCO() || utag.isPCO()) && b['entity.checkout.hotel.hotelId'] != undefined)
 {
@@ -29,6 +33,9 @@ else if (utag.isPRateDetails() && b['entity.tripDetails.hotelOffer.hotelId'])
 else if(utag.isPIS_FH() && b["entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.selectedHotelId"] != undefined)
 {
     b['hotelId'] = b["entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.selectedHotelId"];
+}
+else if (utag.isPPymt() && typeof b["entity.checkout.hotels.0.hotelId"] !== "undefined") {
+	b['hotelId'] = b["entity.checkout.hotels.0.hotelId"];
 }
 else if((utag.isPSR() || utag.isPSR_FH_Responsive()) && b["entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.topTenHotelIds"] != undefined)
 {

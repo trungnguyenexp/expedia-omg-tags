@@ -10,7 +10,7 @@ if(utag.isHSR() && b["entity.hotels.resultsSummary.summaryPrice.currency"] != un
 }
 
 //Package
-else if ((utag.isPSR()  || utag.isPSR_F_Responsive()) && b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] != undefined){
+else if ((utag.isPSR()  || utag.isPSR_F_Responsive() || utag.isPIS_HotelCar()) && typeof b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] !== "undefined"){
     b["currencyCode"] = b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"];
 }
 else if (utag.isPRateDetails() && typeof b['entity.tripDetails.totalPrice.currency'] !== "undefined") {
@@ -35,9 +35,15 @@ else if(utag.isFCO()){
 else if(utag.isCarSR() && b["entity.carSearch.lowestOfferDailyPrice.currency"] != undefined){
     b["currencyCode"] = b["entity.carSearch.lowestOfferDailyPrice.currency"];
 }
-else if((utag.isPSR_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || utag.isPIS()) && typeof b.entity.packageSearch.results !== "undefined"
-    && typeof b.entity.packageSearch.results.offers !== "undefined"){
-    b["currencyCode"] = b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] ? b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] : "";
+else if (utag.isPCarSearch() && typeof b["entity.carSearch.lowestOfferTotalPrice.currency"] !== "undefined") {
+    b["currencyCode"] = b["entity.carSearch.lowestOfferTotalPrice.currency"];
+} 
+else if (utag.isPSR_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || utag.isPIS()) {
+    if (typeof b.entity.packageSearch.results !== "undefined" && typeof b.entity.packageSearch.results.offers !== "undefined") {
+        b["currencyCode"] = b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] ? b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] : "";
+    } else if (typeof b["entity.multiItemSearch.multiItemSearchResults.offers.0.packagePrice.packageTotalPrice.currency"] !== "undefined") {
+        b["currencyCode"] = b["entity.multiItemSearch.multiItemSearchResults.offers.0.packagePrice.packageTotalPrice.currency"];
+    }
 }
 else if(utag.isCarSR() && b["entity.carSearch.lowestOfferDailyPrice.currency"] != undefined){
     b["currencyCode"] = b["entity.carSearch.lowestOfferDailyPrice.currency"];
