@@ -17,27 +17,7 @@ else if(utag.isCarCO() && typeof b["entity.checkout.car.carVendor"] != "undefine
 else if(utag.isCarCO() && b.entity.tripDetails != undefined){
     sku = b["entity.tripDetails.carInfo.carVendor"];
 }
+else if(utag.isLXGT_CO() && b.entity.checkout.activities && b.entity.checkout.activities.length==1 && b['entity.checkout.activities.0.activityDetail.title']){
+    sku = b['entity.checkout.activities.0.activityDetail.title'];
+}
 b["sku"] = encodeURI(sku);
-
-/** old
- var sku = '';
- if ((utag.isFCO() || utag.isPCO()) &&
- typeof utag_data["entity.checkout.flightOffer.flight.legs.0.segments.0.carrierCode"] != "undefined")
- {
-   sku = utag_data["entity.checkout.flightOffer.flight.legs.0.segments.0.carrierCode"];
- }
- else if (utag.isHCO() && typeof utag_data["entity.checkout.hotel.hotelName"] != "undefined")
- {
-   sku = utag_data["entity.checkout.hotel.hotelName"];
- }
- else if(utag.isLXCO() && typeof utag_data["entity.checkout.activity.activityDetail.title"] != "undefined"){
-  sku = utag_data["entity.checkout.activity.activityDetail.title"];
-}
- else if(utag.isCarCO() && typeof utag_data["entity.checkout.car.carVendor"] != "undefined"){
-  sku = utag_data["entity.checkout.car.carVendor"];
-}
- else if(utag.isCarCO() && utag_data.entity.tripDetails != undefined){
-  sku = utag_data["entity.tripDetails.carInfo.carVendor"];
-}
- utag_data["sku"] = encodeURI(sku);
- **/
