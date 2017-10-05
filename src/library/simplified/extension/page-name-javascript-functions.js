@@ -50,7 +50,7 @@ window.utag.isHPymt = function(){
 }
 
 window.utag.isHCO = function(){
-    if(pageName.indexOf("page.Hotels.Checkout.Confirmation") > -1){
+    if(pageName.indexOf("page.Hotels.Checkout.Confirmation") > -1 || (b.utagPageName == "page.Checkout.Confirmation" && b.lobDomain == 'HOTEL')){
         b["isHCO"] = true;
         b["pageType"] = "Confirmation";
         return true;
@@ -122,7 +122,9 @@ window.utag.isFPymt = function(){
 }
 
 window.utag.isFCO = function(){
-    if(pageName.indexOf("page.Flight.Checkout.Confirmation") > -1  || pageName.indexOf("page.Flight.Checkout.Confirmation.Mobile,F,70") > -1 ){
+    if(pageName.indexOf("page.Flight.Checkout.Confirmation") > -1  || pageName.indexOf("page.Flight.Checkout.Confirmation.Mobile,F,70") > -1 ||
+        (b.lobDomain == 'AIR' && b.utagPageName == "page.Checkout.Confirmation") ||
+        (b.device_type == "Mobile" && (b.utagPageName == "page.Checkout.Confirmation" || b.utagPageName == "page.Checkout.Confirmation.Mobile,F,70"))){
         b["isFlightConfirmation"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -243,7 +245,8 @@ window.utag.isCruisePymt = function(){
 
 window.utag.isCruiseCO = function(){
     if(pageName.indexOf("page.Cruise.Checkout.Confirmation") > -1 || pageName.indexOf("page.Cruises.Checkout.Confirmation") > -1
-        || pageName.indexOf("page.Cruise.Checkout.Confirmation.Slim") > -1){
+        || pageName.indexOf("page.Cruise.Checkout.Confirmation.Slim") > -1 ||
+        (b.utagPageName == "page.Checkout.Confirmation" && b.lobDomain == "CRUISE")){
         b["isCruiseCO"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -414,7 +417,7 @@ window.utag.isPPymt = function(){
 }
 
 window.utag.isPCO = function(){
-    if(pageName.indexOf("page.Package.Checkout.Confirmation") > -1 ){
+    if(pageName.indexOf("page.Package.Checkout.Confirmation") > -1 || (b.entity.productTypes && b.entity.productTypes.length==1 && b.entity.productTypes[0]=='PACKAGE')){
         b["isPackageConfirmation"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -433,7 +436,7 @@ window.utag.isPCO_Mobile = function(){
 
 window.utag.isLXCO = function(){
     if ((pageName.indexOf("page.LX.Checkout.Confirmation") > -1) ||
-        (pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'LX')){
+        (pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'LX')){
         b["isLXCO"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -480,7 +483,7 @@ window.utag.isLXI = function(){
 
 window.utag.isLXPymt = function(){
     if(pageName.indexOf(("page.LX.Checkout.Payment") > -1 ) ||
-        (pageName.indexOf("page.Checkout.Payment") > -1 && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'LX')){
+        (pageName.indexOf("page.Checkout.Payment") > -1 && b.entity.productTypes && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'LX')){
         b["isLXPymt"] = true;
         b["pageType"] = "Payment";
         return true ;
@@ -548,7 +551,7 @@ window.utag.isRailRateDetails = function() {
 }
 
 window.utag.isRCO = function() {
-    if (pageName.indexOf("page.Rail.Checkout.Confirmation") > -1) {
+    if (pageName.indexOf("page.Rail.Checkout.Confirmation") > -1 || (b.utagPageName == "page.Checkout.Confirmation" && b.lobDomain == "RAIL")) {
         b["isRCO"] = true;
         b["pageType"] = "Confirmation";
         return true;
@@ -567,14 +570,16 @@ window.utag.isDestinationLandingPage = function() {
     return false;
 }
 window.utag.isLXGT_CO = function() {
-    if(pageName.indexOf("page.LX-GT.Checkout.Confirmation") > -1 ){
+    if(pageName.indexOf("page.LX-GT.Checkout.Confirmation") > -1 ||
+        (b.utagPageName == "page.Checkout.Confirmation" && b.entity.productTypes && b.entity.productTypes.length == 1 && b.entity.productTypes[0] == 'LX_GT')){
         b["pageType"] = "Confirmation";
         return true ;
     }
     return false;
 }
 window.utag.isLXGT_Pymt = function() {
-    if(pageName.indexOf("page.LX-GT.Checkout.Payment") > -1 ){
+    if(pageName.indexOf("page.LX-GT.Checkout.Payment") > -1 ||
+        (b.utagPageName == "page.Checkout.Payment" && b.entity.productTypes && b.entity.productTypes.length == 1 && b.entity.productTypes[0] == 'LX_GT')){
         b["pageType"] = "Payment";
         return true ;
     }

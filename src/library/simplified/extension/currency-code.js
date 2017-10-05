@@ -86,3 +86,6 @@ else if(utag.is3pp()){
 else if(utag.isPCF() && typeof b['entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency'] !== undefined) {
     b['currencyCode'] = b['entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency'];
 }
+else if(utag.isLXGT_CO() && b.entity.checkout.cartTotal.currency){
+    b['currencyCode'] = b.entity.checkout.cartTotal.currency;
+}
