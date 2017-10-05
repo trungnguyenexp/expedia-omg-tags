@@ -25,7 +25,7 @@
             }
             if (pixelTagTimeout === undefined) {
                 pixelTagTimeout = setTimeout(function () {
-                        sendPayloadToCollectorWeb(OMG_PIXEL_ID);
+                    sendPayloadToCollectorWeb(OMG_PIXEL_ID);
                     pixelTagTimeout = undefined;
                 }, BATCH_WAIT_TIME_IN_MS);
             }
@@ -37,7 +37,7 @@
         logFlattenedUdo: function () {
             var tagLoggingConfig = {
                 "stream": true,
-                "persist": true
+                "persist": false
             };
             var collectorWebResourceURL = getCollectorWebResource("omg-udo", tagLoggingConfig);
             if (window.utag_data) {
