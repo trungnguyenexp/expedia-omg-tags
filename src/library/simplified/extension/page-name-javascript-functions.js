@@ -417,7 +417,9 @@ window.utag.isPPymt = function(){
 }
 
 window.utag.isPCO = function(){
-    if(pageName.indexOf("page.Package.Checkout.Confirmation") > -1 || (b.entity.productTypes && b.entity.productTypes.length==1 && b.entity.productTypes[0]=='PACKAGE')){
+    if(pageName.indexOf("page.Package.Checkout.Confirmation") > -1 ||
+        (b.utagPageName == "page.Checkout.Confirmation" && b.entity.productTypes && b.entity.productTypes.length==2 && b.entity.productTypes[0]=='AIR' && b.entity.productTypes[1]=='HOTEL') ||
+        (b.utagPageName == "page.Checkout.Confirmation" && b.entity.productTypes && b.entity.productTypes.length==2 && b.entity.productTypes[0]=='HOTEL' && b.entity.productTypes[1]=='AIR')){
         b["isPackageConfirmation"] = true;
         b["pageType"] = "Confirmation";
         return true ;
