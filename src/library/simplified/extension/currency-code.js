@@ -90,7 +90,7 @@ else if(utag.isLXGT_CO() && b.entity.checkout.cartTotal.currency){
     b['currencyCode'] = b.entity.checkout.cartTotal.currency;
 }
 
-//All Slim confirmation pages for PHG
+//All Slim confirmation pages
 if(b.pageInfo.pageName && b.pageInfo.pageName.indexOf("Checkout.Confirmation.Slim") > -1 && b.entity.checkout.currency){
     b['currencyCode'] = b.entity.checkout.currency;
 }
