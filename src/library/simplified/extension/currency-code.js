@@ -91,7 +91,6 @@ else if(utag.isLXGT_CO() && b.entity.checkout.cartTotal.currency){
 }
 
 //All Slim confirmation pages for PHG
-if(b.pageInfo.pageName && b.pageInfo.pageName.indexOf("Checkout.Confirmation.Slim") > -1 && b.context.marketingAttribution.affiliateMarketingCode &&
-    b.context.marketingAttribution.affiliateMarketingCode.toLowerCase().indexOf("direct.phg") > -1 && b.entity.checkout.currency){
+if(b.pageInfo.pageName && b.pageInfo.pageName.indexOf("Checkout.Confirmation.Slim") > -1 && b.entity.checkout.currency){
     b['currencyCode'] = b.entity.checkout.currency;
 }
