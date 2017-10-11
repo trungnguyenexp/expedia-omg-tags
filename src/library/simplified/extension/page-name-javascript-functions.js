@@ -124,7 +124,7 @@ window.utag.isFPymt = function(){
 window.utag.isFCO = function(){
     if(pageName.indexOf("page.Flight.Checkout.Confirmation") > -1  || pageName.indexOf("page.Flight.Checkout.Confirmation.Mobile,F,70") > -1 ||
         (b.lobDomain == 'AIR' && b.utagPageName == "page.Checkout.Confirmation") ||
-        (b.device_type == "Mobile" && (b.utagPageName == "page.Checkout.Confirmation" || b.utagPageName == "page.Checkout.Confirmation.Mobile,F,70"))){
+        (b.lobDomain == 'AIR' && b.device_type == "Mobile" && (b.utagPageName == "page.Checkout.Confirmation" || b.utagPageName == "page.Checkout.Confirmation.Mobile,F,70"))){
         b["isFlightConfirmation"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -256,7 +256,7 @@ window.utag.isCruiseCO = function(){
 
 //MultiItem
 window.utag.isMCO = function(){
-	if((pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes.length > 1) 
+	if((pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes.length > 1 && b.entity.checkout.mickoTypeString && b.entity.checkout.mickoTypeString !== "fh")
 		|| pageName.indexOf("page.MultiItem.Checkout.Confirmation") > -1 ){
         b["isMultiItemConfirmation"] = true;
         b["isPackageConfirmation"] = true;
@@ -418,8 +418,8 @@ window.utag.isPPymt = function(){
 
 window.utag.isPCO = function(){
     if(pageName.indexOf("page.Package.Checkout.Confirmation") > -1 ||
-        (b.utagPageName == "page.Checkout.Confirmation" && b.entity.productTypes && b.entity.productTypes.length==2 && b.entity.productTypes[0]=='AIR' && b.entity.productTypes[1]=='HOTEL') ||
-        (b.utagPageName == "page.Checkout.Confirmation" && b.entity.productTypes && b.entity.productTypes.length==2 && b.entity.productTypes[0]=='HOTEL' && b.entity.productTypes[1]=='AIR')){
+        (b.utagPageName == "page.Checkout.Confirmation" && b.entity.checkout.mickoTypeString &&
+         b.entity.checkout.mickoTypeString == "fh" && b.device_type && b.device_type != "Mobile")){
         b["isPackageConfirmation"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -428,7 +428,9 @@ window.utag.isPCO = function(){
 }
 
 window.utag.isPCO_Mobile = function(){
-    if(pageName.indexOf("page.Packages.Confirmation.Mobile") > -1 ){
+    if(pageName.indexOf("page.Packages.Confirmation.Mobile") > -1 ||
+        (b.utagPageName == "page.Checkout.Confirmation" && b.entity.checkout.mickoTypeString &&
+         b.entity.checkout.mickoTypeString == "fh" && b.device_type && b.device_type == "Mobile")){
         b["isPCO"] = true;
         b["pageType"] = "Confirmation";
         return true ;
