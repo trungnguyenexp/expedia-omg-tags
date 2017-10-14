@@ -65,6 +65,9 @@ else if (utag.isRailSearchResults() && b['entity.railSearch.searchResults.railLe
 else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.price.currency'] != undefined) {
     b['currencyCode'] = b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.price.currency'];
 }
+else if (utag.isRCO() || (b.utagPageName && b.utagPageName == "page.Checkout.Confirmation" && b.entity.productTypes && b.entity.productTypes.length == 1 && b.entity.productTypes[0] == "RAIL")){
+    b['currencyCode'] = b.entity.checkout.currency ? b.entity.checkout.currency : "";
+}
 
 //Common data element
 else if((utag.isCarPymt() || utag.isCarCO() || utag.isHCO() || utag.isHPymt()
