@@ -140,6 +140,9 @@ else if (utag.isMCO()) {
     else if (b['entity.checkout.cars.0.isoFormatPickUpDate'] != undefined) {
         b['checkInDate'] = b['entity.checkout.cars.0.isoFormatPickUpDate'];
     }
+    else if (b['entity.checkout.activities.0.isoFormatStartDate']){
+        b['checkInDate'] = b['entity.checkout.activities.0.isoFormatStartDate'];
+    }
 }
 else if (utag.isPPymt()){
     //FH
@@ -179,6 +182,9 @@ else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.isoFormatDe
 }
 else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate']) {
     b['checkInDate'] = b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate'];
+}
+else if(utag.isRCO() && b['entity.checkout.railOffers.0.tripStartDateTime']){
+    b['checkInDate'] = b['entity.checkout.railOffers.0.tripStartDateTime'];
 }
 if(b["checkInDate"] != '')
 {

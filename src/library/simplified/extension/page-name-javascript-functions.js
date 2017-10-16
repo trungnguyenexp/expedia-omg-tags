@@ -170,8 +170,8 @@ window.utag.isCarPymt = function(){
 }
 
 window.utag.isCarCO = function(){
-	if((pageName.indexOf("page.Cars.Checkout.Confirmation") > -1) || 
-	( pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'CAR')) {
+    if((pageName.indexOf("page.Cars.Checkout.Confirmation") > -1) ||
+        ( pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'CAR')) {
         b["isCarCO"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -256,8 +256,10 @@ window.utag.isCruiseCO = function(){
 
 //MultiItem
 window.utag.isMCO = function(){
-	if((pageName.indexOf("page.Checkout.Confirmation") > -1 && b.entity.productTypes.length > 1 && b.entity.checkout.mickoTypeString && b.entity.checkout.mickoTypeString !== "fh")
-		|| pageName.indexOf("page.MultiItem.Checkout.Confirmation") > -1 ){
+    if(pageName.indexOf("page.MultiItem.Checkout.Confirmation") > -1 ||
+        (pageName.indexOf("page.Checkout.Confirmation") > -1
+        && b.entity.checkout.lobType && b.entity.checkout.lobType == "MultiItem"
+        && b.entity.productTypes && b.entity.productTypes.length >= 2)){
         b["isMultiItemConfirmation"] = true;
         b["isPackageConfirmation"] = true;
         b["pageType"] = "Confirmation";
@@ -419,7 +421,7 @@ window.utag.isPPymt = function(){
 window.utag.isPCO = function(){
     if(pageName.indexOf("page.Package.Checkout.Confirmation") > -1 ||
         (b.utagPageName == "page.Checkout.Confirmation" && b.entity.checkout.mickoTypeString &&
-         b.entity.checkout.mickoTypeString == "fh" && b.device_type && b.device_type != "Mobile")){
+        b.entity.checkout.mickoTypeString == "fh" && b.device_type && b.device_type != "Mobile")){
         b["isPackageConfirmation"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -430,7 +432,7 @@ window.utag.isPCO = function(){
 window.utag.isPCO_Mobile = function(){
     if(pageName.indexOf("page.Packages.Confirmation.Mobile") > -1 ||
         (b.utagPageName == "page.Checkout.Confirmation" && b.entity.checkout.mickoTypeString &&
-         b.entity.checkout.mickoTypeString == "fh" && b.device_type && b.device_type == "Mobile")){
+        b.entity.checkout.mickoTypeString == "fh" && b.device_type && b.device_type == "Mobile")){
         b["isPCO"] = true;
         b["pageType"] = "Confirmation";
         return true ;
@@ -466,7 +468,7 @@ window.utag.isItinPage = function(){
     }
     return false;
 }
-//LX Path  
+//LX Path
 window.utag.isLXS = function(){
     if(pageName.indexOf("page.LX-Search") > -1 ){
         b["isLXS"] = true;
@@ -486,7 +488,7 @@ window.utag.isLXI = function(){
 }
 
 window.utag.isLXPymt = function(){
-    if(pageName.indexOf(("page.LX.Checkout.Payment") > -1 ) ||
+    if(pageName.indexOf("page.LX.Checkout.Payment") > -1  ||
         (pageName.indexOf("page.Checkout.Payment") > -1 && b.entity.productTypes && b.entity.productTypes.length == 1  && b.entity.productTypes[0] == 'LX')){
         b["isLXPymt"] = true;
         b["pageType"] = "Payment";
@@ -528,7 +530,7 @@ window.utag.isPIS_HotelCar = function() {
     return false;
 }
 
-// Flight and Hotel Package Infosite Page  
+// Flight and Hotel Package Infosite Page
 window.utag.isPIS_FlightHotel = function(){
     if(pageName.indexOf("page.Packages.Infosite.Information") > -1){
         return true ;
@@ -565,10 +567,10 @@ window.utag.isRCO = function() {
 
 window.utag.isDestinationLandingPage = function() {
     if (pageName.indexOf('page.TravelGuides.Landing.Destinations') > -1
-	|| pageName.indexOf("page.TravelGuides.Landing.Hotels") > -1
-	|| pageName.indexOf("page.TravelGuides.Destinations.Hlr") > -1
-	|| pageName.indexOf("page.TravelGuides.Destinations.City") > -1
-	|| pageName.indexOf("page.TravelGuides.Hotels.HLR")) {
+        || pageName.indexOf("page.TravelGuides.Landing.Hotels") > -1
+        || pageName.indexOf("page.TravelGuides.Destinations.Hlr") > -1
+        || pageName.indexOf("page.TravelGuides.Destinations.City") > -1
+        || pageName.indexOf("page.TravelGuides.Hotels.HLR")) {
         return true;
     }
     return false;

@@ -37,7 +37,7 @@ else if(utag.isCarSR() && b["entity.carSearch.lowestOfferDailyPrice.currency"] !
 }
 else if (utag.isPCarSearch() && typeof b["entity.carSearch.lowestOfferTotalPrice.currency"] !== "undefined") {
     b["currencyCode"] = b["entity.carSearch.lowestOfferTotalPrice.currency"];
-} 
+}
 else if (utag.isPSR_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || utag.isPIS()) {
     if (typeof b.entity.packageSearch.results !== "undefined" && typeof b.entity.packageSearch.results.offers !== "undefined") {
         b["currencyCode"] = b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] ? b["entity.packageSearch.results.offers.0.packagePrice.packageTotalPrice.currency"] : "";
@@ -68,7 +68,7 @@ else if (utag.isRailRateDetails() && b['entity.railSearch.railDetail.railLegs.0.
 
 //Common data element
 else if((utag.isCarPymt() || utag.isCarCO() || utag.isHCO() || utag.isHPymt()
-    || utag.isCruisePymt() || utag.isCruiseCO() || utag.isLXCO() || utag.isPCO() || utag.isPCO_Mobile() || utag.isMCO()) && typeof b["entity.checkout.cartTotal.currency"] != "undefined"){
+    || utag.isCruisePymt() || utag.isCruiseCO() || utag.isLXCO() || utag.isPCO() || utag.isPCO_Mobile() || utag.isMCO() || utag.isRCO()) && typeof b["entity.checkout.cartTotal.currency"] != "undefined"){
     b["currencyCode"] = b["entity.checkout.cartTotal.currency"];
 }
 else if(utag.isLXCO() && b.entity.checkout.cartTotal.currency){
@@ -90,7 +90,8 @@ else if(utag.isLXGT_CO() && b.entity.checkout.cartTotal.currency){
     b['currencyCode'] = b.entity.checkout.cartTotal.currency;
 }
 
-//All Slim confirmation pages
-if(b.pageInfo.pageName && b.pageInfo.pageName.indexOf("Checkout.Confirmation.Slim") > -1 && b.entity.checkout.currency){
+//All confirmation pages in cluding Slim confirmation pages.
+if(b.pageInfo.pageName && b.pageInfo.pageName.indexOf("Checkout.Confirmation") > -1 && b.entity.checkout.currency){
     b['currencyCode'] = b.entity.checkout.currency;
 }
+
